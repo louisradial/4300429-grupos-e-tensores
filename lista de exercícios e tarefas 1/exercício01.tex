@@ -1,0 +1,48 @@
+\begin{lemma}{Disjunção exclusiva é associativa}{xor}
+    Seja \(\mathbb{B}\) o domínio Booleano. A disjunção exclusiva, denotada por \(\oplus : \mathbb{B} \times \mathbb{B} \to \mathbb{B}\), é associativa.
+\end{lemma}
+\begin{proof}
+    Considere a tabela verdade.
+    \begin{equation*}
+        \begin{array}{ c c c | c c | c c}
+        a & b & c & a \oplus b & (a \oplus b)\oplus c & b \oplus c &  a \oplus (b \oplus c ) \\
+         \hline
+        0 & 0 & 0 & 0 & 0 & 0 & 0\\
+        0 & 0 & 1 & 0 & 1 & 1 & 1\\
+        0 & 1 & 0 & 1 & 1 & 1 & 1\\
+        0 & 1 & 1 & 1 & 0 & 0 & 0\\
+        1 & 0 & 0 & 1 & 1 & 0 & 1\\
+        1 & 0 & 1 & 1 & 0 & 1 & 0\\
+        1 & 1 & 0 & 0 & 0 & 1 & 0\\
+        1 & 1 & 1 & 0 & 1 & 0 & 1
+        \end{array}
+    \end{equation*}
+    Vemos que \((a \oplus b) \oplus c = a \oplus (b \oplus c)\), o que conclui a demonstração.
+\end{proof}
+
+\begin{exercício}{Grupo das partes de um conjunto sob diferença simétrica}{exercício1}
+    Seja \(X\) um conjunto não vazio e seja
+    \begin{align*}
+        \triangle : \mathbb{P}(X) \times \mathbb{P}(X) &\to \mathbb{P}(X)\\
+                                                 (A,B) &\mapsto (A \cup B) \setminus (A \cap B)
+    \end{align*}
+    a operação de diferença simétrica, onde \(\mathbb{P}(X)\) é o conjunto de partes de \(X\). Então \((\mathbb{P}(X), \triangle)\) é um grupo.
+\end{exercício}
+\begin{proof}
+    Sejam \(A, B \in \mathbb{P}(X)\), então \(A \cup B \subset X\), portanto \(A \triangle B \subset A \cup B \subset X\), isto é, \(\triangle\) define um produto no conjunto das partes de \(X\). Segue da comutatividade da união e da interseção que \(\triangle\) é um produto comutativo. Temos ainda \(\emptyset\) como o elemento neutro deste produto pois \(A \triangle \emptyset = A \setminus \emptyset = A.\) Notemos que
+    \begin{align*}
+        A \triangle B &= \setc{x \in X}{x \in A \cup B \land \neg x \in A \cap B}\\
+                      &= \setc{x \in X}{(x \in A \lor x \in B) \land \neg (x \in A \land x \in B)}\\
+                      &= \setc{x \in X}{x \in A \oplus x \in B}.
+    \end{align*}
+    Desse modo, segue do \cref{lem:xor} que a diferença simétrica é associativa. De fato, seja \(C \in \mathbb{P}(X)\), então
+    \begin{align*}
+        A \triangle (B \triangle C) &= \setc{x \in X}{x \in A \oplus x \in B \triangle C}\\
+                                    &= \setc{x \in X}{x \in A \oplus (x \in B \oplus x \in C)}\\
+                                    &= \setc{x \in X}{x \in A \oplus x \in B \oplus x \in C}\\
+                                    &= \setc{x \in X}{(x \in A \oplus x \in B) \oplus x \in C}\\
+                                    &= \setc{x \in X}{x \in A \triangle B \oplus x \in C}\\
+                                    &= (A \triangle B) \triangle C,
+    \end{align*}
+    como desejado. Por fim, temos que todo subconjunto \(S \in \mathbb{P}(X)\) é seu próprio elemento inverso, pois \(S \triangle S = S \setminus S = \emptyset\). Concluímos, portanto, que \((\mathbb{P}(X), \triangle)\) é um grupo abeliano.
+\end{proof}
