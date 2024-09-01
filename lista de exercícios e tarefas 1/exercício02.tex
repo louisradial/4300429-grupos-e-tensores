@@ -1,0 +1,32 @@
+\begin{exercício}{Grupo das matrizes inteiras especiais}{exercício2}
+    Seja \(\mathrm{SL}(\mathbb{Z}, N)\) o conjunto das matrizes inteiras \(N \times N\) de determinante unitário. Então \(\mathrm{SL}(\mathbb{Z}, N)\) é um grupo sob multiplicação matricial.
+\end{exercício}
+\begin{proof}
+    Como o determinante do produto é igual ao produto dos determinantes, segue que \(\mathrm{SL}(\mathbb{Z}, N)\) é fechado em relação à multiplicação matricial, uma vez que o conjunto de números inteiros é fechado em relação à soma e multiplicação. Como a matriz identidade \(\mathds{1}\) tem determinante unitário e tem entradas inteiras, segue que \(\mathds{1} \in \mathrm{SL}(\mathbb{Z}, N)\). Sejam \(A, B, C \in \mathrm{SL}(\mathbb{Z}, N)\), então
+    \begin{align*}
+        [(AB)C]_{ij} &= \sum_{k = 1}^N (AB)_{ik} C_{kj}&
+        [A(BC)]_{ij} &= \sum_{\ell = 1}^N A_{i\ell} (BC)_{\ell j}\\
+                     &= \sum_{k = 1}^N \left(\sum_{\ell = 1}^N A_{i\ell}B_{\ell k}\right) C_{kj}&
+                     &= \sum_{\ell = 1}^N A_{i\ell}\left(\sum_{k = 1}^N B_{\ell k} C_{k j}\right)\\
+                     &= \sum_{k = 1}^N \sum_{\ell = 1}^N A_{i\ell} B_{\ell k} C_{kj}&
+                     &= \sum_{\ell = 1}^N \sum_{k = 1}^N A_{i\ell} B_{\ell k} C_{k j},
+    \end{align*}
+    isto é, o produto é associativo. Por fim, seja \(X \in \mathrm{SL}(\mathbb{Z}, N)\) e consideremos o seu polinômio característico \(p_X(t) = \det(t \mathds{1} - X)\). É evidente que podemos escrever
+    \begin{equation*}
+        p_X(t) = t^N + (-1)^N + \sum_{n=1}^{N-1} c_n t^{n},
+    \end{equation*}
+    onde \(p_X(0) = (-1)^N\det(X) = (-1)^N\) e \(c_n \in \mathbb{Z}\). Seja ainda
+    \begin{align*}
+        \tilde{p}_X : \mathrm{Mat}(\mathbb{Z}, N) &\to \mathrm{Mat}(\mathbb{Z}, N)\\
+        A &\mapsto A^N + (-1)^N \mathds{1} + \sum_{n=1}^{N-1} c_n A^n,
+    \end{align*}
+    então \(\tilde{p}_X(X) = 0\) pelo teorema de Cayley-Hamilton, portanto
+    \begin{equation*}
+        X^N + \sum_{n = 1}^{N-1} c_n X^n = (-1)^{N+1} \mathds{1} \implies \left[(-1)^{N+1} \left(X^{N-1} + c_1 \mathds{1} + \sum_{n=1}^{N-2} c_{n+1} X^{n}\right)\right]X = \mathds{1}
+    \end{equation*}
+    e analogamente para a fatoração de \(X\) pela esquerda. Assim, mostramos que
+    \begin{equation*}
+        X^{-1} = (-1)^{N+1} \left(X^{N-1} + c_1 \mathds{1} + \sum_{n=1}^{N-2} c_{n+1} X^{n}\right) \in \mathrm{SL}(\mathbb{Z}, N),
+    \end{equation*}
+    o que conclui a demonstração.
+\end{proof}
