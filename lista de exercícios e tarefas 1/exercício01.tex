@@ -1,3 +1,4 @@
+\section{Exercício 1}
 \begin{lemma}{Disjunção exclusiva é associativa}{xor}
     Seja \(\mathbb{B}\) o domínio Booleano. A disjunção exclusiva, denotada por \(\oplus : \mathbb{B} \times \mathbb{B} \to \mathbb{B}\), é associativa.
 \end{lemma}
@@ -20,14 +21,14 @@
     Vemos que \((a \oplus b) \oplus c = a \oplus (b \oplus c)\), o que conclui a demonstração.
 \end{proof}
 
-\begin{exercício}{Grupo das partes de um conjunto sob diferença simétrica}{exercício1}
+\begin{proposition}{Grupo das partes de um conjunto sob diferença simétrica}{exercício1}
     Seja \(X\) um conjunto não vazio e seja
     \begin{align*}
         \triangle : \mathbb{P}(X) \times \mathbb{P}(X) &\to \mathbb{P}(X)\\
                                                  (A,B) &\mapsto (A \cup B) \setminus (A \cap B)
     \end{align*}
     a operação de diferença simétrica, onde \(\mathbb{P}(X)\) é o conjunto de partes de \(X\). Então \((\mathbb{P}(X), \triangle)\) é um grupo.
-\end{exercício}
+\end{proposition}
 \begin{proof}
     Sejam \(A, B \in \mathbb{P}(X)\), então \(A \cup B \subset X\), portanto \(A \triangle B \subset A \cup B \subset X\), isto é, \(\triangle\) define um produto no conjunto das partes de \(X\). Segue da comutatividade da união e da interseção que \(\triangle\) é um produto comutativo. Temos ainda \(\emptyset\) como o elemento neutro deste produto pois \(A \triangle \emptyset = A \setminus \emptyset = A.\) Notemos que
     \begin{align*}
