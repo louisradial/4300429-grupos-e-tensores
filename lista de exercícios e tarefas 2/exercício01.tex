@@ -1,0 +1,275 @@
+\section{Grupo de Heisenberg}
+\begin{proposition}{Grupo de Heisenberg}{exercício1a}
+    A aplicação
+    \begin{align*}
+        H : \mathbb{C} \times \mathbb{C} \times \mathbb{C} &\to \mathrm{SL}(3,\mathbb{C})\\
+                                                   (a,b,c) &\mapsto \begin{smallpmatrix}
+                                                               1 & a & c\\
+                                                               0 & 1 & b\\
+                                                               0 & 0 & 1
+                                                           \end{smallpmatrix}
+    \end{align*}
+    satisfaz
+    \begin{enumerate}[label=(\alph*)]
+        \item \(H(a,b,c)H(a', b', c') = H(a+ a', b+ b', c+c' +ab')\) para todos \(a,b,c, a',b', c' \in \mathbb{C}\); e
+        \item \(H(a,b,c)^{-1} = H(-a,-b,ab-c)\) para todos \(a,b,c \in \mathbb{C}\).
+    \end{enumerate}
+    Sua imagem \(\mathrm{GH}_3(\mathbb{C}) = \setc{H(a,b,c)}{a,b,c \in \mathbb{C}}\) é um subgrupo de \(\mathrm{SL}(3, \mathbb{C})\), chamado de grupo de Heisenberg.
+\end{proposition}
+\begin{proof}
+    É fácil constatar que, para todos \(a,b,c \in \mathbb{C}\), a matriz \(H(a,b,c)\) tem determinante unitário, justificando o contradomínio \(\mathrm{SL}(3, \mathbb{C})\). Ainda, \(H(0,0,0) = \unity,\) isto é \(\unity \in \mathrm{GH}_3(\mathbb{C})\). Sejam \(a,b,c,a',b',c' \in \mathbb{C}\) então
+    \begin{equation*}
+        H(a,b,c)H(a',b',c') =
+        \begin{smallpmatrix}
+            1 & a & c\\
+            0 & 1 & b\\
+            0 & 0 & 1
+        \end{smallpmatrix}
+        \begin{smallpmatrix}
+            1 & a' & c'\\
+            0 & 1 & b'\\
+            0 & 0 & 1
+        \end{smallpmatrix} =
+        \begin{smallpmatrix}
+            1 & a + a' & c + c' + ab'\\
+            0 & 1 & b + b'\\
+            0 & 0 & 1
+        \end{smallpmatrix}
+        = H(a+a', b+b', c+c'+ab'),
+    \end{equation*}
+    o que mostra que \(\mathrm{GH}_3(\mathbb{C})\) é fechado em relação ao produto matricial. Desta relação, notamos que
+    \begin{equation*}
+        H(a,b,c)^{-1} = H(-a,-b,ab-c)
+    \end{equation*}
+    para todos \(a,b,c \in \mathbb{C}\) uma vez que
+    \begin{equation*}
+        H(a,b,c)H(-a,-b,ab-c) = H(a-a, b-b, c + ab - c -ab) = H(0,0,0) = \unity
+    \end{equation*}
+    e
+    \begin{equation*}
+        H(-a,-b,ab-c)H(a,b,c) = H(-a+a, -b+b, ab - c + c - ab) = H(0,0,0) = \unity
+    \end{equation*}
+    isto é, todo elemento de \(\mathrm{GH}_3(\mathbb{C})\) tem seu elemento inverso em \(\mathrm{GH}_3(\mathbb{C})\). Mostramos, portanto, que \(\mathrm{GH}_3(\mathbb{C})\) é um subgrupo de \(\mathrm{SL}(3, \mathbb{C})\).
+\end{proof}
+
+\begin{proposition}{Subgrupos uniparamétricos de \(\mathrm{GH}_3(\mathbb{C})\)}{exercício1b}
+    Considere as aplicações
+    \begin{align*}
+        H_1 : \mathbb{C} &\to \mathrm{GH}_3(\mathbb{C}) &
+        H_2 : \mathbb{C} &\to \mathrm{GH}_3(\mathbb{C}) &
+        H_3 : \mathbb{C} &\to \mathrm{GH}_3(\mathbb{C})\\
+        t &\mapsto H(t, 0, 0)&
+        t &\mapsto H(0, t, 0)&
+        t &\mapsto H(0, 0, t),
+    \end{align*}
+    então os conjuntos \(H_k(\mathbb{C})\) são subgrupos uniparamétricos de \(\mathrm{GH}_3(\mathbb{C})\) para \(k \in \set{1,2,3}\). Ainda, seus geradores são dados por
+    \begin{equation*}
+        \vetor{h}_1 = \begin{smallpmatrix}
+            0 & 1 & 0\\
+            0 & 0 & 0\\
+            0 & 0 & 0
+        \end{smallpmatrix},\quad
+        \vetor{h}_2 = \begin{smallpmatrix}
+            0 & 0 & 0\\
+            0 & 0 & 1\\
+            0 & 0 & 0
+        \end{smallpmatrix},\quad\text{e}\quad
+        \vetor{h}_3 = \begin{smallpmatrix}
+            0 & 0 & 1\\
+            0 & 0 & 0\\
+            0 & 0 & 0
+        \end{smallpmatrix},
+    \end{equation*}
+    com \(H_k(t) = \exp(t\vetor{h}_k)\) para todo \(t \in \mathbb{C}\) e \(k \in \set{1,2,3}\).
+\end{proposition}
+\begin{proof}
+    Evidentemente temos \(H_k(0) = H(0,0,0) = \unity\) para \(k \in \set{1,2,3}\). Pela \cref{prop:exercício1a}, segue que \(H_k(t+s) = H_k(t)H_k(s)\) para todos \(s, t \in \mathbb{C}\) e \(k \in \set{1,2,3}\). De fato, sejam \(t, s \in \mathbb{C}\), então
+    \begin{align*}
+        H_1(t)H_1(s) &= H(t,0,0)H(s,0,0) = H(t + s,0,0) = H_1(t+s),\\
+        H_2(t)H_2(s) &= H(0,t,0)H(0,s,0) = H(0,t + s,0) = H_2(t+s),\quad\text{e}\\
+        H_3(t)H_3(s) &= H(0,0,t)H(0,0,s) = H(0,0,t + s) = H_3(t+s).
+    \end{align*}
+    Mostramos que \(H_k(\mathbb{C})\) é um subgrupo uniparamétrico de \(\mathrm{GH}_3(\mathbb{C})\), portanto seus geradores são dados por \(\vetor{h}_k = \diff{H_k(t)}{t}[t=0]\). Assim, utilizando o delta de Kronecker para simplificar, temos
+    \begin{equation*}
+        \vetor{h}_k = \diff*{\begin{pmatrix}
+                1 & t \delta_{1k} & t \delta_{3k}\\
+                0 & 1 & t \delta_{2k}\\
+                0 & 0 & 1
+        \end{pmatrix}}{t}[t=0] = \begin{pmatrix}
+                0 & \delta_{1k} & \delta_{3k}\\
+                0 & 0 & \delta_{2k}\\
+                0 & 0 & 0
+        \end{pmatrix},
+    \end{equation*}
+    isto é,
+    \begin{equation*}
+        \vetor{h}_1 = \begin{smallpmatrix}
+            0 & 1 & 0\\
+            0 & 0 & 0\\
+            0 & 0 & 0
+        \end{smallpmatrix},\quad
+        \vetor{h}_2 = \begin{smallpmatrix}
+            0 & 0 & 0\\
+            0 & 0 & 1\\
+            0 & 0 & 0
+        \end{smallpmatrix},\quad\text{e}\quad
+        \vetor{h}_3 = \begin{smallpmatrix}
+            0 & 0 & 1\\
+            0 & 0 & 0\\
+            0 & 0 & 0
+        \end{smallpmatrix}.
+    \end{equation*}
+    Temos
+    \begin{equation*}
+        \vetor{h}_k^2 = \begin{smallpmatrix}
+            0 & 0 & \delta_{2k}\delta_{1k}\\
+            0 & 0 & 0\\
+            0 & 0 & 0
+        \end{smallpmatrix} = \begin{smallpmatrix}
+            0 & 0 & 0\\
+            0 & 0 & 0\\
+            0 & 0 & 0
+        \end{smallpmatrix},
+    \end{equation*}
+    logo
+    \begin{equation*}
+        \exp(t \vetor{h}_k) = \unity + t \vetor{h}_k = H(\delta_{1k}t, \delta_{2k}t, \delta_{3k}t) = H_k(t)
+    \end{equation*}
+    para todo \(t \in \mathbb{C}\) e \(k \in \set{1,2,3}\).
+\end{proof}
+
+\begin{proposition}{Álgebra de Lie \(\mathrm{gh}_3(\mathbb{C})\)}{exercício1c}
+    Seja \(\mathrm{gh}_3(\mathbb{C}) = \lspan_{\mathbb{C}}\set{\vetor{h}_1,\vetor{h}_2, \vetor{h}_3} \subset \mathrm{Mat}(3,\mathbb{C})\) o subespaço vetorial gerado pelos geradores dos subgrupos uniparamétricos \(H_k(\mathbb{C})\) do grupo de Heisenberg. A aplicação
+    \begin{align*}
+        h : \mathbb{C} \times \mathbb{C} \times \mathbb{C} &\to \mathrm{gh}_3(\mathbb{C})\\
+                                                   (a,b,c) &\mapsto a\vetor{h}_1 + b\vetor{h}_2 + c\vetor{h}_3
+    \end{align*}
+    satisfaz
+    \begin{enumerate}[label=(\roman*)]
+        \item \(h(\mathbb{C}^3) = \mathrm{gh}_3(\mathbb{C})\);
+        \item \(h(\lambda a, \lambda b, \lambda c) = \lambda h(a,b,c)\) para todo \(\lambda \in \mathbb{C}\);
+        \item \(h(a,b,c) + h(a',b',c') = h(a+a', b+b', c+c')\);
+        \item \(h(a,b,c) h(a', b', c') = h(0,0,ab')\); e
+        \item \([h(a,b,c), h(a',b',c')] = h(0,0,ab' - a'b)\).
+    \end{enumerate}
+    para todos \(a,b,c,a',b',c' \in \mathbb{C}\). Assim, \(\left(\mathrm{gh}_3(\mathbb{C}), [\noarg,\noarg]\right)\) é uma álgebra de Lie.
+\end{proposition}
+\begin{proof}
+    Temos
+    \begin{align*}
+        g \in \mathrm{gh}_3(\mathbb{C}) &\iff \exists a,b,c \in \mathbb{C}: g = a\vetor{h}_1 + b\vetor{h}_2 + c \vetor{h}_3  \\
+                                        &\iff \exists a,b,c \in \mathbb{C} : g = h(a,b,c)\\
+                                        &\iff g \in h(\mathbb{C}^3),
+    \end{align*}
+    portanto (i) segue. Sejam \(a_1,a_2,a_3,b_1,b_2,b_3 \in \mathbb{C}\) e \(\lambda \in \mathbb{C}\), então
+    \begin{equation*}
+        h(\lambda a_1, \lambda a_2, \lambda a_3) = \sum_{k=1}^3 \lambda a_k \vetor{h}_k = \lambda \sum_{k = 1}^3 a_k \vetor{h}_k = \lambda h(a_1, a_2, a_3),
+    \end{equation*}
+    e
+    \begin{equation*}
+        h(a_1, a_2, a_3) + h(b_1,b_2,b_3) = \sum{k = 1}^3 a_k \vetor{h}_k + \sum_{\ell = 1}^3 b_\ell \vetor{h}_\ell = \sum_{k = 1}^3 (a_k + b_k)\vetor{h}_k = h(a_1 + b_1, a_2 + b_2, a_3 + b_3)
+    \end{equation*}
+    logo concluímos (ii) e (iii). Notemos que
+    \begin{equation*}
+        \vetor{h}_k \vetor{h}_\ell = \begin{smallpmatrix}
+            0 & \delta_{1k} & \delta_{3k}\\
+            0 & 0 & \delta_{2k}\\
+            0 & 0 & 0
+        \end{smallpmatrix}
+        \begin{smallpmatrix}
+            0 & \delta_{1\ell} & \delta_{3\ell}\\
+            0 & 0 & \delta_{2 \ell}\\
+            0 & 0 & 0
+        \end{smallpmatrix} =
+        \begin{smallpmatrix}
+            0 & 0 & \delta_{1k} \delta_{2\ell}\\
+            0 & 0 & 0\\
+            0 & 0 & 0
+        \end{smallpmatrix} = \delta_{1k} \delta_{2\ell} \vetor{h}_3
+    \end{equation*}
+    para todos \(k, \ell \in \set{1,2,3}\), o que nos permite concluir (iv) já que
+    \begin{align*}
+        h(a_1,a_2,a_3) h(b_1,b_2,b_3) &= \left(\sum_{k = 1}^3 a_k \vetor{h}_k\right)\left(\sum_{\ell = 1}^3 b_\ell \vetor{h}_\ell\right)\\
+                                      &= \sum_{k = 1}^3 \sum_{\ell = 1}^3 a_k b_\ell \vetor{h}_k \vetor{h}_\ell\\
+                                      &= \sum_{k = 1}^3\sum_{\ell = 1}^3 a_k b_\ell \delta_{1k} \delta_{2\ell} \vetor{h}_3\\
+                                      &= a_1 b_2 \vetor{h}_3,
+    \end{align*}
+    para todos \(a_1,a_2,a_3, b_1,b_2,b_3 \in \mathbb{C}\). De (ii), (iii) e (iv) temos
+    \begin{align*}
+        \left[h(a,b,c),h(a',b',c')\right] &= h(a,b,c) h(a',b',c') - h(a', b', c') h(a,b,c)\\
+                                          &= h(0,0,ab') - h(0,0,a'b) \\
+                                          &= h(0,0,ab') + h(0,0,-a'b) \\
+                                          &= h(0,0,ab' - a'b)
+    \end{align*}
+    para todos \(a,b,c,a',b',c' \in \mathbb{C}\), portanto (v) segue. Esta última propriedade nos mostra que
+    \begin{equation*}
+        [\mathrm{gh}_3(\mathbb{C}), \mathrm{gh}_3(\mathbb{C})] \subset \mathrm{gh}_3(\mathbb{C}),
+    \end{equation*}
+    isto é, \(\left(\mathrm{gh}_3(\mathbb{C}), [\noarg,\noarg]\right)\) é uma subálgebra de Lie da álgebra de Lie matricial \(\left(\mathrm{Mat}(3, \mathbb{C}), [\noarg, \noarg]\right)\).
+\end{proof}
+\begin{corollary}
+    Sejam \(p = \vetor{h}_1, q = \vetor{h}_2,\) e \(\hbar = i\vetor{h}_3\), então
+    \begin{equation*}
+        [p,\hbar] = 0,\quad
+        [q,\hbar] = 0,\quad
+        [p,q] = -i\hbar
+    \end{equation*}
+    e \(\set{p,q,\hbar}\) é uma base de \(\mathrm{gh}_3(\mathbb{C})\).
+\end{corollary}
+\begin{proof}
+    Temos \([p,\hbar] =  [q, \hbar] = h(0,0,0) = 0\) e \([p, q] = h(0,0,1) = -i \hbar\) pela propriedade (v). Notemos que
+    \begin{align*}
+        g \in \lspan_{\mathbb{C}}\set{p,q,\hbar} &\iff \exists a_1, a_2, \tilde{a}_3 \in \mathbb{C} : g = a_1 p + a_2 q + \tilde{a}_3 \hbar\\
+                                                 &\iff \exists a_1,a_2,a_3 \in \mathbb{C}: g = \sum_{k=1}^3 a_k\vetor{h}_k\\
+                                                 &\iff g \in \lspan_{\mathbb{C}}\set{\vetor{h}_1, \vetor{h}_2, \vetor{h}_3}\\
+                                                 &\iff g \in \mathrm{gh}_3(\mathbb{C})
+    \end{align*}
+    portanto \(\set{p,q,\hbar}\) é um conjunto gerador para a álgebra de Lie \(\mathrm{gh}_3(\mathbb{C})\). Notemos que
+    \begin{equation*}
+        a p + b q + c \hbar = 0 \implies \begin{smallpmatrix}
+            0 & a & ic\\
+            0 & 0 & b\\
+            0 & 0 & 0
+        \end{smallpmatrix} = \begin{smallpmatrix}
+            0 & 0 & 0\\
+            0 & 0 & 0\\
+            0 & 0 & 0
+        \end{smallpmatrix} \implies a = b = c = 0,
+    \end{equation*}
+    logo \(\set{p,q,\hbar}\) é linearmente independente. Este conjunto é, portanto, base de \(\mathrm{gh}_3(\mathbb{C})\).
+\end{proof}
+
+\begin{proposition}{Álgebra de Lie associada ao grupo \(\mathrm{GH}_3(\mathbb{C})\)}{exercício1d}
+    A álgebra de Lie \(\mathrm{gh}_3(\mathbb{C})\) é a álgebra de Lie associada ao grupo de Heisenberg \(\mathrm{GH}_3(\mathbb{C})\), isto é, \(\exp(\mathrm{gh}_3(\mathbb{C})) = \mathrm{GH}_3(\mathbb{C})\), com \(\exp(h(a,b,c-\frac{ab}{2})) = H(a,b,c)\) para todos \(a,b,c \in \mathbb{C}\).
+\end{proposition}
+\begin{proof}
+    Sejam \(a,b,c \in \mathbb{C}\). Mostremos por indução que \(h(a,b,c)^{2+n} = 0\) para todo \(n \in \mathbb{N}\). Da propriedade (iv) da \cref{prop:exercício1c}, temos
+    \begin{equation*}
+        h(a,b,c)^3 = h(a,b,c) h(a,b,c)^2 = h(a,b,c) h(0,0,ab) = h(0,0,0) = 0,
+    \end{equation*}
+    portanto a afirmação é válida para \(n = 1\). Supondo válida para algum \(k \in \mathbb{N}\), temos
+    \begin{equation*}
+        h(a,b,c)^{2 + (k+1)} = h(a,b,c)^3 h(a,b,c)^k = 0 ,
+    \end{equation*}
+    isto é, é válida também para \(k + 1 \in \mathbb{N}\). A veracidade da afirmação feita segue pelo princípio de indução finita. Assim, concluímos que
+    \begin{equation*}
+        h(a,b,c)^{n} = h(a,b,c) \delta_{n1} + h(0,0,ab) \delta_{n2}
+    \end{equation*}
+    a partir deste resultado. Segue que
+    \begin{equation*}
+        \exp\left[h\left(a,b,c\right)\right] = \unity + \sum_{n = 1}^\infty h(a,b,c)^n = \unity + h(a,b,c) + \frac12 h(0,0,ab) = \begin{pmatrix}
+            1 & a & c + \frac{ab}{2}\\
+            0 & 1 & b\\
+            0 & 0 & 1
+        \end{pmatrix} = H\left(a,b,c + \frac{ab}{2}\right),
+    \end{equation*}
+    para todos \(a,b,c \in \mathbb{C}\).
+
+    Deste resultado temos \(\exp(\mathrm{gh}_3(\mathbb{C})) \subset \mathrm{GH}_3(\mathbb{C})\). A igualdade segue pois
+    \begin{align*}
+        g \in \mathrm{GH}_3(\mathbb{C}) &\implies \exists a,b,c \in \mathbb{C} : g = H\left(a,b,c - \frac{ab}{2} + \frac{ab}{2}\right)\\
+                                        &\implies \exists a,b,c \in \mathbb{C} : g = \exp\left[h\left(a,b,c - \frac{ab}{2}\right)\right]\\
+                                        &\implies g \in \exp\left(\mathrm{gh}_3(\mathbb{C})\right),
+    \end{align*}
+    isto é, \(\mathrm{GH}_3(\mathbb{C}) = \exp(\mathrm{gh}_3(\mathbb{C}))\).
+\end{proof}
