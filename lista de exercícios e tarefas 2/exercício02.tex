@@ -1,0 +1,52 @@
+\section{Centro de um grupo}
+\begin{definition}{Centro de um grupo}{centro}
+    Seja \(G\) um grupo. O conjunto
+    \begin{equation*}
+        Z(G) = \setc{h \in G}{\forall g \in G: hg = gh}
+    \end{equation*}
+    é denominado o \emph{centro de \(G\)}.
+\end{definition}
+
+\begin{proposition}{Centro de um grupo é um subgrupo abeliano}{centro_abeliano}
+    Seja \(G\) um grupo e \(Z(G)\) o seu centro. Então \(Z(G)\) é não vazio e é sempre um subgrupo abeliano de \(G\).
+\end{proposition}
+\begin{proof}
+    Evidentemente \(e \in Z(G)\), uma vez que \(eg = ge = g\) para todo \(g \in G\), portanto \(Z(G)\) é não vazio. Seja \(h \in Z(G)\), então
+    \begin{equation*}
+        h^{-1} g = h^{-1} g h h^{-1} = h^{-1} h g h^{-1} = g h^{-1}
+    \end{equation*}
+    para todo \(g \in G\), isto é, \(h^{-1} \in Z(G)\). Sejam \(h_1, h_2 \in Z(G)\), então
+    \begin{equation*}
+        (h_1 h_2) g = h_1 g h_2 = g(h_1 h_2),
+    \end{equation*}
+    para todo \(g \in G\), isto é, \(h_1 h_2 \in Z(G)\). Como \(h_2 \in G\), temos
+    \begin{equation*}
+        h_1 h_2 = h_2 h_1,
+    \end{equation*}
+    e concluímos que \(Z(G)\) é um subgrupo abeliano de \(G\).
+\end{proof}
+
+\begin{proposition}{Centro do grupo de Heisenberg \(\mathrm{GH}_3(\mathbb{C})\)}{exercício2b}
+    O subgrupo uniparamétrico \(H_3(\mathbb{C})\) é o centro do grupo de Heisenberg \(\mathrm{GH}_3(\mathbb{C})\).
+\end{proposition}
+\begin{proof}
+    Seja \(h \in Z(\mathrm{GH}_3(\mathbb{C})) \subset \mathrm{GH}_3(\mathbb{C})\), então existem \(a,b,c \in \mathbb{C}\) tais que \(h = H(a,b,c)\). Da \cref{prop:exercício1a}, segue que
+    \begin{align*}
+        \left[h,H(a', b', c')\right] &= H(a,b,c)H(a',b',c') - H(a',b',c') H(a,b,c)\\
+        &= H(a+a', b+b', c+c' + ab') - H(a+a', b+b', c+c' + a'b)\\
+        &= \begin{pmatrix}
+            0 & 0 & ab' - ba'\\
+            0 & 0 & 0\\
+            0 & 0 & 0
+        \end{pmatrix},
+    \end{align*}
+    para todos \(a',b',c' \in \mathbb{C}\). Como \(h\) comuta com todo elemento de \(\mathrm{GH}_3(\mathbb{C})\), \(h\) comuta com \(H(1,0,0)\) e \(H(0,1,0)\) em particular, donde segue que \(a = 0\) e \(b = 0\). Assim, temos \(h = H(0,0,c) = H_3(c)\), isto é, mostramos que \(Z(\mathrm{GH}_3(\mathbb{C})) \subset H_3(\mathbb{C})\).
+
+    Seja \(h \in H_3(\mathbb{C})\), então existe \(t \in \mathbb{C}\) tal que \(h = H_3(t)\). Temos
+    \begin{align*}
+        [h, H(a',b',c')] &= H(0,0,t)H(a',b',c') - H(a',b',c')H(0,0,t)\\
+                         &= H(a',b',c' + t) - H(a',b',c' + t)\\
+                         &= 0,
+    \end{align*}
+    para todos \(a',b',c' \in \mathbb{C}\). Concluímos que \(h \in Z(\mathrm{GH}_3(\mathbb{C}))\), logo \(H_3(\mathbb{C}) \subset Z(\mathrm{GH}_3(\mathbb{C}))\) e a proposição segue.
+\end{proof}
