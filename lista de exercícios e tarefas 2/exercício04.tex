@@ -1,0 +1,252 @@
+\section[Geradores de SO(3)]{Geradores de \(\mathrm{SO}(3)\)}
+\begin{definition}{Geradores de subgrupos uniparamétricos de \(\mathrm{SO}(3)\)}{geradores_SO3}
+    As matrizes
+    \begin{equation*}
+        J_1 = \begin{smallpmatrix}
+            0 & 0 & 0\\
+            0 & 0 & -1\\
+            0 & 1 & 0
+        \end{smallpmatrix},\quad
+        J_2 = \begin{smallpmatrix}
+            0 & 0 & 1\\
+            0 & 0 & 0\\
+            -1 & 0 & 0
+        \end{smallpmatrix},\quad\text{e}\quad
+        J_3 = \begin{smallpmatrix}
+            0 & -1 & 0\\
+            1 & 0 & 0\\
+            0 & 0 & 0
+        \end{smallpmatrix}
+    \end{equation*}
+    são os geradores dos subgrupos uniparamétricos de rotações em torno dos eixos \(\vetor{e}_1\), \(\vetor{e}_2\), e \(\vetor{e}_3\), respectivamente.
+\end{definition}
+\begin{lemma}{Produto dos geradores de \(\mathrm{SO}(3)\)}{produto_geradores_SO3}
+    Os geradores de \(\mathrm{SO}(3)\) podem ser escritos como
+    \begin{equation*}
+        J_k = \begin{pmatrix}
+            0 & -\delta_{k3} & \delta_{k2}\\
+            \delta_{k3} & 0 & -\delta_{k1}\\
+            -\delta_{k2} & \delta_{k1} & 0
+        \end{pmatrix}
+    \end{equation*}
+    e vale
+    \begin{equation*}
+        J_k J_\ell = \begin{pmatrix}
+            \delta_{k1}\delta_{\ell 1} - \delta_{k\ell} & \delta_{k2} \delta_{\ell 1} & \delta_{k3} \delta_{\ell 1}\\
+            \delta_{k1} \delta_{\ell2} & \delta_{k2} \delta_{\ell 2} - \delta_{k \ell} & \delta_{k3} \delta_{\ell 2}\\
+            \delta_{k1} \delta_{\ell3} & \delta_{k2} \delta_{\ell 3} & \delta_{k3}\delta_{\ell 3} - \delta_{k\ell}
+        \end{pmatrix}
+    \end{equation*}
+    para todos \(k, \ell \in \set{1,2,3}\).
+\end{lemma}
+\begin{proof}
+    Constata-se facilmente que os geradores são de fato dados por aquela matriz cujas entradas são deltas de Kronecker. Com isso, temos
+    \begin{align*}
+        J_kJ_\ell &=
+        \begin{pmatrix}
+            0 & -\delta_{k3} & \delta_{k2}\\
+            \delta_{k3} & 0 & -\delta_{k1}\\
+            -\delta_{k2} & \delta_{k1} & 0
+        \end{pmatrix}
+        \begin{pmatrix}
+            0 & -\delta_{\ell 3} & \delta_{\ell 2}\\
+            \delta_{\ell 3} & 0 & -\delta_{\ell 1}\\
+            -\delta_{\ell 2} & \delta_{\ell 1} & 0
+        \end{pmatrix}\\
+                  &=
+        \begin{pmatrix}
+            -\delta_{k2}\delta_{\ell2} - \delta_{k3}\delta_{\ell3} & \delta_{k2} \delta_{\ell 1} & \delta_{k3} \delta_{\ell 1}\\
+            \delta_{k1} \delta_{\ell2} & -\delta_{k1}\delta_{\ell1} - \delta_{k3}\delta_{\ell3}  & \delta_{k3} \delta_{\ell 2}\\
+            \delta_{k1} \delta_{\ell3} & \delta_{k2} \delta_{\ell 3} & -\delta_{k1}\delta_{\ell1} - \delta_{k2}\delta_{\ell2}
+        \end{pmatrix}
+    \end{align*}
+    Como \(\sum_{i = 1}^3 \delta_{ik} \delta_{i\ell} = \delta_{k\ell}\) para todos \(k, \ell \in \set{1,2,3}\), temos
+    \begin{equation*}
+        J_k J_\ell = \begin{pmatrix}
+            \delta_{k1}\delta_{\ell 1} - \delta_{k\ell} & \delta_{k2} \delta_{\ell 1} & \delta_{k3} \delta_{\ell 1}\\
+            \delta_{k1} \delta_{\ell2} & \delta_{k2} \delta_{\ell 2} - \delta_{k \ell} & \delta_{k3} \delta_{\ell 2}\\
+            \delta_{k1} \delta_{\ell3} & \delta_{k2} \delta_{\ell 3} & \delta_{k3}\delta_{\ell 3} - \delta_{k\ell}
+        \end{pmatrix}
+    \end{equation*}
+    como desejado.
+\end{proof}
+
+\begin{proposition}{Álgebra de Lie gerada pelos geradores de \(\mathrm{SO}(3)\)}{exercício4a}
+    Os geradores de \(\mathrm{SO}(3)\) satisfazem
+    \begin{equation*}
+        [J_k, J_\ell] = \sum_{m = 1}^3 \epsilon_{k\ell m} J_m.
+    \end{equation*}
+    para todos \(k, \ell \in \set{1,2,3}\) e
+    \begin{equation*}
+        [\vetor{\alpha} \cdot \vetor{J}, \vetor{\beta}\cdot \vetor{J}] = \left(\vetor{\alpha} \times \vetor{\beta}\right)\cdot \vetor{J}
+    \end{equation*}
+    para todos \(\vetor{\alpha}, \vetor{\beta} \in \mathbb{R}^3\), onde \(\vetor{\eta} \cdot \vetor{J} = \sum_{k = 1}^3 \eta_k J_k\) para \(\vetor{\eta} = (\eta_1, \eta_2, \eta_3) \in \mathbb{R}^3\).
+\end{proposition}
+\begin{proof}
+    Do \cref{lem:produto_geradores_SO3}, temos
+    \begin{align*}
+        [J_k, J_\ell] &= \begin{pmatrix}
+            \delta_{k1}\delta_{\ell 1} - \delta_{k\ell} & \delta_{k2} \delta_{\ell 1} & \delta_{k3} \delta_{\ell 1}\\
+            \delta_{k1} \delta_{\ell2} & \delta_{k2} \delta_{\ell 2} - \delta_{k \ell} & \delta_{k3} \delta_{\ell 2}\\
+            \delta_{k1} \delta_{\ell3} & \delta_{k2} \delta_{\ell 3} & \delta_{k3}\delta_{\ell 3} - \delta_{k\ell}
+        \end{pmatrix}
+        -
+        \begin{pmatrix}
+            \delta_{\ell1}\delta_{k 1} - \delta_{\ell k} & \delta_{\ell2} \delta_{k 1} & \delta_{\ell3} \delta_{k 1}\\
+            \delta_{\ell1} \delta_{k2} & \delta_{\ell2} \delta_{k 2} - \delta_{\ell k} & \delta_{\ell3} \delta_{k 2}\\
+            \delta_{\ell1} \delta_{k3} & \delta_{\ell2} \delta_{k 3} & \delta_{\ell3}\delta_{k 3} - \delta_{\ell k}
+        \end{pmatrix}\\
+                      &= \begin{pmatrix}
+                          0 & \delta_{k2} \delta_{\ell 1} - \delta_{k1} \delta_{\ell2} & \delta_{k3}\delta_{\ell 1} - \delta_{k1}\delta_{\ell 3}\\
+                          \delta_{k1}\delta_{\ell 2} - \delta_{k2}\delta_{\ell 1} & 0 & \delta_{k 3}\delta_{\ell 2} - \delta_{k2} \delta_{\ell 3}\\
+                          \delta_{k1}\delta_{\ell 3} - \delta_{k 3}\delta_{\ell 1} & \delta_{k2}\delta_{\ell 3} - \delta_{k3} \delta_{\ell 2} & 0\\
+                      \end{pmatrix}\\
+                      &= (\delta_{k2}\delta_{\ell 3} - \delta_{k3} \delta_{\ell 2}) J_1
+                      -(\delta_{k1}\delta_{\ell 3} - \delta_{k3} \delta_{\ell 1}) J_2
+                      +(\delta_{k1}\delta_{\ell 2} - \delta_{k2} \delta_{\ell 1}) J_3.
+    \end{align*}
+    Como \(\sum_{m = 1}^3 \epsilon_{k \ell m } \epsilon_{m i j } = \delta_{k i }\delta_{\ell j} - \delta_{k j}\delta_{\ell i}\), temos
+    \begin{align*}
+        [J_k, J_\ell] &= \left(\sum_{m = 1}^3 \epsilon_{k \ell m} \epsilon_{m23} \right)J_1 - \left(\sum_{m = 1}^3 \epsilon_{k \ell m} \epsilon_{m13} \right)J_2 + \left(\sum_{m = 1}^3 \epsilon_{k \ell m} \epsilon_{m12} \right)J_3 \\
+                      &= \left(\sum_{m = 1}^3 \epsilon_{k \ell m} \epsilon_{m23} J_m\right) - \left(\sum_{m = 1}^3 \epsilon_{k \ell m} \epsilon_{m13} J_m\right) + \left(\sum_{m = 1}^3 \epsilon_{k \ell m} \epsilon_{m12} J_m\right)\\
+                      &= \sum_{m = 1}^3 \epsilon_{k\ell m} \left( \epsilon_{m23}+\epsilon_{1m3}+\epsilon_{12m}\right)J_m\\
+                      &= \sum_{m=1}^3 \epsilon_{k\ell m} J_m
+    \end{align*}
+    para todo \(k, \ell \in \set{1,2,3}\).
+
+    Sejam \(\vetor{\alpha} = (\alpha_1, \alpha_2, \alpha_3) \in \mathbb{R}^3\) e \(\vetor{\beta} = (\beta_1, \beta_2, \beta_3) \in \mathbb{R}^3\) então segue da bilinearidade do comutador que
+    \begin{equation*}
+        [\vetor{\alpha} \cdot \vetor{J}, \vetor{\beta}\cdot\vetor{J}] = \left[\sum_{k = 1}^3 \alpha_k J_k,\sum_{\ell = 1}^3 \beta_\ell J_\ell\right] = \sum_{k = 1}^3 \sum_{\ell = 1}^3 \alpha_k \beta_\ell [J_k, J_\ell] = \sum_{k = 1}^3 \sum_{\ell = 1}^3 \sum_{m = 1}^3 \epsilon_{k \ell m} \alpha_k \beta_\ell J_m.
+    \end{equation*}
+    Notemos que \(\inner{\vetor{e}_m}{\vetor{\alpha}\times \vetor{\beta}} = \sum_{k = 1}^3 \sum_{\ell = 1}^3\epsilon_{k\ell m} \alpha_k \beta_\ell\), então
+    \begin{equation*}
+        [\vetor{\alpha} \cdot \vetor{J}, \vetor{\beta}\cdot\vetor{J}]  = \sum_{m = 1}^3 \inner{\vetor{e}_m}{\vetor{\alpha}\times \vetor{\beta}}J_m = (\vetor{\alpha}\times \vetor{\beta}) \cdot \vetor{J},
+    \end{equation*}
+    como desejado.
+\end{proof}
+
+\begin{lemma}{Potências dos geradores de \(\mathrm{SO}(3)\)}{potencias_geradores_SO3}
+    Seja \(\vetor{\eta} \in \setc{\vetor{\mathrm{x}} \in \mathbb{R}^3}{\norm{\vetor{\mathrm{x}}} =1}\), então
+    \begin{equation*}
+        (\vetor{\eta} \cdot \vetor{J})^{2n - 1} = (-1)^{n+1} (\vetor{\eta}\cdot \vetor{J})\quad\text{e}\quad (\vetor{\eta}\cdot\vetor{J})^{2n} = (-1)^{n+1}(\vetor{\eta}\cdot \vetor{J})^2
+    \end{equation*}
+    para todo \(n \in \mathbb{N}\).
+\end{lemma}
+\begin{proof}
+    Claramente, as expressões valem trivialmente para \(n = 1\). Notemos que
+    \begin{equation*}
+        (\vetor{\eta} \cdot \vetor{J})^2 = \begin{pmatrix}
+            0 & -\eta_3 & \eta_2\\
+            \eta_3 & 0 & -\eta_1\\
+            -\eta_2 & \eta_1 & 0
+        \end{pmatrix}^2 =
+        \begin{pmatrix}
+            -{\eta_3}^2 - {\eta_2}^2 & \eta_2 \eta_1 & \eta_3 \eta_1\\
+            \eta_2 \eta_1 & -{\eta_3}^2 - {\eta_1}^2 & \eta_3 \eta_2\\
+            \eta_3 \eta_1 & \eta_3 \eta_2 & -{\eta_2}^2 - {\eta_1}^2
+        \end{pmatrix} =
+        \begin{pmatrix}
+            {\eta_1}^2-1 & \eta_2 \eta_1 & \eta_3 \eta_1\\
+            \eta_2 \eta_1 & {\eta_2}^2 - 1 & \eta_3 \eta_2\\
+            \eta_3 \eta_1 & \eta_3 \eta_2 & {\eta_3}^2 - 1
+        \end{pmatrix}
+    \end{equation*}
+    e
+    \begin{equation*}
+        (\vetor{\eta} \cdot \vetor{J})^3 = \begin{pmatrix}
+            0 & -\eta_3 & \eta_2\\
+            \eta_3 & 0 & -\eta_1\\
+            -\eta_2 & \eta_1 & 0
+        \end{pmatrix}
+        \begin{pmatrix}
+            {\eta_1}^2-1 & \eta_2 \eta_1 & \eta_3 \eta_1\\
+            \eta_2 \eta_1 & {\eta_2}^2 - 1 & \eta_3 \eta_2\\
+            \eta_3 \eta_1 & \eta_3 \eta_2 & {\eta_3}^2 - 1
+        \end{pmatrix} =
+        \begin{pmatrix}
+            0 & \eta_3 & -\eta_2\\
+            -\eta_3 & 0 & \eta_1\\
+            \eta_2 & -\eta_1 & 0
+        \end{pmatrix} = -(\vetor{\eta} \cdot \vetor{J}).
+    \end{equation*}
+    Suponhamos que as expressões sejam válidas para algum \(m \in \mathbb{N}\), então
+    \begin{equation*}
+        (\vetor{\eta}\cdot \vetor{J})^{2m + 1} = (\vetor{\eta}\cdot\vetor{J})(\vetor{\eta}\cdot{\vetor{J}})^{2m} = (-1)^{m+1} (\vetor{\eta}\cdot \vetor{J})^3 = (-1)^{m+2} (\vetor{\eta}\cdot \vetor{J})
+    \end{equation*}
+    e
+    \begin{equation*}
+        (\vetor{\eta}\cdot \vetor{J})^{2m+2} = (\vetor{\eta}\cdot\vetor{J})(\vetor{\eta}\cdot\vetor{J})^{2m+1} = (-1)^{m+2} (\vetor{\eta}\cdot{\vetor{J}})^2,
+    \end{equation*}
+    isto é, é também válida para \(m +1 \in \mathbb{N}\). Pelo princípio da indução finita, o lema segue.
+\end{proof}
+
+\begin{proposition}{Fórmulas de Rodrigues para o grupo \(\mathrm{SO}(3)\)}{exercício4b}
+    Seja \(\vetor{\eta} \in \setc{\vetor{\mathrm{x}}\in \mathbb{R}^3}{\norm{\vetor{\mathrm{x}}} = 1},\) então
+    \begin{equation*}
+        \exp(\theta \vetor{\eta}\cdot \vetor{J}) = \unity + (1 - \cos\theta) (\vetor{\eta}\cdot \vetor{J})^2 + \sin\theta (\vetor{\eta}\cdot \vetor{J})
+    \end{equation*}
+    para todo \(\theta \in \mathbb{R}\). Seja \(\vetor{\alpha} \in \mathbb{R}^3\), então
+    \begin{align*}
+        \exp(\theta \vetor{\eta}\cdot \vetor{J})\vetor{\alpha} &= \vetor{\alpha} + (1 - \cos\theta) \left[\vetor{\eta} \times (\vetor{\eta} \times \vetor{\alpha})\right] + \sin\theta \vetor{\eta}\times \vetor{\alpha}\\&= \cos\theta\vetor{\alpha} + (1 - \cos\theta) \inner{\vetor{\eta}}{\vetor{\alpha}}\vetor{\eta} + \sin\theta \vetor{\eta}\times \vetor{\alpha}
+    \end{align*}
+    para todo \(\theta \in \mathbb{R}\).
+\end{proposition}
+\begin{proof}
+    Do \cref{lem:potencias_geradores_SO3} temos
+    \begin{align*}
+        \exp(\theta \vetor{\eta} \cdot \vetor{J}) = \unity + \sum_{n = 1}^\infty \frac{(\theta \vetor{\eta}\cdot \vetor{J})^n}{n!}
+        &= \unity + \sum_{n = 1}^\infty \frac{(\theta \vetor{\eta} \cdot \vetor{J})^{2n - 1}}{(2n - 1)!} + \sum_{n = 1}^\infty \frac{(\theta \vetor{\eta} \cdot \vetor{J})^{2n}}{(2n)!}\\
+        &= \unity + \sum_{n = 1}^\infty \frac{(-1)^{n + 1}\theta^{2n - 1}(\vetor{\eta} \cdot \vetor{J})}{(2n - 1)!} + \sum_{n = 1}^\infty \frac{(-1)^{n+1}\theta^{2n} (\vetor{\eta} \cdot \vetor{J})^{2}}{(2n)!}\\
+        &= \unity + \left[\sum_{n = 1}^\infty \frac{(-1)^{n + 1}\theta^{2n - 1}}{(2n - 1)!}\right](\vetor{\eta} \cdot \vetor{J}) - \left[-1 + \sum_{n = 0}^\infty \frac{(-1)^{n}\theta^{2n} }{(2n)!}\right](\vetor{\eta} \cdot \vetor{J})^{2}\\
+        &= \unity + \sin\theta (\vetor{\eta} \cdot \vetor{J}) + (1 - \cos\theta) (\vetor{\eta}\cdot \vetor{J})^2
+    \end{align*}
+    para todo \(\theta \in \mathbb{R}\).
+
+    Para um \(\vetor{\alpha} = (\alpha_1, \alpha_2, \alpha_3) \in \mathbb{R}^3\), temos
+    \begin{equation*}
+        (\vetor{\eta}\cdot \vetor{J})\vetor{\alpha} =
+        \begin{pmatrix}
+            0 & -\eta_3 & \eta_2\\
+            \eta_3 & 0 & -\eta_1\\
+            -\eta_2 & \eta_1 & 0
+        \end{pmatrix}
+        \begin{pmatrix}
+            \alpha_1\\
+            \alpha_2\\
+            \alpha_3
+        \end{pmatrix} =
+        \begin{pmatrix}
+            \eta_2 \alpha_3-\eta_3\alpha_2\\
+            \eta_3 \alpha_1-\eta_1\alpha_3\\
+            \eta_1 \alpha_2-\eta_2\alpha_1
+        \end{pmatrix} = \vetor{\eta} \times \vetor{\alpha}
+    \end{equation*}
+    e
+    \begin{equation*}
+        (\vetor{\eta}\cdot \vetor{J})^2\vetor{\alpha} =
+        \begin{pmatrix}
+            {\eta_1}^2-1 & \eta_2 \eta_1 & \eta_3 \eta_1\\
+            \eta_2 \eta_1 & {\eta_2}^2 - 1 & \eta_3 \eta_2\\
+            \eta_3 \eta_1 & \eta_3 \eta_2 & {\eta_3}^2 - 1
+        \end{pmatrix}
+        \begin{pmatrix}
+            \alpha_1\\
+            \alpha_2\\
+            \alpha_3
+        \end{pmatrix} =
+        \begin{pmatrix}
+            {\eta_1}^2 \alpha_1 - \alpha_1 + \eta_2 \eta_1 \alpha_2 + \eta_3 \eta_1 \alpha_3\\
+            {\eta_2}^2 \alpha_2 - \alpha_2 + \eta_2 \eta_1 \alpha_1 + \eta_3 \eta_2 \alpha_3\\
+            {\eta_3}^2 \alpha_3 - \alpha_3 + \eta_3 \eta_1 \alpha_1 + \eta_3 \eta_2 \alpha_2
+        \end{pmatrix} =
+        \inner{\vetor{\eta}}{\vetor{\alpha}}\vetor{\eta} - \vetor{\alpha}.
+    \end{equation*}
+    Assim, como \(\inner{\vetor{\eta}}{\vetor{\alpha}}\vetor{\eta} - \inner{\vetor{\eta}}{\vetor{\eta}}\vetor{\alpha} = \vetor{\eta}\times(\vetor{\eta} \times \vetor{\alpha})\), temos
+    \begin{align*}
+        \exp(\theta \vetor{\eta}\cdot \vetor{J}) \vetor{\alpha}
+        &= \vetor{\alpha} + (1 - \cos\theta) \left[\vetor{\eta} \times (\vetor{\eta} \times \vetor{\alpha})\right] + \sin\theta \vetor{\eta}\times \vetor{\alpha}\\
+        &= \vetor{\alpha} + (1 - \cos\theta) \left(\inner{\vetor{\eta}}{\vetor{\alpha}}\vetor{\eta} - \vetor{\alpha}\right) + \sin\theta \vetor{\eta}\times \vetor{\alpha} \\
+                                                                &= \cos\theta\vetor{\alpha} + (1 - \cos\theta) \inner{\vetor{\eta}}{\vetor{\alpha}}\vetor{\eta} + \sin\theta \vetor{\eta}\times \vetor{\alpha}
+    \end{align*}
+    para todo \(\theta \in \mathbb{R}\).
+\end{proof}
