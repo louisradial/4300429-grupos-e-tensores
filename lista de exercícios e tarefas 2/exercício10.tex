@@ -1,0 +1,71 @@
+\section{Parametrização de Euler}
+\begin{proposition}{Parametrização de Euler}{exercício10}
+    Seja \(R \in \mathrm{SO}(3)\) então existem \(\theta \in [0,\pi),\) \(\varphi \in [0,2\pi)\) e \(\psi \in [0,2\pi)\) tais que
+    \begin{equation*}
+        R = \begin{pmatrix}
+            \cos\varphi \cos\psi - \cos\theta\sin\varphi\sin\psi & - \cos\varphi\sin\psi - \cos\theta \sin\varphi\cos\psi & \sin\varphi \sin\theta\\
+            \sin\varphi \cos\psi + \cos\theta \cos\varphi \sin\psi & \sin\varphi\sin\psi + \cos\theta \cos\varphi \cos\psi & - \cos\varphi \sin\theta\\
+            \sin\psi \sin\theta & \cos\psi\sin\theta & \cos\theta
+        \end{pmatrix}.
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    Pela \cref{prop:exercício9}, existem \(\theta \in [0,\pi)\), \(\varphi \in [0,2\pi)\), e \(\psi \in [0,2\pi)\) tais que
+    \begin{equation*}
+        R = R_3(\varphi)R_1(\theta)R_3(\psi).
+    \end{equation*}
+    Como
+    \begin{equation*}
+        R_1(\vartheta) = \begin{pmatrix}
+            1 & 0 & 0\\
+            0 & \cos\vartheta & -\sin\vartheta\\
+            0 & \sin\vartheta & \cos\vartheta\\
+        \end{pmatrix}
+        \quad\text{e}\quad
+        R_3(\vartheta) = \begin{pmatrix}
+            \cos\vartheta & -\sin\vartheta & 0\\
+            \sin\vartheta & \cos\vartheta & 0\\
+            0 & 0 & 1
+        \end{pmatrix}
+    \end{equation*}
+    são as matrizes de rotação em torno dos eixos \(\vetor{e}_1\) e \(\vetor{e}_3\), respectivamente, temos
+    \begin{align*}
+        R &=
+        R_3(\varphi)
+        R_1(\theta)
+        R_3(\psi)\\
+          &=
+        \begin{pmatrix}
+            \cos\varphi & -\sin\varphi & 0\\
+            \sin\varphi & \cos\varphi & 0\\
+            0 & 0 & 1
+        \end{pmatrix}
+        \begin{pmatrix}
+            1 & 0 & 0\\
+            0 & \cos\theta & -\sin\theta\\
+            0 & \sin\theta & \cos\theta\\
+        \end{pmatrix}
+        \begin{pmatrix}
+            \cos\psi & -\sin\psi & 0\\
+            \sin\psi & \cos\psi & 0\\
+            0 & 0 & 1
+        \end{pmatrix}\\
+                  &=
+        \begin{pmatrix}
+            \cos\varphi & -\sin\varphi & 0\\
+            \sin\varphi & \cos\varphi & 0\\
+            0 & 0 & 1
+        \end{pmatrix}
+        \begin{pmatrix}
+            \cos\psi & -\sin\psi & 0\\
+            \cos\theta \sin\psi & \cos\theta \cos\psi & -\sin\theta\\
+            \sin\theta \sin \psi & \sin\theta \cos\psi& \cos\theta
+        \end{pmatrix}\\
+                  &= \begin{pmatrix}
+            \cos\varphi \cos\psi - \cos\theta\sin\varphi\sin\psi & - \cos\varphi\sin\psi - \cos\theta \sin\varphi\cos\psi & \sin\varphi \sin\theta\\
+            \sin\varphi \cos\psi + \cos\theta \cos\varphi \sin\psi & \sin\varphi\sin\psi + \cos\theta \cos\varphi \cos\psi & - \cos\varphi \sin\theta\\
+            \sin\psi \sin\theta & \cos\psi\sin\theta & \cos\theta
+        \end{pmatrix},
+    \end{align*}
+    como desejado.
+\end{proof}
