@@ -1,1 +1,95 @@
 \section{Grupo de Galilei}
+\begin{definition}{Matriz de transformação de Galilei}{galilei}
+    Denotemos por
+    \begin{equation*}
+        \mathscr{G} = \setc{G(r, \vetor{v})}{r \in O(3) \land \vetor{v} \in \mathbb{R}^3}
+    \end{equation*}
+    o conjunto de todas as transformações de Galilei, exceto reversões temporais, onde
+    \begin{align*}
+        G : O(3) \times \mathbb{R}^3 &\to \mathrm{Mat}(4, \mathbb{R})\\
+                       (r,\vetor{v}) &\mapsto \begin{pmatrix}
+                           1 & \vetor{0}\\
+                           -\vetor{v} & r
+                       \end{pmatrix}.
+    \end{align*}
+    Os \emph{boosts} de Galilei com velocidade \(\vetor{v}\) são denotados por \(G(\vetor{v}) = G(\unity_3, \vetor{v})\).
+\end{definition}
+
+\begin{proposition}{Grupo de Galilei}{exercício8a}
+    O conjunto \(\mathscr{G}\) é um subgrupo de \(\mathrm{GL}(4,\mathbb{\mathbb{R}})\) em relação ao produto matricial, valendo
+    \begin{enumerate}[label=(\roman*)]
+        \item \(G(\unity_3, \vetor{0}) = \unity_4\);
+        \item \(G(r_1, \vetor{v}_1) G(r_2, \vetor{v}_2) = G(r_1r_2, \vetor{v}_1 + r_1\vetor{v}_2)\), para todos \(r_1,r_2 \in O(3)\) e \(\vetor{v}_1, \vetor{v}_2 \in \mathbb{R}^3\); e
+        \item \(G(r, \vetor{v})^{-1} = G(r^{-1}, -r^{-1}\vetor{v})\), para todos \(r \in O(3)\) e \(\vetor{v} \in \mathbb{R}^3\).
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+
+\end{proof}
+
+\begin{proposition}{Grupo de \emph{boosts} de Galilei}{exercício8b}
+    O conjunto de \emph{boosts} de Galilei, \(G(\mathbb{R}^3)\), é um subgrupo do grupo de Galilei, com
+    \begin{enumerate}[label=(\alph*)]
+        \item \(G(\vetor{0}) = \unity_4\);
+        \item \(G(\vetor{v}_1)G(\vetor{v}_2) = G(\vetor{v}_1 + \vetor{v}_2)\), para todos \(\vetor{v}_1, \vetor{v}_2 \in \mathbb{R}^3\); e
+        \item \(G(\vetor{v})^{-1} = G(-\vetor{v})\), para todo \(\vetor{v} \in \mathbb{R}^3\).
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+
+\end{proof}
+
+\begin{proposition}{Geradores de boosts e rotações do grupo de Galilei}{exercício8c}
+    Os geradores dos \emph{boosts} de Galilei são dados por
+    \begin{equation*}
+        \mathcal{M}_1 = \begin{pmatrix}
+            0 & 0 & 0 & 0\\
+            -1 & 0 & 0 & 0\\
+            0 & 0 & 0 & 0\\
+            0 & 0 & 0 & 0
+        \end{pmatrix},\quad
+        \mathcal{M}_2 = \begin{pmatrix}
+            0 & 0 & 0 & 0\\
+            0 & 0 & 0 & 0\\
+            -1 & 0 & 0 & 0\\
+            0 & 0 & 0 & 0
+        \end{pmatrix},\quad\text{e}\quad
+        \mathcal{M}_3 = \begin{pmatrix}
+            0 & 0 & 0 & 0\\
+            0 & 0 & 0 & 0\\
+            0 & 0 & 0 & 0\\
+            -1 & 0 & 0 & 0
+        \end{pmatrix},
+    \end{equation*}
+    e os geradores das rotações no grupo de Galilei são dados por
+    \begin{equation*}
+        \mathcal{J}_1 = \begin{pmatrix}
+            0 & 0 & 0 & 0\\
+            0 & 0 & 0 & 0\\
+            0 & 0 & 0 & -1\\
+            0 & 0 & 1 & 0
+        \end{pmatrix},\quad
+        \mathcal{J}_2 = \begin{pmatrix}
+            0 & 0 & 0 & 0\\
+            0 & 0 & 0 & 1\\
+            0 & 0 & 0 & 0\\
+            0 & -1 & 0 & 0
+        \end{pmatrix},\quad\text{e}\quad
+        \mathcal{J}_3 = \begin{pmatrix}
+            0 & 0 & 0 & 0\\
+            0 & 0 & -1 & 0\\
+            0 & 1 & 0 & 0\\
+            0 & 0 & 0 & 0
+        \end{pmatrix},
+    \end{equation*}
+    Esses geradores satisfazem as relações de comutação
+    \begin{equation*}
+        [\mathcal{J}_k, \mathcal{J}_\ell] = \sum_{m=1}^3 \epsilon_{k \ell m}\mathcal{J}_m,\quad
+        [\mathcal{M}_k, \mathcal{M}_\ell] = 0,\quad\text{e}\quad
+        [\mathcal{J}_k, \mathcal{M}_\ell] = \sum_{m=1}^3 \epsilon_{k \ell m}\mathcal{M}_m,
+    \end{equation*}
+    para todos \(k, \ell \in \set{1,2,3}\).
+\end{proposition}
+\begin{proof}
+
+\end{proof}
