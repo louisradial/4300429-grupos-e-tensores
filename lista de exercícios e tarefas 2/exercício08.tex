@@ -1,4 +1,121 @@
 \section{Grupo de Galilei}
+\begin{lemma}{Multiplicação de matrizes em notação de blocos}{blocos}
+    Sejam \(A = (a_{ij}),B = (b_{ij}) \in \mathrm{Mat}(4, \mathbb{R})\). Definimos
+    \begin{equation*}
+        \vetor{x} = \begin{pmatrix}
+            a_{21}\\
+            a_{31}\\
+            a_{41}
+        \end{pmatrix},\,
+        \vetor{y} = \begin{pmatrix}
+            a_{12}\\
+            a_{13}\\
+            a_{14}
+        \end{pmatrix},\,
+        \vetor{z} = \begin{pmatrix}
+            b_{21}\\
+            b_{31}\\
+            b_{41}
+        \end{pmatrix},\,
+        \vetor{w} = \begin{pmatrix}
+            b_{12}\\
+            b_{13}\\
+            b_{14}
+        \end{pmatrix},\,
+        M = \begin{pmatrix}
+            a_{22} & a_{23} & a_{24}\\
+            a_{32} & a_{33} & a_{34}\\
+            a_{42} & a_{43} & a_{44}\\
+        \end{pmatrix},\,\text{e}\,
+        N = \begin{pmatrix}
+            b_{22} & b_{23} & b_{24}\\
+            b_{32} & b_{33} & b_{34}\\
+                b_{42} & b_{43} & b_{44}\\
+            \end{pmatrix},
+    \end{equation*}
+    e escrevemos
+    \begin{equation*}
+        A = \begin{pmatrix}
+            a_{11} & \vetor{y}^\intercal\\
+            \vetor{x} & M
+        \end{pmatrix}\quad\text{e}\quad
+        B = \begin{pmatrix}
+            b_{11} & \vetor{w}^\intercal\\
+            \vetor{z} & N
+        \end{pmatrix}
+    \end{equation*}
+    em notação de blocos. Então,
+    \begin{equation*}
+        A B = \begin{pmatrix}
+            a_{11}b_{11} + \vetor{y}^\intercal \vetor{z} && a_{11} \vetor{w}^\intercal + \vetor{y}^\intercal N\\
+            b_{11} \vetor{x} + M \vetor{z} && \vetor{x}\vetor{w}^\intercal + MN
+        \end{pmatrix},
+    \end{equation*}
+    isto é, a partição de blocos definida é conformável.
+\end{lemma}
+\begin{proof}
+    Sabemos que para todos \(i,j \in \set{1,2,3,4}\), temos \((AB)_{ij} = \sum_{k = 1}^4 A_{ik}B_{kj}\). Verificando explicitamente, temos
+    \begin{equation*}
+        a_{11}b_{11} + \vetor{y}^\intercal \vetor{z} = a_{11} b_{11} + a_{12}b_{21} + a_{13}b_{31} + a_{14}b_{41} = (AB)_{11},
+    \end{equation*}
+    \begin{equation*}
+        a_{11} \vetor{w}^\intercal + \vetor{y}^\intercal N = \begin{pmatrix}
+            a_{11} b_{12} + a_{12} b_{22} + a_{13} b_{32} + a_{14} b_{42} \\
+            a_{11} b_{13} + a_{12} b_{23} + a_{13} b_{33} + a_{14} b_{43} \\
+            a_{11}b_{14} + a_{12} b_{24} + a_{13} b_{34} + a_{14} b_{44}
+        \end{pmatrix}^\intercal = \begin{pmatrix}
+        (AB)_{12} & (AB)_{13} & (AB)_{14}
+        \end{pmatrix},
+    \end{equation*}
+    \begin{equation*}
+        b_{11}\vetor{x} + M\vetor{z} = \begin{pmatrix}
+            a_{21}b_{11}\\
+            a_{32}b_{11}\\
+            a_{41}b_{11}
+        \end{pmatrix} +
+        \begin{pmatrix}
+            a_{22}b_{21} + a_{23}b_{31} + a_{24}b_{41}\\
+            a_{32}b_{21} + a_{33}b_{31} + a_{34}b_{41}\\
+            a_{42}b_{21} + a_{43}b_{31} + a_{44}b_{41}
+        \end{pmatrix} =
+        \begin{pmatrix}
+            (AB)_{21}\\
+            (AB)_{31}\\
+            (AB)_{41}
+        \end{pmatrix}
+    \end{equation*}
+    e
+    \begin{align*}
+        \vetor{x}\vetor{w}^\intercal + MN &= \begin{pmatrix}
+            a_{21}b_{12} & a_{21} b_{13} & a_{21} b_{14}\\
+            a_{31}b_{12} & a_{31} b_{13} & a_{31} b_{14}\\
+            a_{41}b_{12} & a_{41} b_{13} & a_{41} b_{14}
+        \end{pmatrix}+
+        \begin{pmatrix}
+            \sum_{k=2}^4 a_{2k}b_{k2} & \sum_{k=2}^4 a_{2k}b_{k3} & \sum_{k=2}^4 a_{2k}b_{k4}\\
+            \sum_{k=2}^4 a_{3k}b_{k2} & \sum_{k=2}^4 a_{3k}b_{k3} & \sum_{k=2}^4 a_{3k}b_{k4}\\
+            \sum_{k=2}^4 a_{4k}b_{k2} & \sum_{k=2}^4 a_{4k}b_{k3} & \sum_{k=2}^4 a_{4k}b_{k4}
+        \end{pmatrix}\\
+                                          &= \begin{pmatrix}
+                                              (AB)_{22} & (AB)_{23} & (AB)_{24}\\
+                                              (AB)_{32} & (AB)_{33} & (AB)_{34}\\
+                                              (AB)_{42} & (AB)_{43} & (AB)_{44}
+                                          \end{pmatrix}.
+    \end{align*}
+    Assim, mostramos que
+    \begin{equation*}
+        \begin{pmatrix}
+            a_{11}b_{11} + \vetor{y}^\intercal \vetor{z} && a_{11} \vetor{w}^\intercal + \vetor{y}^\intercal N\\
+            b_{11} \vetor{x} + M \vetor{z} && \vetor{x}\vetor{w}^\intercal + MN
+        \end{pmatrix} = \begin{pmatrix}
+            (AB)_{11} & (AB)_{12} & (AB)_{13} & (AB)_{14}\\
+            (AB)_{21} & (AB)_{22} & (AB)_{23} & (AB)_{24}\\
+            (AB)_{31} & (AB)_{32} & (AB)_{33} & (AB)_{34}\\
+            (AB)_{41} & (AB)_{42} & (AB)_{43} & (AB)_{44}
+        \end{pmatrix} = AB,
+    \end{equation*}
+    como desejado.
+\end{proof}
 \begin{definition}{Matriz de transformação de Galilei}{galilei}
     Denotemos por
     \begin{equation*}
@@ -31,7 +148,7 @@
             \vetor{0} & \unity_3
         \end{pmatrix} = \unity_4,
     \end{equation*}
-    portanto \(\unity_4 \in \mathscr{G}\) e (i) é válida. Sejam \(r_1, r_2 \in \mathscr{O}(3)\) e \(\vetor{v}_1, \vetor{v}_2 \in \mathbb{R}^3\), então
+    portanto \(\unity_4 \in \mathscr{G}\) e (i) é válida. Sejam \(r_1, r_2 \in \mathrm{O}(3)\) e \(\vetor{v}_1, \vetor{v}_2 \in \mathbb{R}^3\), então
     \begin{align*}
         G(r_1, \vetor{v}_1)G(r_2, \vetor{v}_2)
         =
@@ -143,7 +260,7 @@
     para todos \(k, \ell \in \set{1,2,3}\).
 \end{proposition}
 \begin{proof}
-    A \cref{prop:exercício8b} nos mostra que \(v \mapsto G(v\vetor{e_k})\) parametriza um subgrupo uniparamétrico dos \emph{boosts} de Galilei, para \(k \in \set{1,2,3}\). Deste modo, seus geradores são dados por
+    A \cref{prop:exercício8b} nos mostra que \(v \mapsto G(v\vetor{e_k})\) parametriza um subgrupo uniparamétrico dos \emph{boosts} de Galilei, para \(k \in \set{1,2,3}\). Deste modo, seu gerador é dado por
     \begin{equation*}
         \mathcal{M}_k = \diff*{G(v \vetor{e}_k)}{v}[v=0] = \diff*{\begin{pmatrix}
                 1 & \vetor{0}^\intercal\\
@@ -153,8 +270,17 @@
                 \vetor{e}_k & 0_{3\times 3},
         \end{pmatrix}
     \end{equation*}
-    onde \(0_{3\times3}\) é a matriz nula de \(\mathrm{Mat}(3,\mathbb{R})\). Consideremos o subgrupo uniparamétrico de \(\mathrm{SO}(3) \subset \mathrm{O}(3)\) em torno dos eixos \(\vetor{e}_k\).
-
+    onde \(0_{3\times3}\) é a matriz nula de \(\mathrm{Mat}(3,\mathbb{R})\). Consideremos \(R_k(\mathbb{R})\), o subgrupo uniparamétrico de \(\mathrm{SO}(3) \subset \mathrm{O}(3)\) de rotações em torno do eixo \(\vetor{e}_k\), então \(t \mapsto G(\vetor{0}, R_k(t))\) parametriza um subgrupo uniparamétrico do grupo de Galilei, como a \cref{prop:exercício8a} nos mostra. O gerador deste subgrupo é dado por
+    \begin{equation*}
+        \mathcal{J}_k = \diff*{G(\vetor{0}, R_k(t))}{t}[t=0] = \diff*{\begin{pmatrix}
+                1 & \vetor{0}^\intercal\\
+                \vetor{0} & R_k(t)
+            \end{pmatrix}}{t}[t=0] = \begin{pmatrix}
+                0 & \vetor{0}^\intercal\\
+                \vetor{0} & J_k
+        \end{pmatrix},
+    \end{equation*}
+    onde \(J_k\) é um gerador de \(\mathrm{SO}(3)\).
 
     Notemos que \(\mathcal{M}_k \mathcal{M}_\ell = 0\) para todos \(k,\ell \in \set{1,2,3}\), pois
     \begin{equation*}
@@ -172,14 +298,8 @@
             \vetor{0} & 0_{3\times3}
         \end{pmatrix},
     \end{equation*}
-    portanto as relações de comutação dos geradores de \emph{boosts} é \([\mathcal{M}_k,\mathcal{M}_\ell] = 0.\) Notemos que os geradores de rotações no grupo de Galilei são, em notação de blocos, dados por
-    \begin{equation*}
-        \mathcal{J}_k = \begin{pmatrix}
-            0 & \vetor{0}^\intercal\\
-            \vetor{0} & J_k
-        \end{pmatrix},
-    \end{equation*}
-    onde \(J_k\) é um gerador de \(\mathrm{SO}(3)\), portanto
+    portanto as relações de comutação dos geradores de \emph{boosts} é \([\mathcal{M}_k,\mathcal{M}_\ell] = 0.\)
+    Notemos que
     \begin{equation*}
         \mathcal{J}_k\mathcal{J}_\ell =
         \begin{pmatrix}
