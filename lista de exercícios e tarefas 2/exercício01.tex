@@ -3,11 +3,11 @@
     A aplicação
     \begin{align*}
         H : \mathbb{C} \times \mathbb{C} \times \mathbb{C} &\to \mathrm{SL}(3,\mathbb{C})\\
-                                                   (a,b,c) &\mapsto \begin{smallpmatrix}
+                                                   (a,b,c) &\mapsto \begin{pmatrix}
                                                                1 & a & c\\
                                                                0 & 1 & b\\
                                                                0 & 0 & 1
-                                                           \end{smallpmatrix}
+                                                           \end{pmatrix}
     \end{align*}
     satisfaz
     \begin{enumerate}[label=(\alph*)]
@@ -20,21 +20,21 @@
     É fácil constatar que, para todos \(a,b,c \in \mathbb{C}\), a matriz \(H(a,b,c)\) tem determinante unitário, justificando o contradomínio \(\mathrm{SL}(3, \mathbb{C})\). Ainda, \(H(0,0,0) = \unity,\) isto é \(\unity \in \mathrm{GH}_3(\mathbb{C})\). Sejam \(a,b,c,a',b',c' \in \mathbb{C}\) então
     \begin{equation*}
         H(a,b,c)H(a',b',c') =
-        \begin{smallpmatrix}
+        \begin{pmatrix}
             1 & a & c\\
             0 & 1 & b\\
             0 & 0 & 1
-        \end{smallpmatrix}
-        \begin{smallpmatrix}
+        \end{pmatrix}
+        \begin{pmatrix}
             1 & a' & c'\\
             0 & 1 & b'\\
             0 & 0 & 1
-        \end{smallpmatrix} =
-        \begin{smallpmatrix}
+        \end{pmatrix} =
+        \begin{pmatrix}
             1 & a + a' & c + c' + ab'\\
             0 & 1 & b + b'\\
             0 & 0 & 1
-        \end{smallpmatrix}
+        \end{pmatrix}
         = H(a+a', b+b', c+c'+ab'),
     \end{equation*}
     o que mostra que \(\mathrm{GH}_3(\mathbb{C})\) é fechado em relação ao produto matricial. Desta relação, notamos que
@@ -64,21 +64,21 @@
     \end{align*}
     então os conjuntos \(H_k(\mathbb{C})\) são subgrupos uniparamétricos de \(\mathrm{GH}_3(\mathbb{C})\) para \(k \in \set{1,2,3}\). Ainda, seus geradores são dados por
     \begin{equation*}
-        \vetor{h}_1 = \begin{smallpmatrix}
+        \vetor{h}_1 = \begin{pmatrix}
             0 & 1 & 0\\
             0 & 0 & 0\\
             0 & 0 & 0
-        \end{smallpmatrix},\quad
-        \vetor{h}_2 = \begin{smallpmatrix}
+        \end{pmatrix},\quad
+        \vetor{h}_2 = \begin{pmatrix}
             0 & 0 & 0\\
             0 & 0 & 1\\
             0 & 0 & 0
-        \end{smallpmatrix},\quad\text{e}\quad
-        \vetor{h}_3 = \begin{smallpmatrix}
+        \end{pmatrix},\quad\text{e}\quad
+        \vetor{h}_3 = \begin{pmatrix}
             0 & 0 & 1\\
             0 & 0 & 0\\
             0 & 0 & 0
-        \end{smallpmatrix},
+        \end{pmatrix},
     \end{equation*}
     com \(H_k(t) = \exp(t\vetor{h}_k)\) para todo \(t \in \mathbb{C}\) e \(k \in \set{1,2,3}\).
 \end{proposition}
@@ -103,33 +103,33 @@
     \end{equation*}
     isto é,
     \begin{equation*}
-        \vetor{h}_1 = \begin{smallpmatrix}
+        \vetor{h}_1 = \begin{pmatrix}
             0 & 1 & 0\\
             0 & 0 & 0\\
             0 & 0 & 0
-        \end{smallpmatrix},\quad
-        \vetor{h}_2 = \begin{smallpmatrix}
+        \end{pmatrix},\quad
+        \vetor{h}_2 = \begin{pmatrix}
             0 & 0 & 0\\
             0 & 0 & 1\\
             0 & 0 & 0
-        \end{smallpmatrix},\quad\text{e}\quad
-        \vetor{h}_3 = \begin{smallpmatrix}
+        \end{pmatrix},\quad\text{e}\quad
+        \vetor{h}_3 = \begin{pmatrix}
             0 & 0 & 1\\
             0 & 0 & 0\\
             0 & 0 & 0
-        \end{smallpmatrix}.
+        \end{pmatrix}.
     \end{equation*}
     Temos
     \begin{equation*}
-        \vetor{h}_k^2 = \begin{smallpmatrix}
+        \vetor{h}_k^2 = \begin{pmatrix}
             0 & 0 & \delta_{2k}\delta_{1k}\\
             0 & 0 & 0\\
             0 & 0 & 0
-        \end{smallpmatrix} = \begin{smallpmatrix}
+        \end{pmatrix} = \begin{pmatrix}
             0 & 0 & 0\\
             0 & 0 & 0\\
             0 & 0 & 0
-        \end{smallpmatrix},
+        \end{pmatrix},
     \end{equation*}
     logo
     \begin{equation*}
@@ -171,21 +171,21 @@
     \end{equation*}
     logo concluímos (ii) e (iii). Notemos que
     \begin{equation*}
-        \vetor{h}_k \vetor{h}_\ell = \begin{smallpmatrix}
+        \vetor{h}_k \vetor{h}_\ell = \begin{pmatrix}
             0 & \delta_{1k} & \delta_{3k}\\
             0 & 0 & \delta_{2k}\\
             0 & 0 & 0
-        \end{smallpmatrix}
-        \begin{smallpmatrix}
+        \end{pmatrix}
+        \begin{pmatrix}
             0 & \delta_{1\ell} & \delta_{3\ell}\\
             0 & 0 & \delta_{2 \ell}\\
             0 & 0 & 0
-        \end{smallpmatrix} =
-        \begin{smallpmatrix}
+        \end{pmatrix} =
+        \begin{pmatrix}
             0 & 0 & \delta_{1k} \delta_{2\ell}\\
             0 & 0 & 0\\
             0 & 0 & 0
-        \end{smallpmatrix} = \delta_{1k} \delta_{2\ell} \vetor{h}_3
+        \end{pmatrix} = \delta_{1k} \delta_{2\ell} \vetor{h}_3
     \end{equation*}
     para todos \(k, \ell \in \set{1,2,3}\), o que nos permite concluir (iv) já que
     \begin{align*}
@@ -226,15 +226,15 @@
     \end{align*}
     portanto \(\set{p,q,\hbar}\) é um conjunto gerador para a álgebra de Lie \(\mathrm{gh}_3(\mathbb{C})\). Notemos que
     \begin{equation*}
-        a p + b q + c \hbar = 0 \implies \begin{smallpmatrix}
+        a p + b q + c \hbar = 0 \implies \begin{pmatrix}
             0 & a & ic\\
             0 & 0 & b\\
             0 & 0 & 0
-        \end{smallpmatrix} = \begin{smallpmatrix}
+        \end{pmatrix} = \begin{pmatrix}
             0 & 0 & 0\\
             0 & 0 & 0\\
             0 & 0 & 0
-        \end{smallpmatrix} \implies a = b = c = 0,
+        \end{pmatrix} \implies a = b = c = 0,
     \end{equation*}
     logo \(\set{p,q,\hbar}\) é linearmente independente. Este conjunto é, portanto, base de \(\mathrm{gh}_3(\mathbb{C})\).
 \end{proof}
