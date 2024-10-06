@@ -1,1 +1,335 @@
 \section{Relação de Anosov}
+\begin{proposition}{Grupo de Anosov}{exercício3a}
+    Sejam \(\mathscr{A} = \setc{A(t) \in \mathrm{GL}(n,\mathbb{C})}{t \in \mathbb{R}}\) e \(\mathscr{B} = \setc{B(s) \in \mathrm{GL}(n,\mathbb{C})}{s \in \mathbb{R}}\) subgrupos uniparamétricos de \(\mathrm{GL}(\mathbb{C}, 4)\). Se existe \(\lambda \in \mathbb{R}\), chamada de \emph{constante de Lyapunov}, tal que a \emph{relação de Anosov} seja satisfeita,
+    \begin{equation*}
+        A(t) B(s) = B(e^{\lambda t}s) A(t)
+    \end{equation*}
+    para todos \(t, s \in \mathbb{R}\), então
+    \begin{equation*}
+        \mathscr{C} = \setc{A(t) B(s)}{t, s \in \mathbb{R}}
+    \end{equation*}
+    é um subgrupo de \(\mathrm{GL}(4, \mathbb{C})\), chamado \emph{grupo de Anosov}.
+\end{proposition}
+\begin{proof}
+    Como \(\mathscr{A}\) e \(\mathscr{B}\) são subgrupos uniparamétricos, então \(\unity = A(0)B(0) \in \mathscr{C}\). Sejam \(g_1, g_2 \in \mathscr{C}\), então existem \(t_1, t_2, s_1, s_2 \in \mathbb{R}\) tais que \(g_1 = A(t_1)B(s_1)\) e \(g_2 = A(t_2)B(s_2)\). Por hipótese temos
+    \begin{align*}
+        g_1 g_2 = A(t_1)B(s_1)A(t_2) B(s_2) &= A(t_1) B(s_1) B(e^{\lambda t_2}s_2) A(t_2)\\
+                                            &= A(t_1) B(s_1 + e^{\lambda t_2}s_2)  A(t_2)\\
+                                            &= A(t_1) A(t_2) B(e^{-\lambda t_2}s_1 + s_2)\\
+                                            &= A(t_1 + t_2) B(e^{-\lambda t_2}s_1 + s_2)
+    \end{align*}
+    portanto \(g_1 g_2 \in \mathscr{C}\), isto é, \(\mathscr{C}\) é fechado em relação ao produto. Seja \(g \in \mathscr{C}\), então existem \(t, s \in \mathbb{R}\) tais que \(g = A(t) B(s)\), logo pelo resultado acima temos
+    \begin{equation*}
+        g A(-t)B(-e^{\lambda t}s) = A(t)B(s) A(-t)B(-e^{\lambda t}s) = A(t - t) B(e^{\lambda t}s - e^{\lambda t}s) = A(0)B(0) = \unity
+    \end{equation*}
+    e
+    \begin{equation*}
+        A(-t)B(-e^{\lambda t}s)g = A(-t)B(-e^{\lambda t}s)A(t) B(s) = A(t-t)B(-e^{-\lambda t}e^{\lambda t}s + s) = A(0)B(0) = \unity,
+    \end{equation*}
+    isto é, \(g^{-1} = A(-t)B(-e^{\lambda t}s) \in \mathscr{C}\), portanto todo elemento de \(\mathscr{C}\) tem seu inverso em \(\mathscr{C}\). Concluímos assim que \(\mathscr{C}\) é um subgrupo de \(\mathrm{GL}(n,\mathbb{C})\).
+\end{proof}
+
+\begin{example}{Grupo de Anosov no grupo de Lorentz em 2 + 1 dimensões}{exercício3b}
+    Considere as aplicações
+    \begin{align*}
+        A : \mathbb{R} & \to \mathrm{Mat}(3, \mathbb{R})&
+        B : \mathbb{R} & \to \mathrm{Mat}(3, \mathbb{R})\\
+                     t &\mapsto \begin{pmatrix}
+                           \cosh{t} & 0 & -\sinh{t}\\
+                           0 & 1 & 0\\
+                           -\sinh{t} & 0 & \cosh{t}
+                       \end{pmatrix}&
+                     s &\mapsto \begin{pmatrix}
+                           1 + \frac12 s^2 & s & \frac12s^2\\
+                           s & 1 & s\\
+                           -\frac12s^2 & -s & 1 - \frac12s^2
+                       \end{pmatrix}.
+    \end{align*}
+    Os conjuntos \(A(\mathbb{R})\) e \(B(\mathbb{R})\) são subgrupos uniparamétricos do grupo de Lorentz em 2 + 1 dimensões, \(\mathrm{SO}(2,1)\), e satisfazem a relação de Anosov com constante de Lyapunov unitária, isto é, \(A(t)B(s) = B(e^ts)A(t)\) para todos \(t,s\in \mathbb{R}\).
+\end{example}
+\begin{proof}
+    É claro que \(A(0) = B(0) = \unity\), pois
+    \begin{equation*}
+        A(0) = \begin{pmatrix}
+            \cosh{0} & 0 & -\sinh{0}\\
+            0 & 1 & 0\\
+            -\sinh{0} & 0 & \cosh{0}
+        \end{pmatrix} = \begin{pmatrix}
+            1 & 0 & 0\\
+            0 & 1 & 0\\
+            0 & 0 & 1
+        \end{pmatrix} = \unity\,\text{e}\,
+        B(0) = \begin{pmatrix}
+            1 + \frac12 0^2 & s & \frac120^2\\
+            0 & 1 & 0\\
+            -\frac120^2 & -0 & 1 - \frac120^2
+        \end{pmatrix} = \begin{pmatrix}
+            1 & 0 & 0\\
+            0 & 1 & 0\\
+            0 & 0 & 1
+        \end{pmatrix} = \unity.
+    \end{equation*}
+    Sejam \(t,s \in \mathbb{R}\), então
+    \begin{align*}
+        A(t)^\intercal \eta A(t) &=
+        \begin{pmatrix}
+            \cosh{t} & 0 & -\sinh{t}\\
+            0 & 1 & 0\\
+            -\sinh{t} & 0 & \cosh{t}
+        \end{pmatrix}
+        \begin{pmatrix}
+            -1 & 0 & 0\\
+            0 & 1 & 0\\
+            0 & 0 & 1
+        \end{pmatrix}
+        \begin{pmatrix}
+            \cosh{t} & 0 & -\sinh{t}\\
+            0 & 1 & 0\\
+            -\sinh{t} & 0 & \cosh{t}
+        \end{pmatrix}\\&=
+        \begin{pmatrix}
+            \cosh{t} & 0 & -\sinh{t}\\
+            0 & 1 & 0\\
+            -\sinh{t} & 0 & \cosh{t}
+        \end{pmatrix}
+        \begin{pmatrix}
+            -\cosh{t} & 0 & \sinh{t}\\
+            0 & 1 & 0\\
+            -\sinh{t} & 0 & \cosh{t}
+        \end{pmatrix}\\&=
+        \begin{pmatrix}
+            -\cosh^2t + \sinh^2t & 0 & 0\\
+            0 & 1 & 0\\
+            0 & 0 & \sinh^2t - \cosh^2 t
+        \end{pmatrix} =
+        \begin{pmatrix}
+            -1 & 0 & 0\\
+            0 & 1 & 0\\
+            0 & 0 & 1
+        \end{pmatrix} = \eta
+    \end{align*}
+    e
+    \begin{align*}
+        B(s)^\intercal \eta B(s)
+        &=
+        \begin{pmatrix}
+            1 + \frac12 s^2 & s & -\frac12s^2\\
+            s & 1 & -s\\
+            \frac12s^2 & s & 1 - \frac12s^2
+        \end{pmatrix}
+        \begin{pmatrix}
+            -1 & 0 & 0\\
+            0 & 1 & 0\\
+            0 & 0 & 1
+        \end{pmatrix}
+        \begin{pmatrix}
+            1 + \frac12 s^2 & s & \frac12s^2\\
+            s & 1 & s\\
+            -\frac12s^2 & -s & 1 - \frac12s^2
+        \end{pmatrix}\\
+        &=
+        \begin{pmatrix}
+            1 + \frac12 s^2 & s & -\frac12s^2\\
+            s & 1 & -s\\
+            \frac12s^2 & s & 1 - \frac12s^2
+        \end{pmatrix}
+        \begin{pmatrix}
+            -(1 + \frac12 s^2) & -s & -\frac12 s^2\\
+            s & 1 & s\\
+            -\frac12s^2 & -s & 1-\frac12 s^2
+        \end{pmatrix}\\
+        &=
+        \begin{pmatrix}
+            -(1 + \frac12 s^2)^2 + s^2 + \frac14s^4 & 0 & - \frac12 s^2(1 + \frac12 s^2) + s^2 - \frac12 s^2 (1 - \frac12 s^2)\\
+            -s (1 + \frac12 s^2) + s + \frac12 s^3 & 1 & - \frac12s^3 + s -s(1 - \frac12 s^2)\\
+            -\frac12 s^2 (1 + \frac12 s^2) + s^2 -\frac12 s^2(1 - \frac12 s^2) & 0 & - \frac14s^4 + s^2 + (1 - \frac12s)^2
+        \end{pmatrix}\\
+        &= \begin{pmatrix}
+            -1 & 0 & 0\\
+            0 & 1 & 0\\
+            0 & 0 & 1
+        \end{pmatrix} = \eta,
+    \end{align*}
+    isto é, \(A(\mathbb{R})\) e \(B(\mathbb{R})\) são subconjuntos do grupo de Lorentz em 2 + 1 dimensões. Sejam \(t, t',s,s' \in \mathbb{R}\), então
+    \begin{align*}
+        A(t) A(t')
+        &= \begin{pmatrix}
+            \cosh{t} & 0 & -\sinh{t}\\
+            0 & 1 & 0\\
+            -\sinh{t} & 0 & \cosh{t}
+        \end{pmatrix}
+        \begin{pmatrix}
+            \cosh{t'} & 0 & -\sinh{t'}\\
+            0 & 1 & 0\\
+            -\sinh{t'} & 0 & \cosh{t'}
+        \end{pmatrix}\\
+        &=
+        \begin{pmatrix}
+            \cosh{t}\cosh{t'} + \sinh{t}\sinh{t'} & 0 & -(\cosh{t}\sinh{t'} + \sinh{t}\cosh{t'})\\
+            0 & 1 & 0\\
+            -(\sinh{t}\cosh{t'} + \cosh{t}\sinh{t'}) & 0 & \sinh{t}\sinh{t'} + \cosh{t}\cosh{t'}
+        \end{pmatrix}\\
+        &=
+        \begin{pmatrix}
+            \cosh{(t + t')} & 0 & - \sinh{(t + t')}\\
+            0 & 1 & 0\\
+            -\sinh{(t+t')} & 0 & \cosh{(t + t')}
+        \end{pmatrix} = A(t + t')
+    \end{align*}
+    e
+    \begin{align*}
+        B(s)B(s')
+        &=
+        \begin{pmatrix}
+            1 + \frac12 s^2 & s & \frac12s^2\\
+            s & 1 & s\\
+            -\frac12s^2 & -s & 1 - \frac12s^2
+        \end{pmatrix}
+        \begin{pmatrix}
+            1 + \frac12 s'^2 & s' & \frac12s'^2\\
+            s' & 1 & s'\\
+            -\frac12s'^2 & -s' & 1 - \frac12s'^2
+        \end{pmatrix}\\
+        &=
+        \begin{pmatrix}
+            (1 + \frac12s^2)(1 + \frac12 s'^2) + ss' + \frac14s^2s'^2 & s + s' & \frac12s'^2 + ss' + \frac12s^2\\
+            s + s' & 1 & s' + s\\
+            -\frac12s^2(1 + \frac12 s'^2) - ss' - \frac12s'^2(1 - \frac12s^2) & -s - s' & -\frac14s^2s'^2 - ss' + (1 - \frac12s^2)(1-\frac12s'^2)
+        \end{pmatrix}\\
+        &=
+        \begin{pmatrix}
+            1 + \frac12(s+s')^2 & s + s' & \frac12 (s + s')^2\\
+            s + s' & 1  & s + s'\\
+            - \frac12 ( s + s')^2 & - (s + s') & 1 - \frac12 (s + s')^2
+        \end{pmatrix} = B(s + s'),
+    \end{align*}
+    logo \(A(\mathbb{R})\) e \(B(\mathbb{R})\) são fechados em relação ao produto. Destas relações vemos que \(A(t)A(-t) = A(-t)A(t) = A(0) = \unity\) e \(B(s)B(-s) = B(-s)B(s) = B(0) = \unity\) para todos \(t,s\in \mathbb{R}\), portanto todo elemento de \(A(\mathbb{R})\) tem seu inverso em \(A(\mathbb{R})\) e todo elemento de \(B(\mathbb{R})\) tem seu inverso em \(B(\mathbb{R})\), isto é, \(A(\mathbb{R})\) e \(B(\mathbb{R})\) são subgrupos uniparamétricos de \(\mathrm{SO}(2,1)\).
+
+    Sejam \(t,s \in \mathbb{R}\), então
+    \begin{align*}
+        B(e^t s) A(t)
+        &= \frac12\begin{pmatrix}
+            1 + \frac12(e^ts)^2 & e^ts & \frac12 (e^ts)^2\\
+            e^ts & 1  & e^ts\\
+            - \frac12 ( e^ts)^2 & - e^ts & 1 - \frac12 (e^ts)^2
+        \end{pmatrix}
+        \begin{pmatrix}
+            e^t + e^{-t} & 0 & e^{-t} - e^{t}\\
+            0 & 2 & 0\\
+            e^{-t} - e^{t} & 0 & e^{t} + e^{-t}
+        \end{pmatrix}\\
+        &= \frac12
+        \begin{pmatrix}
+            e^t + e^{-t} + s^2 e^{t} & 2 e^t s & e^{-t} - e^{t} + e^{t}s^2\\
+            2s & 2 & 2s\\
+            -s^2e^t + e^{-t} - e^{t} & -2e^t s & -s^2e^{t} + e^{t} + e^{-t}
+        \end{pmatrix}\\
+        &= \begin{pmatrix}
+            \cosh{t} + \frac12s^2e^t & e^ts & \frac12e^ts - \sinh{t}\\
+            s & 1 & s\\
+            -\sinh{t} - \frac12 e^ts^2 & -e^ts & \cosh{t} - \frac12 e^t s^2
+        \end{pmatrix}
+    \end{align*}
+    e
+    \begin{align*}
+        A(t)B(s) &= \begin{pmatrix}
+            \cosh{t} & 0 & -\sinh{t}\\
+            0 & 1 & 0\\
+            -\sinh{t} & 0 & \cosh{t}
+        \end{pmatrix}
+        \begin{pmatrix}
+            1 + \frac12 s^2 & s & \frac12s^2\\
+            s & 1 & s\\
+            -\frac12s^2 & -s & 1 - \frac12s^2
+        \end{pmatrix}\\
+                 &= \begin{pmatrix}
+                     \cosh{t} + \frac12(\cosh{t} + \sinh{t})s^2 & (\cosh{t} + \sinh{t})s & \frac12(\cosh{t} + \sinh{t})s^2-\sinh{t}\\
+                     s & 1 & s\\
+                     -\sinh{t} - \frac12(\sinh{t} + \cosh{t})s^2 & -(\sinh{t} + \cosh{t})s & \cosh{t} - \frac12(\sinh{t} + \cosh{t})s^2
+                 \end{pmatrix}\\
+                 &= \begin{pmatrix}
+                     \cosh{t} + \frac12s^2e^t & e^ts & \frac12e^ts - \sinh{t}\\
+                     s & 1 & s\\
+                     -\sinh{t} - \frac12 e^ts^2 & -e^ts & \cosh{t} - \frac12 e^t s^2
+                 \end{pmatrix},
+    \end{align*}
+    isto é, \(A(t)B(s) = B(e^ts)A(t)\), como desejado.
+\end{proof}
+
+\begin{example}{Grupo de Anosov em \(\mathrm{SL}(2, \mathbb{R})\)}{exercício3c}
+    Considere as aplicações
+    \begin{align*}
+        A : \mathbb{R} & \to \mathrm{Mat}(2, \mathbb{R}) &
+        B : \mathbb{R} & \to \mathrm{Mat}(2, \mathbb{R})\\
+                     t &\mapsto \begin{pmatrix}
+                           e^{-\frac12t} & 0\\
+                           0 & e^{\frac12 t}
+                       \end{pmatrix}&
+                     s &\mapsto \begin{pmatrix}
+                           1 & 0\\
+                           s & 1
+                       \end{pmatrix}.
+    \end{align*}
+    Os conjuntos \(A(\mathbb{R})\) e \(B(\mathbb{R})\) são subgrupos uniparamétricos de \(\mathrm{SL}(2, \mathbb{R})\) e satisfazem a relação de Anosov com constante de Lyapunov unitária.
+\end{example}
+\begin{proof}
+    Notemos que \(\det{A(t)} = \det{B(s)} = 1\) para todos \(t, s \in \mathbb{R}\), portanto \(A(\mathbb{R})\subset \mathrm{SL}(2,\mathbb{R})\) e \(B(\mathbb{R}) \subset \mathrm{SL}(2, \mathbb{R})\). É evidente que \(A(0) = B(0) = \unity\), isto é, \(\unity \in A(\mathbb{R}) \cap B(\mathbb{R})\). Notemos que
+    \begin{equation*}
+        A(t)A(t') = \begin{pmatrix}
+            e^{-\frac12t} & 0\\
+            0 & e^{\frac12 t}
+            \end{pmatrix}\begin{pmatrix}
+            e^{-\frac12t'} & 0\\
+            0 & e^{\frac12 t'}
+            \end{pmatrix}= \begin{pmatrix}
+            e^{-\frac12(t + t')} & 0\\
+            0 & e^{\frac12 (t + t')}
+        \end{pmatrix} = A(t + t')
+    \end{equation*}
+    para todos \(t, t' \in \mathbb{R}\) e
+    \begin{equation*}
+        B(s)B(s') = \begin{pmatrix}
+            1 & 0\\
+            s & 1
+        \end{pmatrix}
+        \begin{pmatrix}
+            1 & 0\\
+            s' & 1
+        \end{pmatrix} =
+        \begin{pmatrix}
+            1 & 0\\
+            s + s' & 1
+        \end{pmatrix} = B(s + s')
+    \end{equation*}
+    para todos \(s,s' \in \mathbb{R}\), portanto \(A(\mathbb{R})\) e \(B(\mathbb{R})\) são fechados em relação ao produto. Essas relações nos mostram que \(A(t)A(-t) = A(-t)A(t) = A(0)=\unity\) e que \(B(s)B(-s) = B(-s)B(s) = B(0) = \unity\), portanto \(A(\mathbb{R})\) e \(B(\mathbb{R})\) são subgrupos uniparamétricos de \(\mathrm{SL}(2, \mathbb{R})\). Sejam \(t,s\in \mathbb{R}\), então
+    \begin{equation*}
+        A(t)B(s) = \begin{pmatrix}
+            e^{-\frac12 t} & 0\\
+            0 & e^{\frac12 t}
+        \end{pmatrix}
+        \begin{pmatrix}
+            1 & 0\\
+            s & 1
+        \end{pmatrix} =
+        \begin{pmatrix}
+            e^{-\frac12 t} & 0\\
+            e^{\frac12t}s & e^{\frac12 t}
+        \end{pmatrix}
+    \end{equation*}
+    e
+    \begin{equation*}
+        B(e^ts)A(t) = \begin{pmatrix}
+            1 & 0\\
+            e^ts & 1
+        \end{pmatrix}
+        \begin{pmatrix}
+            e^{-\frac12 t} & 0\\
+            0 & e^{\frac12 t}
+        \end{pmatrix} =
+        \begin{pmatrix}
+            e^{-\frac12 t} & 0\\
+            e^{\frac12t}s & e^{\frac12 t}
+        \end{pmatrix},
+    \end{equation*}
+    isto é, \(A(t) B(s) = B(e^ts)A(t)\), como desejado.
+\end{proof}
