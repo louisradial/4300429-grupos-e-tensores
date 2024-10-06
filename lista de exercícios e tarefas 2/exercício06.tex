@@ -1,4 +1,36 @@
 \section[Grupo SO(1,1)]{Grupo \(\mathrm{SO}(1,1)\)}
-\begin{definition}{Grupo \(\mathrm{SO}(1,1)\)}{}
-
+\begin{definition}{Grupo \(\mathrm{SO}(1,1)\)}{grupo_so11}
+    O grupo de invariância da forma bilinear
+    \begin{align*}
+        \omega : \mathbb{R}^2 \times \mathbb{R}^2 &\to \mathbb{R}\\
+                            (\vetor{u},\vetor{v}) &\mapsto \inner{\vetor{u}}{\eta\vetor{v}}_{\mathbb{R}},
+    \end{align*}
+    onde \(\eta = \begin{smallpmatrix}
+        -1 & 0\\
+        0 & 1
+    \end{smallpmatrix}\) é denotado por \(\mathrm{O}(1,1)\). O subgrupo \(\mathrm{SO}(1,1)\) é dado pelos elementos de \(\mathrm{O}(1,1)\) com determinante unitário.
 \end{definition}
+
+\begin{proposition}{Grupo \(\mathrm{SO}(1,1)\)}{exercício6a}
+    O grupo \(\mathrm{SO}(1,1)\) é dado por
+    \begin{equation*}
+        \mathrm{SO}(1,1) = \setc*{a \unity + b \sigma_1}{a, b\in \mathbb{R} \land a^2 - b^2 = 1},
+    \end{equation*}
+    onde \(\sigma_1 = \begin{smallpmatrix}
+        0 & 1\\
+        1 & 0
+    \end{smallpmatrix}\) é uma matriz de Pauli.
+\end{proposition}
+\begin{proof}
+
+\end{proof}
+
+\begin{proposition}{Componentes conexas de \(\mathrm{SO}(1,1)\)}{exercício6b}
+    Sejam
+    \begin{equation*}
+        \mathcal{L}_+^\uparrow = \setc*{\sqrt{1 + \xi^2}\unity + \xi \sigma_1}{\xi \in \mathbb{R}}
+        \quad\text{e}\quad
+        \mathcal{L}_+^\downarrow = \setc*{-\sqrt{1 + \xi^2}\unity + \xi \sigma_1}{\xi \in \mathbb{R}},
+    \end{equation*}
+    então \(\mathrm{SO}(1,1) = \mathcal{L}_+^\uparrow \cup \mathcal{L}_+^\downarrow\) e \(\mathcal{L}_+^\uparrow \cap \mathcal{L}_+^\downarrow = \emptyset\).
+\end{proposition}
