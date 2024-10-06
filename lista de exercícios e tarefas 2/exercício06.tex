@@ -22,7 +22,49 @@
     \end{smallpmatrix}\) é uma matriz de Pauli.
 \end{proposition}
 \begin{proof}
+    Seja \(a, b \in \mathbb{R}\) com \(a^2 - b^2 = 1\), então \(\det(a \unity + b \sigma_1) = a^2 - b^2 = 1\). Temos também que \((a\unity+b \sigma_1)^\intercal = a\unity + b \sigma_1\) e \(\eta = - \sigma_3\), então
+    \begin{align*}
+        (a \unity + b \sigma_1)^\intercal \eta (a \unity + b \sigma_1)
+        &= -(a \unity + b \sigma_1)\sigma_3 (a \unity + b \sigma_1)\\
+        &= -(a \unity + b \sigma_1)(a \sigma_3 + b \sigma_3 \sigma_1)\\
+        &= -(a^2 \sigma_3 + ab \left\{\sigma_1, \sigma_3\right\} + b^2 \sigma_1 \sigma_3 \sigma_1)\\
+        &= - (a^2 \sigma_3 - b^2 \epsilon_{132}\epsilon_{213} \sigma_3)\\
+        &= - \sigma_3 = \eta,
+    \end{align*}
+    portanto \(a \unity + b \sigma_1 \in \mathrm{SO}(1,1)\).
 
+    Seja \(A \in \mathrm{SO}(1,1)\), então existem \(a,b,c,d \in \mathbb{R}\) tais que \(ad - bc = 1\) e \(A = \begin{smallpmatrix} a & b\\c & d \end{smallpmatrix}\). Como \(A\) mantém a forma bilinear \(\omega\) invariante, segue que \(A^\intercal \eta = \eta A^{-1}\). Temos
+    \begin{equation*}
+        A^\intercal \eta =
+        \begin{pmatrix}
+            a & c\\
+            b & d
+        \end{pmatrix}
+        \begin{pmatrix}
+            -1 & 0\\
+            0 & 1
+        \end{pmatrix} =
+        \begin{pmatrix}
+            -a & c\\
+            -b & d
+        \end{pmatrix}
+        \quad\text{e}\quad
+        \eta A^{-1}=
+        \begin{pmatrix}
+            -1 & 0\\
+            0 & 1
+        \end{pmatrix}
+        \begin{pmatrix}
+            d & -b\\
+            -c & a
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            -d & b\\
+            -c & a
+        \end{pmatrix},
+    \end{equation*}
+    logo \(a = d\) e \(b = -c\). Desse modo, \(A = a \unity + b \sigma_1\), com \(a^2 - b^2 = 1\).
 \end{proof}
 
 \begin{proposition}{Componentes conexas de \(\mathrm{SO}(1,1)\)}{exercício6b}
@@ -34,3 +76,144 @@
     \end{equation*}
     então \(\mathrm{SO}(1,1) = \mathcal{L}_+^\uparrow \cup \mathcal{L}_+^\downarrow\) e \(\mathcal{L}_+^\uparrow \cap \mathcal{L}_+^\downarrow = \emptyset\).
 \end{proposition}
+\begin{proof}
+    Seja \(A \in \mathrm{SO}(1,1)\), então existem \(a, b \in \mathbb{R}\) com \(a^2 - b^2 = 1\) tais que \(A = a \unity + b \sigma_1\). Notemos que devemos ter \(\abs{a} = \sqrt{1 + b^2} > 1\). Assim, ou \(a = \sqrt{1 + b^2}\) ou \(a = -\sqrt{1 + b^2}\), isto é, ou \(A \in \mathcal{L}_+^\uparrow\) ou \(A \in \mathcal{L}_+^\downarrow\), portanto \(\mathrm{SO}(1,1) \subset \mathcal{L}_+^\uparrow \cup \mathcal{L}_+^\downarrow\). É claro que \(\mathcal{L}_+^\uparrow\subset \mathrm{SO}(1,1)\) e \(\mathcal{L}_+^\downarrow \subset \mathrm{SO}(1,1)\), visto que \((\pm\sqrt{1 + \xi})^2 - \xi^2 = 1\) para todo \(\xi\in \mathbb{R}\), logo \(\mathrm{SO}(1,1) = \mathcal{L}_+^\uparrow \cup \mathcal{L}_+^\downarrow\).
+
+    Uma vez que \(\set{\unity, \sigma_1}\) é um conjunto linearmente independente de matrizes, fica evidente que \(\mathcal{L}_+^\uparrow \cap \mathcal{L}_+^\downarrow = \emptyset\). De fato, suponha por absurdo que \(\mathcal{L}_+^\uparrow \cap \mathcal{L}_+^\downarrow \neq \emptyset\), então existem \(\xi, \zeta \in \mathbb{R}\) tais que \(\sqrt{1 + \xi^2} \unity + \xi \sigma_1 = -\sqrt{1 + \zeta^2} \unity + \zeta \sigma_1\). Da independência linear considerada, segue que \(\xi = \zeta\) e, portanto, devemos ter \(\sqrt{1 + \xi^2} = 0\). Isto é, \(\xi^2 = -1\), o que contradiz \(\xi \in \mathbb{R}\), mostrando que \(\mathcal{L}_+^\uparrow \cap \mathcal{L}_+^\downarrow = \emptyset\).
+\end{proof}
+
+\begin{proposition}{Grupo de Lorentz ortócrono próprio em 1+1 dimensões}{exercício6c}
+    A componente \(\mathcal{L}_+^\downarrow\) de \(\mathrm{SO}(1,1)\) não é um subgrupo de \(\mathrm{SO}(1,1)\), enquanto que \(\mathcal{L}_+^\uparrow\) é um grupo, chamado de \emph{grupo de Lorentz ortócrono próprio em 1+1 dimensões}.
+\end{proposition}
+\begin{proof}
+    Consideremos \(-\unity \in \mathcal{L}_+^\downarrow\), então \((-\unity)(-\unity) = \unity \notin \mathcal{L}_+^\downarrow\), isto é, \(\mathcal{L}_+^\downarrow\) não é fechado em relação ao produto, portanto não é um subgrupo de \(\mathrm{SO}(1,1)\).
+
+    Notemos que \(\unity \in \mathcal{L}_+^\uparrow\). Sejam \(A, B \in \mathcal{L}_+^\uparrow\), então existem \(a, b\in \mathbb{R}\) tais que \(A = \sqrt{1 + a^2} \unity + a \sigma_1\) e \(B = \sqrt{1 + b^2} \unity + b \sigma_1\), logo
+    \begin{align*}
+        AB &= \left(\sqrt{1 + a^2} \unity + a \sigma_1\right)\left(\sqrt{1 + b^2} \unity + b \sigma_1\right)\\
+           &= \left[ab+ \sqrt{(1 + a^2)(1 + b^2)}\right]\unity + \left(b\sqrt{1 + a^2}+a\sqrt{1 + b^2}\right)\sigma_1.
+    \end{align*}
+    Notemos que
+    \begin{align*}
+        1 + \left(b\sqrt{1 + a^2}+a\sqrt{1 + b^2}\right)^2 &= 1 + a^2 + b^2 + 2a^2 b^2 + 2ab \sqrt{(1 + a^2) (1 + b^2)}\\
+                                                           &= (ab)^2 + 2(ab)\sqrt{(1 + a^2)(1 + b^2)} + (1 + a^2)(1 + b^2)\\
+                                                           &= \left[ab + \sqrt{(1 + a^2)(1 + b^2)}\right]^2,
+    \end{align*}
+    portanto \(AB \in \mathcal{L}_+^\uparrow\). Escolhendo \(b = -a\), vemos que
+    \begin{equation*}
+        A(\sqrt{1 + a^2}\unity - a \sigma_1) = \unity\quad\text{e}\quad (\sqrt{1 + a^2} \unity - a\sigma_1)A = \unity,
+    \end{equation*}
+    então \(A^{-1} = \sqrt{1 + a^2}\unity - a\sigma_1 \in \mathcal{L}_+^\uparrow\). Podemos concluir que \(\mathcal{L}_+^\uparrow\) é um subgrupo de \(\mathrm{SO}(1,1)\), pois contém a identidade, é fechado em relação ao produto e todo elemento de \(\mathcal{L}_+^\uparrow\) tem seu inverso neste conjunto.
+\end{proof}
+
+\begin{proposition}{\(\mathcal{L}_+^\uparrow\) é um subgrupo uniparamétrico de \(\mathrm{SO}(1,1,)\)}{exercício6d}
+    A aplicação
+    \begin{align*}
+        M : \mathbb{R} &\to \mathrm{SO}(1,1)\\
+                     z &\mapsto (\cosh{z})\unity - (\sinh{z})\sigma_1
+    \end{align*}
+    satisfaz
+    \begin{enumerate}[label=(\alph*)]
+        \item \(M(0) = \unity\);
+        \item \(M(z)M(z') = M(z + z')\), para todos \(z, z' \in \mathbb{R}\);
+        \item \(M(z)^{-1} = M(-z)\), para todo \(z \in \mathbb{R}\); e
+        \item \(M(\mathbb{R}) = \mathcal{L}_+^\uparrow\),
+    \end{enumerate}
+    isto é, \(\mathcal{L}_+^\uparrow\) é um subgrupo uniparamétrico de \(\mathrm{SO}(1,1)\).
+\end{proposition}
+\begin{proof}
+     Como \(\cosh{0} = 1\) e \(\sinh{0} = 1\), segue que \(M(0) = \unity\). Sejam \(z, z' \in \mathbb{R}\), então repetindo o cômputo feito na \cref{prop:exercício6d}, temos
+    \begin{align*}
+        M(z) M(z') &= (\cosh{z}\cosh{z'} + \sinh{z}\sinh{z'}) \unity - (\sinh{z}\cosh{z'} + \cosh{z}\sinh{z'})\sigma_1\\
+                   &= \cosh{(z+z')} \unity - \sinh{(z+ z')}\sigma_1\\
+                   &= M(z + z').
+    \end{align*}
+    Dos dois últimos resultados, segue que \(M(z)M(-z) = M(0) = M(-z)M(z)\) para todo \(z \in \mathbb{R}\). Desse modo, \(M(\mathbb{R})\) é um subgrupo uniparamétrico de \(\mathrm{SO}(1,1)\).
+
+    Notemos que \(\cosh{z} = \sqrt{1 + (-\sinh{z})^2}\) para todo \(z \in \mathbb{R}\), portanto \(M(\mathbb{R}) \subset \mathcal{L}_+^\uparrow\). Seja \(A \in \mathcal{L}_+^\uparrow\), então existe \(\xi \in \mathbb{R}\) tal que \(A = \sqrt{1 + \xi^2}\unity + \xi \sigma_1\). Como a função seno hiperbólico é sobrejetora, existe \(z \in \mathbb{R}\) tal que \(\sinh{z} = -\xi\), donde segue que \(A = (\cosh{z})\unity - (\sinh{z})\sigma_1\), isto é, \(\mathcal{L}_+^\uparrow \subset M(\mathbb{R})\). Concluímos assim que \(M(\mathbb{R}) = \mathcal{L}_+^\uparrow\).
+\end{proof}
+
+\begin{proposition}{Gerador de \(\mathcal{L}_+^\uparrow\)}{exercício6e}
+    O gerador de \(\mathcal{L}_+^\uparrow\) é \(-\sigma_1\), com \(M(z) = \exp(-z \sigma_1)\) para todo \(z \in \mathbb{R}\).
+\end{proposition}
+\begin{proof}
+    O gerador de \(\mathcal{L}_+^\uparrow\) é dado por
+    \begin{equation*}
+        \mathcal{M} = \diff*{M(z)}{z}[z=0] = \diff*{\cosh{z}}{z}[z=0]\unity - \diff*{\sinh{z}}{z}[z=0]\sigma_1 = -\sigma_1.
+    \end{equation*}
+    Seja \(z \in \mathbb{R}\), então afirmamos que
+    \begin{equation*}
+        (-z \sigma_1)^{2n-1} = -z^{2n-1} \sigma_1\quad\text{e}\quad (-z \sigma_1)^{2n} = z^{2n} \unity
+    \end{equation*}
+    para todo \(n \in \mathbb{N}\). De fato, para \(n = 1\) temos
+    \begin{equation*}
+        -z \sigma_1 = -z^1 \sigma_1\quad\text{e}\quad (-z \sigma_1)^2 = z^2 \sigma_1 \sigma_1 = z^2 \unity
+    \end{equation*}
+    e, assumindo válidas para algum \(m \in \mathbb{N}\), segue que vale para \(m + 1 \in \mathbb{N}\) pois
+    \begin{align*}
+        (-z \sigma_1)^{2m+1} &= (-z \sigma_1)^{2m-1} (-z \sigma_1)^2&
+        (-z \sigma_1)^{2m+2} &= (-z \sigma_1)^{2m}(-z \sigma_1)^2\\
+                             &= \left(-z^{2m - 1} \sigma_1\right) \left(z^2 \unity\right)&
+                             &= (z^{2m} \unity)(z^2\unity)\\
+                             &= -z^{2m+1} \sigma_1&
+                             &= z^{2m+2} \unity,
+    \end{align*}
+    desse modo concluímos que a nossa afirmação é verdadeira para todo \(n \in \mathbb{N}\) pelo princípio da indução finita. Assim,
+    \begin{align*}
+        \exp(- z \sigma_1) &= \unity + \sum_{n = 1}^\infty \frac{(-z \sigma_1)^n}{n!}\\
+        &= \unity + \sum_{n = 1}^\infty\frac{(-z \sigma_1)^{2n - 1}}{(2n - 1)!} + \sum_{n = 1}^\infty \frac{(-z \sigma_1)^{2n}}{(2n)!}\\
+        &= \unity - \left[\sum_{n = 1}^\infty\frac{z^{2n-1}}{(2n - 1)!}\right]\sigma_1 + \left[\sum_{n = 1}^\infty \frac{z^{2n}}{(2n)!}\right]\unity\\
+        &= \left[\sum_{n = 0}^\infty \frac{z^{2n}}{(2n)!}\right]\unity - (\sinh{z})\sigma_1\\
+        &=(\cosh{z})\unity - (\sinh{z}) \sigma_1\\
+        &= M(z),
+    \end{align*}
+    para todo \(z \in \mathbb{R}\).
+\end{proof}
+
+\begin{proposition}{Parametrização dos \emph{boosts}}{exercício6f}
+    Seja
+    \begin{align*}
+        B : (-1,1) &\to \mathrm{SO}(1,1)\\
+                 v &\mapsto \gamma(v) \unity - v \gamma(v) \sigma_1,
+    \end{align*}
+    onde
+    \begin{align*}
+        \gamma : (-1,1) &\to [1, \infty)\\
+                      v &\mapsto \frac{1}{\sqrt{1 - v^2}}
+    \end{align*}
+    é o chamado \emph{fator de Lorentz}. Então
+    \begin{enumerate}[label=(\alph*)]
+        \item \(B(0) = \unity\);
+        \item \(B(v)B(v') = B\left(\frac{v + v'}{1 + vv'}\right)\), para todos \(v,v' \in (-1,1)\);
+        \item \(B(v)^{-1} = B(-v)\), para todo \(v \in (-1,1)\); e
+        \item \(\mathcal{L}_+^\uparrow = \setc{B(v)}{v \in (-1,1)}\).
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Para todo \(v \in (-1,1),\) existe um único \(z_v \in \mathbb{R}\) tal que \(\tanh{z_v} = v\), uma vez que a função tangente hiperbólica é uma bijeção de \(\mathbb{R}\) em \((-1,1)\). Assim sendo, notemos que
+    \begin{equation*}
+        \gamma(v) = \gamma(\tanh{z_v}) = \frac1{\sqrt{1 - \tanh^2{z_v}}} = \frac{1}{\sqrt{\sech^2{z_v}}} = \cosh{z_v},
+    \end{equation*}
+    portanto \(v \gamma(v) = \sinh{z_v}\), para todo \(v \in (-1,1)\). Mostramos assim que \(B(v) = M(\artanh{v})\) para todo \(v \in (-1,1)\), e concluímos trivialmente as propriedades acima. De fato, sejam \(v, v' \in (-1,1)\) então
+    \begin{equation*}
+        B(0) = M(\artanh{0}) = M(0) = \unity,
+    \end{equation*}
+    \begin{align*}
+        B(v) B(v') &= M(\artanh{v}) M(\artanh{v'})\\
+                   &= M(\artanh{v} + \artanh{v'})\\
+                   &= B\left[\frac{\sinh(\artanh{v} + \artanh{v'})}{\cosh(\artanh{v} + \artanh{v'})}\right]\\
+                   &= B\left(\frac{v\gamma(v)\gamma(v') + v' \gamma(v) \gamma(v')}{\gamma(v)\gamma(v') + v v' \gamma(v) \gamma(v')}\right)\\
+                   &= B\left(\frac{v+v'}{1 + vv'}\right),
+    \end{align*}
+    \begin{equation*}
+        B(v)^{-1} = M(\artanh{v})^{-1} = M(-\artanh{v}) = B(-v),
+    \end{equation*}
+    e
+    \begin{align*}
+        A \in \setc{B(v)}{v \in (-1,1)} & \iff \exists v \in (-1,1) : A = B(v)\\
+                                        &\iff \exists z \in \mathbb{R} : A = M(z)\\
+                                        &\iff A \in \setc{M(z)}{z \in \mathbb{R}}\\
+                                        &\iff A \in \mathcal{L}_+^\uparrow,
+    \end{align*}
+    o que nos mostra as propriedades (a), (b), (c), e (d).
+\end{proof}
