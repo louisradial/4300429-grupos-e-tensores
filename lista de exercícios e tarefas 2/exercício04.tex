@@ -187,7 +187,7 @@
     \end{equation*}
     para todo \(\theta \in \mathbb{R}\). Seja \(\vetor{\alpha} \in \mathbb{R}^3\), então
     \begin{align*}
-        \exp(\theta \vetor{\eta}\cdot \vetor{J})\vetor{\alpha} &= \vetor{\alpha} + (1 - \cos\theta) \left[\vetor{\eta} \times (\vetor{\eta} \times \vetor{\alpha})\right] + \sin\theta \vetor{\eta}\times \vetor{\alpha}\\&= \cos\theta\vetor{\alpha} + (1 - \cos\theta) \inner{\vetor{\eta}}{\vetor{\alpha}}\vetor{\eta} + \sin\theta \vetor{\eta}\times \vetor{\alpha}
+        \exp(\theta \vetor{\eta}\cdot \vetor{J})\vetor{\alpha} &= \vetor{\alpha} + (1 - \cos\theta) \left[\vetor{\eta} \times (\vetor{\eta} \times \vetor{\alpha})\right] + (\sin\theta)\vetor{\eta}\times \vetor{\alpha}\\&=(\cos\theta)\vetor{\alpha} + (1 - \cos\theta) \inner{\vetor{\eta}}{\vetor{\alpha}}\vetor{\eta} +(\sin\theta)\vetor{\eta}\times \vetor{\alpha}
     \end{align*}
     para todo \(\theta \in \mathbb{R}\).
 \end{proposition}
@@ -244,9 +244,9 @@
     Determinamos que \(\inner{\vetor{\eta}}{\vetor{\alpha}}\vetor{\eta} - \vetor{\alpha} = \vetor{\eta}\times(\vetor{\eta} \times \vetor{\alpha})\), já que \((\vetor{\eta}\cdot\vetor{J})^2\vetor{\alpha} = (\vetor{\eta}\cdot\vetor{J})\vetor{\eta}\times\vetor{\alpha} = \vetor{\eta}\times(\vetor{\eta}\times \vetor{\alpha}).\) Portanto
     \begin{align*}
         \exp(\theta \vetor{\eta}\cdot \vetor{J}) \vetor{\alpha}
-        &= \vetor{\alpha} + (1 - \cos\theta) \left[\vetor{\eta} \times (\vetor{\eta} \times \vetor{\alpha})\right] + \sin\theta \vetor{\eta}\times \vetor{\alpha}\\
-        &= \vetor{\alpha} + (1 - \cos\theta) \left(\inner{\vetor{\eta}}{\vetor{\alpha}}\vetor{\eta} - \vetor{\alpha}\right) + \sin\theta \vetor{\eta}\times \vetor{\alpha} \\
-                                                                &= \cos\theta\vetor{\alpha} + (1 - \cos\theta) \inner{\vetor{\eta}}{\vetor{\alpha}}\vetor{\eta} + \sin\theta \vetor{\eta}\times \vetor{\alpha}
+        &= \vetor{\alpha} + (1 - \cos\theta) \left[\vetor{\eta} \times (\vetor{\eta} \times \vetor{\alpha})\right] + (\sin\theta)\vetor{\eta}\times \vetor{\alpha}\\
+        &= \vetor{\alpha} + (1 - \cos\theta) \left(\inner{\vetor{\eta}}{\vetor{\alpha}}\vetor{\eta} - \vetor{\alpha}\right) + (\sin\theta)\vetor{\eta}\times \vetor{\alpha} \\
+                                                                &=(\cos\theta)\vetor{\alpha} + (1 - \cos\theta) \inner{\vetor{\eta}}{\vetor{\alpha}}\vetor{\eta} +(\sin\theta)\vetor{\eta}\times \vetor{\alpha}
     \end{align*}
     para todo \(\theta \in \mathbb{R}\).
 \end{proof}

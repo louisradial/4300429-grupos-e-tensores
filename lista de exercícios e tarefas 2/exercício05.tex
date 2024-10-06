@@ -1,4 +1,30 @@
-\section[Geometria e o grupo SO(3)]{Geometria e o grupo \(\mathrm{SO}(3)\)}
-\begin{exercício}{Geometria e o grupo \(\mathrm{SO}(3)\)}{exercício5}
-    Usando apenas considerações geométricas, deduza que o efeito de \(R(\theta, \vetor{\eta})\) (uma rotação de um ângulo \(\theta\)) no sentido anti-horário em torno de um eixo definido por um vetor unitário \(\vetor{\eta} \in \mathbb{R}^3\)) em um vetor qualquer é, de fato, dado pela fórmula de Rodrigues para o grupo \(\mathrm{SO}(3)\).
-\end{exercício}
+\section[Geometria e a fórmula de Rodrigues para o grupo SO(3)]{Geometria e a fórmula de Rodrigues para o grupo \(\mathrm{SO}(3)\)}
+\begin{proposition}{Geometria e a fórmula de Rodrigues para o grupo \(\mathrm{SO}(3)\)}{exercício5}
+    Sejam \(\theta\in [0,2\pi)\) e \(\vetor{\eta} \in S^2 = \setc{\vetor{x}\in \mathbb{R}^3}{\norm{\vetor{x}}= 1}\), e seja \(R(\theta, \vetor{\eta}) \in \mathrm{SO}(3)\) a matriz de rotação pelo ângulo \(\theta\) no sentido anti-horário em torno de um eixo definido pelo vetor unitário \(\vetor{\eta}\). Então
+    \begin{equation*}
+        R(\theta, \vetor{\eta})\vetor{\alpha} = (\cos\theta)\vetor{\alpha} + (1 - \cos\theta)\inner{\vetor{\eta}}{\vetor{\alpha}}\vetor{\eta} + (\sin\theta)\vetor{\eta}\times\vetor{\alpha}
+    \end{equation*}
+    para todo \(\vetor{\alpha} \in \mathbb{R}^3\), isto é, \(R(\theta, \vetor{\eta}) = \exp(\theta\vetor{\eta}\cdot\vetor{J})\).
+\end{proposition}
+\begin{proof}
+    Podemos supor sem perda de generalidade que \(\vetor{\alpha}\) é não nulo e não é paralelo a \(\vetor{\eta}\), visto que para todo \(\lambda \in \mathbb{R}\) temos
+    \begin{equation*}
+        \exp(\theta\vetor{\eta}\cdot{\vetor{J}})(\lambda\vetor{\eta})=(\cos{\theta})(\lambda \vetor{\eta}) + (1 - \cos{\theta})\inner{\vetor{\eta}}{\lambda\vetor{\eta}}\vetor{\eta} + (\sin\theta)\vetor{\eta}\times(\lambda\vetor{\eta}) = \lambda \vetor{\eta} = R(\theta, \vetor{\eta})(\lambda \vetor{\eta}),
+    \end{equation*}
+    pois \(R(\theta, \vetor{\eta})\) mantém o espaço gerado por \(\vetor{\eta}\) invariante. Seja então \(\vetor{\xi} = \frac{1}{\norm{\vetor{\alpha}}}\vetor{\alpha} \in S^2\), e consideremos a base ortonormal \(\set{\vetor{\eta}, \vetor{\eta}\times\vetor{\xi}, \vetor{\eta}\times(\vetor{\eta}\times\vetor{\xi})}\) positivamente orientada de \(\mathbb{R}^3\). Nesta base, temos
+    \begin{align*}
+        \vetor{\alpha} &= \inner{\vetor{\eta}}{\vetor{\alpha}}\vetor{\eta} +
+        \inner{\vetor{\eta}\times \vetor{\xi}}{\vetor{\alpha}}\vetor{\eta}\times\vetor{\xi}+
+        \inner{\vetor{\eta}\times(\vetor{\eta}\times\vetor{\xi})}{\vetor{\alpha}}\vetor{\eta}\times(\vetor{\eta}\times\vetor{\xi})\\
+                       &= \inner{\vetor{\eta}}{\vetor{\alpha}}\vetor{\eta} + \inner{\vetor{\alpha}\times \vetor{\eta}}{\vetor{\eta}\times \vetor{\xi}} \vetor{\eta}\times (\vetor{\eta}\times \vetor{\xi})\\
+                       &= \norm{\vetor{\alpha}} \left[\inner{\vetor{\eta}}{\vetor{\xi}}\vetor{\eta} - \vetor{\eta}\times(\vetor{\eta}\times \vetor{\xi})\right],
+    \end{align*}
+    portanto, como \(R(\theta,\vetor{\eta})\) rotaciona o plano gerado por \(\set{\vetor{\eta}\times\vetor{\xi}, \vetor{\eta}\times(\vetor{\eta}\times \vetor{\xi})}\) no sentido anti-horário pelo ângulo \(\theta\), segue que
+    \begin{align*}
+        R(\theta,\vetor{\eta})\vetor{\alpha} &= \norm{\alpha}\left[\inner{\vetor{\eta}}{\vetor{\xi}}\vetor{\eta} + (\sin\theta)\vetor{\eta}\times\vetor{\xi} - (\cos\theta)\vetor{\eta}\times(\vetor{\eta}\times \vetor{\xi})\right]\\
+                                             &= \inner{\vetor{\eta}}{\vetor{\alpha}}\vetor{\eta} + (\sin{\theta})\vetor{\eta}\times\vetor{\alpha} - (\cos\theta)\vetor{\eta}\times(\vetor{\eta}\times \vetor{\alpha})\\
+                                             &= \inner{\vetor{\eta}}{\vetor{\alpha}}\vetor{\eta} + (\sin{\theta})\vetor{\eta}\times\vetor{\alpha} - (\cos\theta)\left(\inner{\vetor{\eta}}{\vetor{\alpha}}\vetor{\eta} - \vetor{\alpha}\right)\\
+                                             &= (\cos\theta)\vetor{\alpha} + (1 - \cos\theta)\inner{\vetor{\eta}}{\vetor{\alpha}}\vetor{\eta} + (\sin\theta)\vetor{\eta}\times \vetor{\alpha},
+    \end{align*}
+    isto é, \(R(\theta, \vetor{\eta})\vetor{\alpha} = \exp(\theta\vetor{\eta}\cdot \vetor{J})\vetor{\alpha}\).
+\end{proof}
