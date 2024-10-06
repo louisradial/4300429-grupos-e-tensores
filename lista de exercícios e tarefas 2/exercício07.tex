@@ -68,5 +68,12 @@
     \end{align*}
     isto é, \(\exp(\vetor{\alpha}\cdot \vetor{\sigma}) \in \mathrm{SL}(2, \mathbb{C})\)\footnote{Usando \(\det(e^X) = e^{\Tr(X)}\), esse resultado segue trivialmente.} para todo \(\vetor{\alpha} \in \mathbb{C}^3\). Isto é, \(\setc{\exp(\vetor{\alpha}\cdot\vetor{\sigma})}{\vetor{\alpha} \in \mathbb{C}^3} \subset \mathrm{SL}(2,\mathbb{C})\).
 
-    Seja \(A \in \mathrm{SL}(2,\mathbb{C}) \subset \mathrm{Mat}(2, \mathbb{C})\), então \(A \in \lspan_{\mathbb{C}}\set{\unity, \sigma_1, \sigma_2, \sigma_3}\). Isto é, existem \(a \in \mathbb{C}\) e \(\vetor{\alpha} \in \mathbb{C}^3\) tais que \(A = a \unity + \vetor{\alpha}\cdot{\vetor{\sigma}}\), portanto de \(\det(A) = 1\) segue que \(a^2 - \omega(\vetor{\alpha},\vetor{\alpha})= 1\). \todo[O que acontece com \(A = -\unity\)?] Se \(a = 1\), então \(\omega(\vetor{\alpha},\vetor{\alpha}) = 0\) e temos \(\exp(\vetor{\alpha}\cdot\vetor{\sigma}) = \unity + \vetor{\alpha}\cdot\vetor{\sigma} = A\). Se \(a \in \mathbb{C} \setminus\set{-1, 1}\), então \(\omega(\vetor{\alpha}, \vetor{\alpha}) = 1 - a^2 \neq 0\)
+    Seja \(A \in \mathrm{SL}(2,\mathbb{C}) \subset \mathrm{Mat}(2, \mathbb{C})\), então \(A \in \lspan_{\mathbb{C}}\set{\unity, \sigma_1, \sigma_2, \sigma_3}\). Isto é, existem \(a \in \mathbb{C}\) e \(\vetor{\alpha} \in \mathbb{C}^3\) únicos tais que \(A = a \unity + \vetor{\alpha}\cdot{\vetor{\sigma}}\), portanto de \(\det(A) = 1\) segue que \(a^2 - \omega(\vetor{\alpha},\vetor{\alpha})= 1\).  Se \(a = 1\), então \(\omega(\vetor{\alpha},\vetor{\alpha}) = 0\) e temos \(\exp(\vetor{\alpha}\cdot\vetor{\sigma}) = \unity + \vetor{\alpha}\cdot\vetor{\sigma} = A\). Se \(a \in \mathbb{C} \setminus\set{-1, 1}\), existe \(z\in \mathbb{C}\setminus\set{0}\) tal que \(\cosh{z} = a\), então \(\omega(\vetor{\alpha}, \vetor{\alpha}) = a^2 - 1 = \sinh^2{z} \neq 0\). Assim, definimos \(\vetor{\eta} = \csch{z} \vetor{\alpha},\) que satisfaz \(\omega(z\vetor{\eta},z\vetor{\eta}) = z^2\csch{z}^2 \omega(\vetor{\alpha}, \vetor{\alpha}) = z^2\) e temos
+    \begin{equation*}
+        A = (\cosh{z})\unity + (\sinh{z}) \vetor{\eta}\cdot \vetor{\sigma} = (\cosh{z})\unity + \frac{\sinh{z}}{z}(z\vetor{\eta})\cdot \vetor{\sigma} = \exp(z \vetor{\eta}\cdot \vetor{\sigma}).
+    \end{equation*}
+    \todo[O que acontece com \(\mathrm{SL}(2,\mathbb{C}) \ni A = -\unity = \exp\begin{smallpmatrix}
+        i\pi & 0\\
+        0 & i\pi
+    \end{smallpmatrix} \notin \mathrm{sl}(2,\mathbb{C})\)?]
 \end{proof}
