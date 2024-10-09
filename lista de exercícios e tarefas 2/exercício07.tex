@@ -76,4 +76,14 @@
         -1 & 2\\
         0 & -1
     \end{smallpmatrix}\)?]
+
+    Suponha que exista \(\vetor{\beta} \in \mathbb{C}^3\) tal que \(\exp(\vetor{\beta}\cdot \vetor{\sigma}) = -\unity + \sigma_1 + i \sigma_2\). Notemos que \(\omega(\vetor{\beta},\vetor{\beta}) \neq 0\), caso contrário teríamos \(\exp(\vetor{\beta}\cdot \vetor{\sigma}) = \unity + \vetor{\beta}\cdot\vetor{\sigma}\), o que não pode acontecer uma vez que \(\set{\unity, \sigma_1, \sigma_2, \sigma_3}\) é base de \(\mathrm{Mat}(2, \mathbb{C})\). Dessa forma temos
+    \begin{equation*}
+        -\unity + \sigma_1 + i \sigma_2 = \exp(\vetor{\beta}\cdot \vetor{\sigma}) = \cosh\left[\sqrt{\omega(\vetor{\beta},\vetor{\beta})}\right] \unity + \frac{\sinh\left[\sqrt{\omega(\vetor{\beta}, \vetor{\beta})}\right]}{\sqrt{\omega(\vetor{\beta},\vetor{\beta})}}(\vetor{\beta}\cdot\vetor{\sigma}).
+    \end{equation*}
+    Da independência linear segue que \(\cosh\left[\sqrt{\omega(\vetor{\beta}, \vetor{\beta})}\right] = -1\), mas disso segue que \(\sinh\left[\sqrt{\omega(\vetor{\beta}, \vetor{\beta})}\right] = 0\), e então mostramos
+    \begin{equation*}
+        -\unity + \sigma_1 + i \sigma_2 = -\unity.
+    \end{equation*}
+    Essa contradição nos mostra que não existe \(\vetor{\beta} \in \mathbb{C}^3\) tal que \(\exp(\vetor{\beta}\cdot\vetor{\sigma}) = -\unity + \sigma_1 + i \sigma_2\), isto é, \(\mathrm{SL}(2,\mathbb{C}) \not\subset \setc{\exp(\vetor{\alpha}\cdot\vetor{\sigma})}{\vetor{\alpha} \in \mathbb{C}^3}\).
 \end{proof}
