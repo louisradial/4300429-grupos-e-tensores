@@ -1,11 +1,47 @@
 \section[Álgebra de Lie do produto vetorial em R³]{Álgebra de Lie do produto vetorial em \(\mathbb{R}^3\)}
 \begin{proposition}{Álgebra de Lie do produto vetorial em \(\mathbb{R}^3\)}{exercício05}
-    Seja
+    Considere o produto vetorial
     \begin{align*}
         [\noarg, \noarg] : \mathbb{R}^3 \times \mathbb{R}^3 &\to \mathbb{R}^3\\
-                                      (\vetor{a},\vetor{b}) &\mapsto \vetor{a}\times \vetor{b},
+        (\vetor{x},\vetor{y}) &\mapsto \sum_{i = 1}^3 \sum_{j=1}^3\sum_{k = 1}^3 \epsilon_{ijk}x_iy_j\vetor{e}_k,
     \end{align*}
-    então \((\mathbb{R}^3, [\noarg, \noarg])\).
+    então \((\mathbb{R}^3, [\noarg, \noarg])\) é uma álgebra de Lie real.
 \end{proposition}
 \begin{proof}
+    Sejam \(\vetor{x}, \vetor{y}, \vetor{z} \in \mathbb{R}^3\) e \(\lambda \in \mathbb{R}\), então
+    \begin{equation*}
+        [\vetor{y}, \vetor{x}] = \sum_{i = 1}^3 \sum_{j = 1}^3\sum_{k = 1}^3 \epsilon_{ijk} j_i \lambda x_j \vetor{e}_k
+                               = -\sum_{i = 1}^3 \sum_{j = 1}^3\sum_{k = 1}^3 \epsilon_{jik} x_j y_i \vetor{e}_k
+                               = -[\vetor{x}, \vetor{y}],
+    \end{equation*}
+    portanto o produto é anticomutativo e
+    \begin{align*}
+        [\vetor{x}, \vetor{y} + \vetor{z}] &= \sum_{i = 1}^3 \sum_{j = 1}^3\sum_{k = 1}^3 \epsilon_{ijk}x_i (y_j + z_j) \vetor{e}_k&
+        [\vetor{x}, \lambda \vetor{y}] &= \sum_{i = 1}^3 \sum_{j = 1}^3\sum_{k = 1}^3 \epsilon_{ijk} x_i (\lambda y_j) \vetor{e}_k\\
+                                           &= \sum_{i = 1}^3 \sum_{j = 1}^3\sum_{k = 1}^3 \epsilon_{ijk} x_i y_j \vetor{e}_k + \sum_{i = 1}^3 \sum_{j = 1}^3\sum_{k = 1}^3 \epsilon_{ijk}x_iz_j \vetor{e}_k&
+                                           &= \lambda\sum_{i = 1}^3 \sum_{j = 1}^3\sum_{k = 1}^3 \epsilon_{ijk} x_i y_j \vetor{e}_k\\
+                                           &= [\vetor{x}, \vetor{y}] + [\vetor{x}, \vetor{z}]&
+                                           &= \lambda [\vetor{x}, \vetor{y}],
+    \end{align*}
+    isto é, \([\noarg, \noarg]\) é \(\mathbb{R}\)-linear no segundo argumento, portanto é \(\mathbb{R}\)-bilinear, isto é, \((\mathbb{R}^3, [\noarg, \noarg])\) é uma álgebra. Temos ainda
+    \begin{align*}
+        [\vetor{x}, [\vetor{y}, \vetor{z}]]
+        &= \sum_{i = 1}^3\sum_{j = 1}^3\sum_{k = 1}^3 \epsilon_{ijk} x_i \sum_{\ell = 1}^3 \sum_{m = 1}^3 \epsilon_{\ell m j}y_\ell z_m \vetor{e_k}\\
+        &= \sum_{i = 1}^3\sum_{j = 1}^3\sum_{k = 1}^3 \sum_{\ell = 1}^3 \sum_{m = 1}^3\epsilon_{jik} \epsilon_{jm\ell}x_i  y_\ell z_m \vetor{e_k}\\
+        &= \sum_{i = 1}^3 \sum_{k = 1}^3 \sum_{\ell = 1}^3 \sum_{m = 1}^3 (\delta_{k \ell} \delta_{im} - \delta_{km}\delta_{i\ell}) x_i y_\ell z_m \vetor{e}_k\\
+        &= \sum_{i = 1}^3 \sum_{k = 1}^3 x_i y_k z_i \vetor{e}_k - \sum_{i = 1}^3 \sum_{k = 1}^3 x_i y_i z_k \vetor{e}_k\\
+        &= \inner{\vetor{x}}{\vetor{z}}_{\mathbb{R}}\vetor{y} - \inner{\vetor{x}}{\vetor{y}}_{\mathbb{R}}\vetor{z},
+    \end{align*}
+    então por permutações cíclicas obtemos
+    \begin{equation*}
+        [\vetor{y},[\vetor{z}, \vetor{x}]] = \inner{\vetor{y}}{\vetor{x}}_{\mathbb{R}}\vetor{z} - \inner{\vetor{y}}{\vetor{z}}_{\mathbb{R}}\vetor{x}
+        \quad\text{e}\quad
+        [\vetor{z},[\vetor{x}, \vetor{y}]] = \inner{\vetor{z}}{\vetor{y}}_{\mathbb{R}}\vetor{x} - \inner{\vetor{z}}{\vetor{x}}_{\mathbb{R}}\vetor{y},
+    \end{equation*}
+    portanto ao somar as três igualdade temos
+    \begin{align*}
+        [\vetor{x}, [\vetor{y}, \vetor{z}]] + [\vetor{y},[\vetor{z}, \vetor{x}]] + [\vetor{z},[\vetor{x}, \vetor{y}]] =
+        (\inner{\vetor{z}}{\vetor{y}}-\inner{\vetor{y}}{\vetor{z}})\vetor{x} + (\inner{\vetor{x}}{\vetor{z}} - \inner{\vetor{z}}{\vetor{x}})\vetor{y} + (\inner{\vetor{y}}{\vetor{x}}-\inner{\vetor{x}}{\vetor{y}})\vetor{z} = 0,
+    \end{align*}
+    isto é, o produto vetorial satisfaz a identidade de Jacobi, concluindo a demonstração.
 \end{proof}
