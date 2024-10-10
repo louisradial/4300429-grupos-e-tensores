@@ -1,13 +1,12 @@
 \section{Ângulos de Euler}
-
-\begin{lemma}{Uma base ortonormal de um plano define um único elemento de \(\mathrm{SO}(3)\)}{exercício9a}
+\begin{lemma}{Uma base ortonormal direita define um único elemento de \(\mathrm{SO}(3)\)}{exercício9a}
     Sejam \(\vetor{f}_1, \vetor{f}_2 \in S^2 = \setc{\vetor{x} \in \mathbb{R}^3}{\norm{\vetor{x}}=1}\). Se \(\inner{\vetor{f}_a}{\vetor{f}_b} = \delta_{ab}\) para todos \(a,b \in \set{1,2}\), então existe um único \(R \in \mathrm{SO}(3)\) tal que \(R\vetor{e}_1 = \vetor{f}_1,\) \(R\vetor{e}_2 = \vetor{f}_2\), e \(R\vetor{e}_3 = \vetor{f}_1\times\vetor{f}_2\).
 \end{lemma}
 \begin{proof}
     Seja \(\vetor{f}_3 = \vetor{f}_1 \times \vetor{f}_2\), então por hipótese \(\set{\vetor{f}_1, \vetor{f}_2, \vetor{f}_3}\) é uma base ortonormal positivamente orientada de \(\mathbb{R}^3\). Seja \(R \in \mathrm{End}(\mathbb{R}^3)\) o operador linear definido por
     \begin{align*}
         R : \mathbb{R}^3 &\to \mathbb{R}^3\\
-               \vetor{x} &\mapsto \sum_{k = 1}^3 \inner{\vetor{x}}{\vetor{e}_k}\vetor{f}_k,
+               \vetor{x} &\mapsto \sum_{k = 1}^3 \inner{\vetor{e}_k}{\vetor{x}}\vetor{f}_k,
     \end{align*}
     cuja linearidade é garantida pela bilinearidade do produto interno euclidiano. Este operador satisfaz \(R\vetor{e}_i = \vetor{f}_i\), já que
     \begin{equation*}
@@ -30,36 +29,131 @@
 \end{proof}
 
 \begin{lemma}{Ângulo para que o resultado de uma rotação seja ortogonal a um eixo}{exercício9b}
-    Sejam \(\vetor{\alpha}, \vetor{\beta}, \vetor{\eta} \in S^2 = \setc{\vetor{x} \in \mathbb{R}^3}{\norm{\vetor{x}}= 1}\) vetores unitários. Se \(\inner{\vetor{\eta}}{\vetor{\alpha}} = 0\) então existe \(\theta \in [0,2\pi)\) tal que \(\inner{R(\theta, \vetor{\eta})\vetor{\alpha}}{\vetor{\beta}} = 0\).
+    Sejam \(\vetor{\alpha}, \vetor{\beta}, \vetor{\eta} \in S^2 = \setc{\vetor{x} \in \mathbb{R}^3}{\norm{\vetor{x}}= 1}\) vetores unitários. Se \(\inner{\vetor{\eta}}{\vetor{\alpha}} = 0\) então existe \(\vartheta \in \mathbb{R}\) tal que \(\inner{R(\theta, \vetor{\eta})\vetor{\alpha}}{\vetor{\beta}} = 0\).
 \end{lemma}
 \begin{proof}
-    Como mostramos na \cref{prop:exercício5}, temos
+    Sejam \(A = \inner{\vetor{\alpha}}{\vetor{\beta}}\) e \(B = \inner{\vetor{\eta}\times \vetor{\alpha}}{\vetor{\beta}}\), então existe \(\vartheta \in \mathbb{R}\) tal que
     \begin{equation*}
-        R(\vartheta, \vetor{\eta})\vetor{\alpha} = (\cos\vartheta)\vetor{\alpha} + (1 - \cos\vartheta)\inner{\vetor{\eta}}{\vetor{\alpha}}\vetor{\eta} + (\sin\vartheta)\vetor{\eta}\times\vetor{\alpha}
+        A = \sqrt{A^2 + B^2} \sin\vartheta\quad\text{e}\quad B = -\sqrt{A^2 + B^2}\cos\vartheta,
     \end{equation*}
-    para todo \(\vartheta \in [0,2\pi)\). Tomando o produto interno com \(\vetor{\beta}\), temos
+    pois se \(A = B = 0\) as igualdades são trivialmente satisfeitas para qualquer \(\vartheta\) e caso contrário estas expressões definem um ângulo \(\vartheta \in [0,2\pi)\) módulo \(2\pi\).
+    Pela \cref{prop:exercício5}, temos
     \begin{align*}
         \inner{R(\vartheta, \vetor{\eta})\vetor{\alpha}}{\vetor{\beta}}
+        &= \inner*{(\cos\vartheta)\vetor{\alpha} + (1 - \cos\vartheta)\inner{\vetor{\eta}}{\vetor{\alpha}}\vetor{\eta} + (\sin\vartheta)\vetor{\eta}\times\vetor{\alpha}}{\vetor{\beta}}\\
         &= (\cos\vartheta)\inner{\vetor{\alpha}}{\vetor{\beta}} + (1 - \cos\vartheta)\inner{\vetor{\eta}}{\vetor{\alpha}}\inner{\vetor{\eta}}{\vetor{\beta}} + (\sin\vartheta)\inner{\vetor{\eta}\times\vetor{\alpha}}{\vetor{\beta}}\\
-        &= (\cos\vartheta)\inner{\vetor{\alpha}}{\vetor{\beta}} + (\sin\vartheta)\inner{\vetor{\alpha}\times\vetor{\beta}}{\vetor{\eta}}.
+        &= \sqrt{A^2 + B^2}(\cos\vartheta \sin\vartheta - \sin\vartheta \cos\vartheta) = 0,
     \end{align*}
-    Sejam \(A = \inner{\vetor{\alpha}}{\vetor{\beta}}\) e \(B = \inner{\vetor{\alpha}\times \vetor{\beta}}{\vetor{\eta}}\), então existe \(\theta \in [0, 2\pi)\) tal que
-    \begin{equation*}
-        \inner{R(\vartheta, \vetor{\eta})\vetor{\alpha}}{\vetor{\beta}} = \sqrt{A^2 + B^2}\sin(\theta - \vartheta),
-    \end{equation*}
-    pois se \(A = B = 0\) essa afirmação vale para todo \(\theta \in \mathbb{R}\), e caso contrário podemos definir \(\theta\) a partir de
-    \begin{equation*}
-        \sin\theta = \frac{A}{\sqrt{A^2+B^2}}\quad\text{e}\quad\cos\theta =-\frac{B}{\sqrt{A^2 + B^2}},
-    \end{equation*}
-    e então a afirmação segue. Com isso mostramos que existe \(\theta \in [0,2\pi)\) tal que
-    \begin{equation*}
-        \inner{R(\theta, \vetor{\eta})\vetor{\alpha}}{\vetor{\beta}} = 0,
-    \end{equation*}
     como desejado.
 \end{proof}
+
+\begin{lemma}{Produto vetorial de vetores obtidos a partir de um automorfismo linear}{exercício9c}
+    Se \(M \in \mathrm{GL}(3, \mathbb{R})\), então
+    \begin{equation*}
+        M\vetor{\alpha}\times M\vetor{\beta} = (\det{M})\left(M^\intercal\right)^{-1}(\vetor{\alpha} \times \vetor{\beta})
+    \end{equation*}
+    para todos \(\vetor{\alpha},\vetor{\beta} \in \mathbb{R}^3\).
+\end{lemma}
+\begin{proof}
+    Sejam \(M \in \mathrm{GL}(3, \mathbb{R})\), \(\vetor{\alpha}, \vetor{\beta}, \vetor{\xi} \in \mathbb{R}^3\) vetores e consideremos \(\det(M)\inner{\vetor{\alpha}\times\vetor{\beta}}{\vetor{\xi}} = \det{(M)} \det{(\vetor{\alpha},\vetor{\beta, \vetor{\xi}})}\), onde usamos o determinante tanto como uma aplicação \(\det : \mathrm{Mat}(3, \mathbb{R}) \to \mathbb{R}\) quanto como a forma de volume no \(\mathbb{R}^3\). Note que, denotando por \([\vetor{\alpha}, \vetor{\beta}, \vetor{\xi}] \in \mathrm{Mat}(3, \mathbb{R})\) a matriz cujas colunas são dadas pelos elementos destes vetores, temos \(M[\vetor{\alpha}, \vetor{\beta}, \vetor{\xi}] = [M\vetor{\alpha}, M\vetor{\beta}, M\vetor{\xi}]\) pois, sendo \(\vetor{x}\) a primeira coluna deste produto matricial, temos para \(k \in \set{1,2,3}\) que
+    \begin{equation*}
+        \inner{\vetor{e}_k}{\vetor{x}} = \sum_{j = 1}^3 M_{kj}\alpha_j = \inner*{\vetor{e}_k}{\sum_{i = 1}^3\sum_{j = 1}^3 M_{ij} \alpha_j \vetor{e}_i} = \inner{\vetor{e}_k}{M\vetor{\alpha}},
+    \end{equation*}
+    e analogamente para as outras duas colunas. Deste modo, temos
+    \begin{align*}
+        \inner{\det(M)\vetor{\alpha}\times \vetor{\beta}}{\vetor{\xi}}
+        &= \det(M)\inner{\vetor{\alpha\times \vetor{\beta}}}{\vetor{\xi}}\\
+        &= \det(M) \det(\vetor{\alpha}, \vetor{\beta}, \vetor{\xi})\\
+        &= \det(M\vetor{\alpha}, M\vetor{\beta}, M\vetor{\xi})\\
+        &= \inner{(M\vetor{\alpha})\times (M\vetor{\beta})}{M\vetor{\xi}}\\
+        &= \inner*{M^\intercal\left[(M\vetor{\alpha}) \times (M\vetor{\alpha})\right]}{\vetor{\xi}}
+    \end{align*}
+    para todos \(\vetor{\alpha}, \vetor{\beta}, \vetor{\xi} \in \mathbb{R}^3\). Com isso, mostramos que
+    \begin{equation*}
+        \forall \vetor{\xi} \in \mathbb{R}^3, \forall \vetor{\alpha}, \vetor{\beta}\in \mathbb{R}^3 : \inner*{\det(M) \vetor{\alpha}\times \vetor{\beta} - M^\intercal\left[(M\vetor{\alpha})\times (M\vetor{\beta})\right]}{\vetor{\xi}} = 0,
+    \end{equation*}
+    portanto segue que
+    \begin{equation*}
+        \forall \vetor{\alpha}, \vetor{\beta}\in \mathbb{R}^3 : \det(M) \vetor{\alpha}\times\vetor{\beta} = M^\intercal \left[(M\vetor{\alpha})\times (M\vetor{\beta})\right]
+    \end{equation*}
+    pela não degenerescência do produto interno euclidiano. Como \(M\) é um automorfismo linear, temos
+    \begin{equation*}
+        \forall \vetor{\alpha}, \vetor{\beta}\in \mathbb{R}^3 : (M\vetor{\alpha})\times (M\vetor{\beta}) = \det(M) (M^\intercal)^{-1}(\vetor{\alpha}\times \vetor{\beta})
+    \end{equation*}
+    e o resultado proposto segue.
+\end{proof}
+\begin{corollary}
+    Se \(R \in \mathrm{SO}(3)\), então
+    \begin{equation*}
+        R\vetor{\alpha}\times R\vetor{\beta} = R(\vetor{\alpha}\times \vetor{\beta})
+    \end{equation*}
+    para todos \(\alpha, \beta \in \mathbb{R}^3\).
+\end{corollary}
+\begin{proof}
+    Como \(\det R = 1\) e \(R^\intercal = R^{-1}\), o resultado segue do \cref{lem:exercício9c}.
+\end{proof}
+
+\begin{lemma}{Rotação em torno de um eixo obtido a partir de uma rotação}{exercício9d}
+    Seja \(\tilde{R} \in \mathrm{SO}(3)\). Então
+    \begin{equation*}
+        R(\theta, \tilde{R}\vetor{\eta}) = \tilde{R}R(\theta, \vetor{\eta})\tilde{R}^{-1}
+    \end{equation*}
+    para todo \(\theta \in \mathbb{R}\) e \(\vetor{\eta} \in S^2\).
+\end{lemma}
+\begin{proof}
+    Da \cref{prop:exercício5} e do \cref{lem:exercício9c}, temos para todo \(\vetor{\alpha} \in \mathbb{R}^3\) que
+    \begin{align*}
+        R(\theta, \tilde{R}\vetor{\eta})\tilde{R} \vetor{\alpha} &= (\cos\theta) \tilde{R}\vetor{\alpha} + (1 - \cos\theta) \inner{\tilde{R} \vetor{\eta}}{\tilde{R}\vetor{\alpha}} \tilde{R}\vetor{\eta} + (\sin\theta)\tilde{R}\vetor{\eta}\times \tilde{R}\vetor{\alpha}\\
+                                                 &= (\cos\theta) \tilde{R}\vetor{\alpha} + (1 - \cos\theta) \inner{\vetor{\eta}}{\vetor{\alpha}} \tilde{R}\vetor{\eta} + (\sin\theta)\tilde{R}(\vetor{\eta}\times \vetor{\alpha})\\
+                                                 &= \tilde{R}\left[(\cos\theta) \vetor{\alpha} + (1 - \cos\theta) \inner{\vetor{\eta}}{\vetor{\alpha}}\vetor{\eta} + (\sin\theta)\left(\vetor{\eta}\times \vetor{\alpha}\right)\right]\\
+                                                 &= \tilde{R} R(\theta, \vetor{\eta})\vetor{\alpha},
+    \end{align*}
+    e o resultado segue.
+\end{proof}
+
 \begin{proposition}{Ângulos de Euler}{exercício9}
-    Seja \(\set{\vetor{e}_1, \vetor{e}_2, \vetor{e}_3}\subset \mathbb{R}^3\) a base canônica de \(\mathbb{R}^3\) e denotemos a matriz de rotação por um ângulo \(\vartheta \in [0,2\pi]\) no sentido anti-horário em torno do eixo \(\vetor{e}_k\) por \(R_k(\vartheta) \in \mathrm{SO}(3)\). Seja \(R \in \mathrm{SO}(3)\), então existem \(\theta \in (0,\pi),\) \(\varphi \in [0,2\pi)\) e \(\psi \in [0,2\pi)\) tais que \(R = R_3(\varphi)R_1(\theta)R_3(\psi)\).
+    Seja \(R \in \mathrm{SO}(3)\), então existem \(\theta \in [0,\pi),\) \(\psi \in [0,2\pi)\) e \(\varphi \in [0,2\pi)\) tais que
+    \begin{equation*}
+        R = R(\varphi, \vetor{e}_3)R(\theta, \vetor{e}_1)R(\psi, \vetor{e}_3).
+    \end{equation*}
 \end{proposition}
 \begin{proof}
-    Seja \(R \in \mathrm{SO}(3)\), então podemos assumir sem perda de generalidade que \(R\vetor{e}_3 \neq \pm \vetor{e}_3\), pois se assim fosse
+    Seja \(R \in \mathrm{SO}(3)\) e sejam \(\vetor{f}_i = R\vetor{e}_i\). Como \(\vetor{f}_1\) e \(\vetor{f}_3\) são ortogonais, temos do \cref{lem:exercício9b} que existe \(\varphi \in [0,2\pi)\) tal que \(\vetor{n} = R(-\varphi, \vetor{f}_3)\vetor{f}_1\) é ortogonal a \(\vetor{e}_3\). Neste caso, \(\vetor{n} \in \lspan_{\mathbb{R}}\set{\vetor{e}_1,\vetor{e}_2}\) e então existe \(\psi \in [0,2\pi)\) tal que \(R(\psi, \vetor{e}_3)\vetor{e}_1 = \vetor{n}\). Isto é,
+    \begin{equation*}
+        R(\psi, \vetor{e}_3)\vetor{e}_1 = \vetor{n} = R(-\varphi, R\vetor{e}_3)R\vetor{e}_1 = R R(-\varphi,\vetor{e}_3)\vetor{e}_1
+    \end{equation*}
+    pelo \cref{lem:exercício9d}. Notemos que \(\vetor{n}\) é ortogonal a tanto \(\vetor{e}_3\) quanto a \(\vetor{f}_3\), já que
+    \begin{equation*}
+        \inner{\vetor{e}_3}{\vetor{n}} = \inner{R(\psi,\vetor{e}_3)\vetor{e}_3}{R(\psi,\vetor{e}_3)\vetor{e_1}} = \inner{\vetor{e}_3}{\vetor{e}_1},
+    \end{equation*}
+    e analogamente mudando \(\psi \to -\varphi\), e \(\vetor{e}_i \to \vetor{f}_i\). Portanto, existe \(\theta \in [0,2\pi)\) tal que \(R(\theta, \vetor{n})\vetor{e}_3 = \vetor{f}_3\). Na verdade, podemos limitar \(\theta \in [0, \pi)\) pois poderíamos ter considerado o vetor \(-\vetor{n}\) pela liberdade \(\varphi\) e de \(\psi\) e repetido os demais argumentos.
+
+    Resumindo, mostramos que existem \(\psi, \varphi \in [0,2\pi)\) e \(\theta \in [0,\pi]\) tais que
+    \begin{equation*}
+        R(\varphi, \vetor{f}_3) R(\theta, \vetor{n}) R(\psi, \vetor{e}_3)\vetor{e}_1 = R(\varphi, \vetor{f}_3) R(\theta, \vetor{n}) \vetor{n} = R(\varphi, \vetor{f}_3) \vetor{n} = R(\varphi, \vetor{f}_3) R(-\varphi, \vetor{f}_3)\vetor{f}_1 = \vetor{f}_1.
+    \end{equation*}
+    Temos também que
+    \begin{equation*}
+        R(\varphi, \vetor{f}_3)R(\theta, \vetor{n})R(\psi, \vetor{e}_3)\vetor{e}_3 = R(\varphi, \vetor{f}_3) R(\theta, \vetor{n}) \vetor{e}_3 = R(\varphi,\vetor{f}_3)\vetor{f}_3 = \vetor{f}_3,
+    \end{equation*}
+    donde segue que
+    \begin{equation*}
+        R(\varphi, \vetor{f}_3)R(\theta, \vetor{n}) R(\psi, \vetor{e}_3)\vetor{e}_2 = R(\varphi, \vetor{f}_3)R(\theta, \vetor{n}) R(\psi, \vetor{e}_3)(\vetor{e}_3 \times \vetor{e}_1) = \vetor{f}_3 \times \vetor{f}_1 = \vetor{f}_2
+    \end{equation*}
+    pelo \cref{lem:exercício9c}. Pelo \cref{lem:exercício9a}, concluímos que \(R = R(\varphi, \vetor{f}_3)R(\theta, \vetor{n}) R(\psi, \vetor{e}_3)\). Pelo \cref{lem:exercício9d}, sabemos que
+    \begin{equation*}
+        R(\varphi, \vetor{f}_3) = R\left(\varphi, R(\theta, \vetor{n})\vetor{e}_3\right) = R(\theta, \vetor{n})R(\varphi, \vetor{e}_3)R(-\theta, \vetor{n})
+    \end{equation*}
+    e que
+    \begin{equation*}
+        R(\theta, \vetor{n}) = R\left(\theta, R(\psi, \vetor{e}_3)\vetor{e}_1\right) = R(\psi, \vetor{e}_3)R(\theta, \vetor{e}_1) R(- \psi, \vetor{e}_3),
+    \end{equation*}
+    logo
+    \begin{align*}
+        R = R(\varphi, \vetor{f}_3)R(\theta, \vetor{n})R(\psi, \vetor{e}_3)
+        &= R(\theta, \vetor{n})R(\varphi, \vetor{e}_3)R(-\theta, \vetor{n})R(\theta, \vetor{n})R(\psi, \vetor{e}_3) \\
+        &=R(\psi, \vetor{e}_3)R(\theta, \vetor{e}_1) R(- \psi, \vetor{e}_3)R(\varphi, \vetor{e}_3) R(\psi, \vetor{e}_3)\\
+        &= R(\psi, \vetor{e}_3)R(\theta, \vetor{e}_1) R(\varphi, \vetor{e}_3),
+    \end{align*}
+    como desejado.
 \end{proof}
