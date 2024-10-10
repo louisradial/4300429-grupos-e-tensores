@@ -138,26 +138,26 @@
     para todo \(t \in \mathbb{C}\) e \(k \in \set{1,2,3}\).
 \end{proof}
 
-\begin{proposition}{Álgebra de Lie \(\mathrm{gh}_3(\mathbb{C})\)}{exercício1c}
-    Seja \(\mathrm{gh}_3(\mathbb{C}) = \lspan_{\mathbb{C}}\set{\vetor{h}_1,\vetor{h}_2, \vetor{h}_3} \subset \mathrm{Mat}(3,\mathbb{C})\) o subespaço vetorial gerado pelos geradores dos subgrupos uniparamétricos \(H_k(\mathbb{C})\) do grupo de Heisenberg. A aplicação
+\begin{proposition}{Álgebra de Lie \(\mathfrak{gh}_3(\mathbb{C})\)}{exercício1c}
+    Seja \(\mathfrak{gh}_3(\mathbb{C}) = \lspan_{\mathbb{C}}\set{\vetor{h}_1,\vetor{h}_2, \vetor{h}_3} \subset \mathrm{Mat}(3,\mathbb{C})\) o subespaço vetorial gerado pelos geradores dos subgrupos uniparamétricos \(H_k(\mathbb{C})\) do grupo de Heisenberg. A aplicação
     \begin{align*}
-        h : \mathbb{C} \times \mathbb{C} \times \mathbb{C} &\to \mathrm{gh}_3(\mathbb{C})\\
+        h : \mathbb{C} \times \mathbb{C} \times \mathbb{C} &\to \mathfrak{gh}_3(\mathbb{C})\\
                                                    (a,b,c) &\mapsto a\vetor{h}_1 + b\vetor{h}_2 + c\vetor{h}_3
     \end{align*}
     satisfaz
     \begin{enumerate}[label=(\roman*)]
-        \item \(h(\mathbb{C}^3) = \mathrm{gh}_3(\mathbb{C})\);
+        \item \(h(\mathbb{C}^3) = \mathfrak{gh}_3(\mathbb{C})\);
         \item \(h(\lambda a, \lambda b, \lambda c) = \lambda h(a,b,c)\) para todo \(\lambda \in \mathbb{C}\);
         \item \(h(a,b,c) + h(a',b',c') = h(a+a', b+b', c+c')\);
         \item \(h(a,b,c) h(a', b', c') = h(0,0,ab')\); e
         \item \([h(a,b,c), h(a',b',c')] = h(0,0,ab' - a'b)\).
     \end{enumerate}
-    para todos \(a,b,c,a',b',c' \in \mathbb{C}\). Assim, \(\left(\mathrm{gh}_3(\mathbb{C}), [\noarg,\noarg]\right)\) é uma álgebra de Lie.
+    para todos \(a,b,c,a',b',c' \in \mathbb{C}\). Assim, \(\left(\mathfrak{gh}_3(\mathbb{C}), [\noarg,\noarg]\right)\) é uma álgebra de Lie.
 \end{proposition}
 \begin{proof}
     Temos
     \begin{align*}
-        g \in \mathrm{gh}_3(\mathbb{C}) &\iff \exists a,b,c \in \mathbb{C}: g = a\vetor{h}_1 + b\vetor{h}_2 + c \vetor{h}_3  \\
+        g \in \mathfrak{gh}_3(\mathbb{C}) &\iff \exists a,b,c \in \mathbb{C}: g = a\vetor{h}_1 + b\vetor{h}_2 + c \vetor{h}_3  \\
                                         &\iff \exists a,b,c \in \mathbb{C} : g = h(a,b,c)\\
                                         &\iff g \in h(\mathbb{C}^3),
     \end{align*}
@@ -203,9 +203,9 @@
     \end{align*}
     para todos \(a,b,c,a',b',c' \in \mathbb{C}\), portanto (v) segue. Esta última propriedade nos mostra que
     \begin{equation*}
-        [\mathrm{gh}_3(\mathbb{C}), \mathrm{gh}_3(\mathbb{C})] \subset \mathrm{gh}_3(\mathbb{C}),
+        [\mathfrak{gh}_3(\mathbb{C}), \mathfrak{gh}_3(\mathbb{C})] \subset \mathfrak{gh}_3(\mathbb{C}),
     \end{equation*}
-    isto é, \(\left(\mathrm{gh}_3(\mathbb{C}), [\noarg,\noarg]\right)\) é uma subálgebra de Lie da álgebra de Lie matricial \(\left(\mathrm{Mat}(3, \mathbb{C}), [\noarg, \noarg]\right)\).
+    isto é, \(\left(\mathfrak{gh}_3(\mathbb{C}), [\noarg,\noarg]\right)\) é uma subálgebra de Lie da álgebra de Lie matricial \(\left(\mathrm{Mat}(3, \mathbb{C}), [\noarg, \noarg]\right)\).
 \end{proof}
 \begin{corollary}
     Sejam \(p = \vetor{h}_1, q = \vetor{h}_2,\) e \(\hbar = i\vetor{h}_3\), então
@@ -214,7 +214,7 @@
         [q,\hbar] = 0,\quad
         [p,q] = -i\hbar
     \end{equation*}
-    e \(\set{p,q,\hbar}\) é uma base de \(\mathrm{gh}_3(\mathbb{C})\).
+    e \(\set{p,q,\hbar}\) é uma base de \(\mathfrak{gh}_3(\mathbb{C})\).
 \end{corollary}
 \begin{proof}
     Temos \([p,\hbar] =  [q, \hbar] = h(0,0,0) = 0\) e \([p, q] = h(0,0,1) = -i \hbar\) pela propriedade (v). Notemos que
@@ -222,9 +222,9 @@
         g \in \lspan_{\mathbb{C}}\set{p,q,\hbar} &\iff \exists a_1, a_2, \tilde{a}_3 \in \mathbb{C} : g = a_1 p + a_2 q + \tilde{a}_3 \hbar\\
                                                  &\iff \exists a_1,a_2,a_3 \in \mathbb{C}: g = \sum_{k=1}^3 a_k\vetor{h}_k\\
                                                  &\iff g \in \lspan_{\mathbb{C}}\set{\vetor{h}_1, \vetor{h}_2, \vetor{h}_3}\\
-                                                 &\iff g \in \mathrm{gh}_3(\mathbb{C})
+                                                 &\iff g \in \mathfrak{gh}_3(\mathbb{C})
     \end{align*}
-    portanto \(\set{p,q,\hbar}\) é um conjunto gerador para a álgebra de Lie \(\mathrm{gh}_3(\mathbb{C})\). Notemos que
+    portanto \(\set{p,q,\hbar}\) é um conjunto gerador para a álgebra de Lie \(\mathfrak{gh}_3(\mathbb{C})\). Notemos que
     \begin{equation*}
         a p + b q + c \hbar = 0 \implies \begin{pmatrix}
             0 & a & ic\\
@@ -236,11 +236,11 @@
             0 & 0 & 0
         \end{pmatrix} \implies a = b = c = 0,
     \end{equation*}
-    logo \(\set{p,q,\hbar}\) é linearmente independente. Este conjunto é, portanto, base de \(\mathrm{gh}_3(\mathbb{C})\).
+    logo \(\set{p,q,\hbar}\) é linearmente independente. Este conjunto é, portanto, base de \(\mathfrak{gh}_3(\mathbb{C})\).
 \end{proof}
 
 \begin{proposition}{Álgebra de Lie associada ao grupo \(\mathrm{GH}_3(\mathbb{C})\)}{exercício1d}
-    A álgebra de Lie \(\mathrm{gh}_3(\mathbb{C})\) é a álgebra de Lie associada ao grupo de Heisenberg \(\mathrm{GH}_3(\mathbb{C})\), isto é, \(\exp(\mathrm{gh}_3(\mathbb{C})) = \mathrm{GH}_3(\mathbb{C})\), com \(\exp(h(a,b,c-\frac{ab}{2})) = H(a,b,c)\) para todos \(a,b,c \in \mathbb{C}\).
+    A álgebra de Lie \(\mathfrak{gh}_3(\mathbb{C})\) é a álgebra de Lie associada ao grupo de Heisenberg \(\mathrm{GH}_3(\mathbb{C})\), isto é, \(\exp(\mathfrak{gh}_3(\mathbb{C})) = \mathrm{GH}_3(\mathbb{C})\), com \(\exp(h(a,b,c-\frac{ab}{2})) = H(a,b,c)\) para todos \(a,b,c \in \mathbb{C}\).
 \end{proposition}
 \begin{proof}
     Sejam \(a,b,c \in \mathbb{C}\). Mostremos por indução que \(h(a,b,c)^{2+n} = 0\) para todo \(n \in \mathbb{N}\). Da propriedade (iv) da \cref{prop:exercício1c}, temos
@@ -265,11 +265,11 @@
     \end{equation*}
     para todos \(a,b,c \in \mathbb{C}\).
 
-    Deste resultado temos \(\exp(\mathrm{gh}_3(\mathbb{C})) \subset \mathrm{GH}_3(\mathbb{C})\). A igualdade segue pois
+    Deste resultado temos \(\exp(\mathfrak{gh}_3(\mathbb{C})) \subset \mathrm{GH}_3(\mathbb{C})\). A igualdade segue pois
     \begin{align*}
         g \in \mathrm{GH}_3(\mathbb{C}) &\implies \exists a,b,c \in \mathbb{C} : g = H\left(a,b,c - \frac{ab}{2} + \frac{ab}{2}\right)\\
                                         &\implies \exists a,b,c \in \mathbb{C} : g = \exp\left[h\left(a,b,c - \frac{ab}{2}\right)\right]\\
-                                        &\implies g \in \exp\left(\mathrm{gh}_3(\mathbb{C})\right),
+                                        &\implies g \in \exp\left(\mathfrak{gh}_3(\mathbb{C})\right),
     \end{align*}
-    isto é, \(\mathrm{GH}_3(\mathbb{C}) = \exp(\mathrm{gh}_3(\mathbb{C}))\).
+    isto é, \(\mathrm{GH}_3(\mathbb{C}) = \exp(\mathfrak{gh}_3(\mathbb{C}))\).
 \end{proof}
