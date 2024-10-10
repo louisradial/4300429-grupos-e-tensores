@@ -1,0 +1,52 @@
+\section[Espaço linear em R² sobre os complexos]{Espaço linear em \(\mathbb{R}^2\) sobre os complexos}
+\begin{proposition}{Injeção de \(\mathbb{C}\) em \(\mathrm{Mat}(2, \mathbb{C})\)}{exercício4a}
+    Seja a aplicação injetiva
+    \begin{align*}
+        M : \mathbb{C} &\to \mathrm{Mat}(2, \mathbb{R})\\
+                     z &\mapsto(\Re{z})\unity - i(\Im{z})\sigma_2,
+    \end{align*}
+    então valem \(M(z) + M(w) = M(z + w)\) e \(M(z) M(w) = M(zw)\) para todos \(z, w \in \mathbb{C}\).
+\end{proposition}
+\begin{proof}
+    Notemos que \(i\sigma_2 \in \mathrm{Mat}(2, \mathbb{R})\), que \((i \sigma_2)^2 = -\unity\) e que \(\set{\unity, i \sigma_2}\) é linearmente independente. Assim sendo, temos para todos \(z, w \in \mathbb{C}\) que
+    \begin{align*}
+        M(z) + M(w) = (\Re{z} + \Re{w})\unity - i(\Im{z} + \Im{w})\sigma_2
+                    = \Re(z+w)\unity - i\Im(z + w) \sigma_2
+                    = M(z+w)
+    \end{align*}
+    e que
+    \begin{align*}
+        M(z)M(w) &= \left[(\Re{z})\unity - i(\Im{z})\sigma_2 \right]\left[(\Re{w})\unity - i(\Im{w})\sigma_2\right]\\
+                 &= (\Re{z} \Re{w} - \Im{z} \Im{w}) \unity - (\Im{z}\Re{w} + \Im{w}\Re{z})i \sigma_2\\
+                 &= \Re(zw)\unity - i\Im(zw) \sigma_2 = M(zw).
+    \end{align*}
+    Sejam \(z_1, z_2 \in \mathbb{C}\) tais que \(M(z_1) = M(z_2)\). Da independência linear de \(\set{\unity, i \sigma_2}\), segue que \(\Re{z_1} = \Re{z_2}\) e que \(\Im{z_1} = \Im{z_2}\), isto é, \(z_1 = z_2\), e concluímos que \(M\) é injetora.
+\end{proof}
+
+\begin{proposition}{Espaço linear em \(\mathbb{R}^2\)}{exercício4b}
+    Definindo
+    \begin{align*}
+        \cdot : \mathbb{C} \times \mathbb{R}^2 &\to \mathbb{R}^2\\
+                                 (z,\vetor{x}) &\mapsto M(z)\vetor{x},
+    \end{align*}
+    então \((\mathbb{R}^2, +, \cdot)\) é um espaço linear sobre \(\mathbb{C}\) onde a soma é a usual de \(\mathbb{R}^2\).
+\end{proposition}
+\begin{proof}
+    Como a soma é a usual, só precisamos verificar os axiomas referentes à multiplicação por escalares. Sejam \(z, w \in \mathbb{C}\), \(\vetor{x}, \vetor{y} \in \mathbb{R}^2\), então concluímos pela \cref{prop:exercício4a} que
+    \begin{align*}
+        z\cdot(w\cdot \vetor{x}) &= M(z)M(w)\vetor{x}&
+        (z + w)\cdot\vetor{x} &= M(z + w)\vetor{x} &
+        z\cdot(\vetor{x} + \vetor{y}) &= M(z)(\vetor{x} + \vetor{y})\\
+                        &= M(zw)\vetor{x} &
+                        &= M(z)\vetor{x} + M(w)\vetor{x} &
+                        &= M(z) \vetor{x} + M(z) \vetor{y}\\
+                        &= (zw)\cdot\vetor{x},&
+                        &=z\cdot\vetor{x} + w\cdot\vetor{x},&
+                        &= z\cdot\vetor{x} + z\cdot\vetor{y},
+    \end{align*}
+    isto é, a multiplicação por escalar é compatível com a multiplicação no corpo dos complexos, distributiva em relação à soma vetorial e à soma no corpo dos complexos. Como
+    \begin{equation*}
+        1\cdot\vetor{x} = M(1) \vetor{x} = \unity \vetor{x} = \vetor{x}
+    \end{equation*}
+    concluímos que \((R^2, + , \cdot)\) é um espaço linear sobre \(\mathbb{C}\).
+\end{proof}
