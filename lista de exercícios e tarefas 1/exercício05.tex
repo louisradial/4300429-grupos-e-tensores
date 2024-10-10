@@ -30,13 +30,13 @@
         &= \sum_{i = 1}^3\sum_{j = 1}^3\sum_{k = 1}^3 \sum_{\ell = 1}^3 \sum_{m = 1}^3\epsilon_{jik} \epsilon_{jm\ell}x_i  y_\ell z_m \vetor{e_k}\\
         &= \sum_{i = 1}^3 \sum_{k = 1}^3 \sum_{\ell = 1}^3 \sum_{m = 1}^3 (\delta_{k \ell} \delta_{im} - \delta_{km}\delta_{i\ell}) x_i y_\ell z_m \vetor{e}_k\\
         &= \sum_{i = 1}^3 \sum_{k = 1}^3 x_i y_k z_i \vetor{e}_k - \sum_{i = 1}^3 \sum_{k = 1}^3 x_i y_i z_k \vetor{e}_k\\
-        &= \inner{\vetor{x}}{\vetor{z}}_{\mathbb{R}}\vetor{y} - \inner{\vetor{x}}{\vetor{y}}_{\mathbb{R}}\vetor{z},
+        &= \inner{\vetor{x}}{\vetor{z}}\vetor{y} - \inner{\vetor{x}}{\vetor{y}}\vetor{z},
     \end{align*}
     então por permutações cíclicas obtemos
     \begin{equation*}
-        [\vetor{y},[\vetor{z}, \vetor{x}]] = \inner{\vetor{y}}{\vetor{x}}_{\mathbb{R}}\vetor{z} - \inner{\vetor{y}}{\vetor{z}}_{\mathbb{R}}\vetor{x}
+        [\vetor{y},[\vetor{z}, \vetor{x}]] = \inner{\vetor{y}}{\vetor{x}}\vetor{z} - \inner{\vetor{y}}{\vetor{z}}\vetor{x}
         \quad\text{e}\quad
-        [\vetor{z},[\vetor{x}, \vetor{y}]] = \inner{\vetor{z}}{\vetor{y}}_{\mathbb{R}}\vetor{x} - \inner{\vetor{z}}{\vetor{x}}_{\mathbb{R}}\vetor{y},
+        [\vetor{z},[\vetor{x}, \vetor{y}]] = \inner{\vetor{z}}{\vetor{y}}\vetor{x} - \inner{\vetor{z}}{\vetor{x}}\vetor{y},
     \end{equation*}
     portanto ao somar as três igualdade temos
     \begin{align*}
