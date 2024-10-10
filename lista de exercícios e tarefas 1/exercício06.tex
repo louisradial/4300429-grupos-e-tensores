@@ -1,0 +1,120 @@
+\section{Álgebras de Lie matriciais}
+\begin{proposition}{Álgebra de Lie matricial}{exercício6a}
+    Seja \(\mathbb{K}\) um corpo (que é igual a ou \(\mathbb{R}\) ou \(\mathbb{C}\)) e seja \(n \in \mathbb{N}\). Sendo
+    \begin{align*}
+        [\noarg,\noarg] : \mathrm{Mat}(n, \mathbb{K}) \times \mathrm{Mat}(n, \mathbb{K}) &\to \mathrm{Mat}(n, \mathbb{K})\\
+                                                                                   (A,B) &\mapsto AB - BA
+    \end{align*}
+    o \emph{comutador de matrizes}, então \((\mathrm{Mat}(n, \mathbb{K}), [\noarg, \noarg])\) é uma álgebra de Lie sobre \(\mathbb{K}\).
+\end{proposition}
+\begin{proof}
+    Notemos que o comutador é anticomutativo, pois
+    \begin{equation*}
+        [A, B] = AB - BA = - (BA - AB) = -[B,A]
+    \end{equation*}
+    vale para todos \(A, B \in \mathrm{Mat}(n, \mathbb{K})\). Sejam \(A, B, C \in \mathrm{Mat}(n, \mathbb{K})\) e \(\lambda \in \mathbb{K}\), então
+    \begin{align*}
+        [A, B + C] &= A(B+C) - (B+C)A&
+        [A, \lambda B] &= A(\lambda B) - (\lambda B)A\\
+                      &= AB + AC - BA - CA&
+                      &= \lambda \left(AB - BA\right)\\
+                      &= [A, B] + [A, C]&
+                      &= \lambda [A,B],
+    \end{align*}
+    portanto concluímos que o produto é \(\mathbb{K}\)-linear em seu segundo argumento. Como o produto é anticomutativo, concluímos que o produto é \(\mathbb{K}\)-bilinear e então \((\mathrm{Mat}(n, \mathbb{K}), [\noarg, \noarg])\) é uma álgebra sobre \(\mathbb{K}\). Temos ainda
+    \begin{align*}
+        [A, [B, C]] = A[B, C] - [B,C]A &= \colorunderline{Mauve}{ABC} - \colorunderline{Red}{ACB} - \colorunderline{Yellow}{BCA} + \colorunderline{Pink}{CBA}\\
+        [C, [A, B]] = C[A, B] - [A,B]C &= \colorunderline{Peach}{CAB} - \colorunderline{Pink}{CBA} - \colorunderline{Mauve}{ABC} + \colorunderline{Teal}{BAC}\\
+        [B, [C, A]] = B[C, A] - [C,A]B &= \colorunderline{Yellow}{BCA} - \colorunderline{Teal}{BAC} - \colorunderline{Peach}{CAB} + \colorunderline{Red}{ACB},
+    \end{align*}
+    portanto
+    \begin{equation*}
+        [A,[B,C]] + [C,[A,B]] + [B, [C,A]] = 0
+    \end{equation*}
+    para todos \(A,B, C \in \mathrm{Mat}(n, \mathbb{K})\). Mostramos que a álgebra \((\mathrm{Mat}(n, \mathbb{K}), [\noarg, \noarg])\) tem um produto anticomutativo e que satisfaz a identidade de Jacobi, portanto é uma álgebra de Lie sobre \(\mathbb{K}\).
+\end{proof}
+\begin{corollary}
+    \((\mathrm{Mat}(n, \mathbb{C}), [\noarg, \noarg])\) é uma álgebra de Lie sobre \(\mathbb{R}\).
+\end{corollary}
+\begin{proof}
+    Basta limitar \(\lambda \in \mathbb{R}\) na demonstração anterior.
+\end{proof}
+
+\begin{proposition}{Álgebra de Lie de matrizes de traço nulo}{exercício6b}
+    Seja \(\mathfrak{sl}(n, \mathbb{K}) = \setc{A \in \mathrm{Mat}(n, \mathbb{K})}{\Tr(A) = 0}\) o conjunto de matrizes de traço nulo. Então \((\mathfrak{sl}(n, \mathbb{K}), [\noarg, \noarg])\) é uma álgebra de Lie sobre \(\mathbb{K}\).
+\end{proposition}
+\begin{proof}
+    Sejam \(A, B \in \mathfrak{sl}(n, \mathbb{K})\) e \(\lambda \in \mathbb{K}\), então
+    \begin{equation*}
+        \Tr(A + \lambda B) = \Tr(A) + \lambda \Tr(B) = 0,
+    \end{equation*}
+    portanto \(\mathfrak{sl}(n, \mathbb{K})\) é um subespaço linear de \(\mathrm{Mat}(n, \mathbb{K})\), já que \(0 \in \mathfrak{sl}(n, \mathbb{K})\). Temos também
+    \begin{equation*}
+        \Tr[A,B] = \Tr(AB) - \Tr(BA) = 0,
+    \end{equation*}
+    isto é, \(\mathfrak{sl}(n, \mathbb{K})\) é uma subálgebra de Lie de \(\mathrm{Mat}(n, \mathbb{K})\).
+\end{proof}
+
+\begin{proposition}{Álgebra de Lie de matrizes reais antissimétricas}{exercício6c}
+    Seja \(\mathfrak{so}(n, \mathbb{R}) = \setc{A \in \mathrm{Mat}(n, \mathbb{R})}{A^\intercal = -A}\) o conjunto de matrizes antissimétricas. Então \((\mathfrak{so}(n, \mathbb{R}), [\noarg, \noarg])\) é uma álgebra de Lie sobre \(\mathbb{R}\).
+\end{proposition}
+\begin{proof}
+    Sejam \(A, B \in \mathfrak{so}(n, \mathbb{R})\) e \(\lambda \in \mathbb{R}\), então
+    \begin{equation*}
+        (A + \lambda B)^\intercal = A^\intercal + \lambda B^\intercal = - A - \lambda B = - (A + \lambda B),
+    \end{equation*}
+    portanto \(\mathfrak{so}(n, \mathbb{R})\) é um subespaço linear de \(\mathrm{Mat}(n, \mathbb{R})\), já que \(0 \in \mathfrak{so}(n, \mathbb{R})\). Temos também
+    \begin{equation*}
+        [A,B]^\intercal = (AB - BA)^\intercal = B^\intercal A^\intercal - A^\intercal B^\intercal = BA - AB = -[A,B],
+    \end{equation*}
+    isto é, \(\mathfrak{so}(n, \mathbb{R})\) é uma subálgebra de Lie de \(\mathrm{Mat}(n, \mathbb{R})\).
+\end{proof}
+
+\begin{proposition}{Álgebra de Lie de matrizes anti-autoadjuntas}{exercício6d}
+    Seja \(\mathfrak{u}(n, \mathbb{C}) = \setc{A \in \mathrm{Mat}(n, \mathbb{C})}{A^* = -A}\) o conjunto de matrizes anti-autoadjuntas. Então \((\mathfrak{u}(n, \mathbb{C}), [\noarg, \noarg])\) é uma álgebra de Lie sobre \(\mathbb{R}\).
+\end{proposition}
+\begin{proof}
+    Sejam \(A, B \in \mathfrak{u}(n, \mathbb{C})\) e \(\lambda \in \mathbb{R}\), então
+    \begin{equation*}
+        (A + \lambda B)^* = A^* + \conj{\lambda} B^* = - A - \lambda B = - (A + \lambda B),
+    \end{equation*}
+    portanto \(\mathfrak{u}(n, \mathbb{C})\) é um subespaço linear real de \(\mathrm{Mat}(n, \mathbb{C})\), já que \(0 \in \mathfrak{u}(n, \mathbb{C})\). Temos também
+    \begin{equation*}
+        [A,B]^* = (AB - BA)^* = B^* A^* - A^* B^* = BA - AB = -[A,B],
+    \end{equation*}
+    isto é, \(\mathfrak{u}(n, \mathbb{C})\) é uma subálgebra de Lie real de \(\mathrm{Mat}(n, \mathbb{C})\).
+\end{proof}
+
+\begin{proposition}{Álgebra de Lie de matrizes anti-autoadjuntas e de traço nulo}{exercício6e}
+    Seja \(\mathfrak{su}(n, \mathbb{C}) = \setc{A \in \mathrm{Mat}(n, \mathbb{C})}{A^*= -A\land \Tr{A} = 0}\) o conjunto de matrizes anti-autoadjuntas e de traço nulo. Então \((\mathfrak{su}(n, \mathbb{C}), [\noarg, \noarg])\) é uma álgebra de Lie sobre \(\mathbb{R}\).
+\end{proposition}
+\begin{proof}
+    Sejam \(A, B \in \mathfrak{su}(n, \mathbb{C})\) e \(\lambda \in \mathbb{R}\), então
+    \begin{equation*}
+        (A + \lambda B)^* = A^* + \conj{\lambda} B^* = - A - \lambda B = - (A + \lambda B)
+        \quad\text{e}\quad
+        \Tr(A + \lambda B) = \Tr(A) + \lambda \Tr(B) = 0,
+    \end{equation*}
+    portanto \(\mathfrak{su}(n, \mathbb{C})\) é um subespaço linear real de \(\mathrm{Mat}(n, \mathbb{C})\), já que \(0 \in \mathfrak{su}(n, \mathbb{C})\). Temos também
+    \begin{equation*}
+        [A,B]^* = (AB - BA)^* = B^* A^* - A^* B^* = BA - AB = -[A,B]
+        \quad\text{e}\quad
+        \Tr[A,B] = \Tr(AB) - \Tr(BA) = 0,
+    \end{equation*}
+    isto é, \(\mathfrak{su}(n, \mathbb{C})\) é uma subálgebra de Lie real de \(\mathrm{Mat}(n, \mathbb{C})\).
+\end{proof}
+
+\begin{proposition}{Subálgebra de Lie matricial}{exercício6f}
+    Seja \(M \in \mathrm{Mat}(n, \mathbb{K})\) e seja \(\mathfrak{g} = \setc{A \in \mathrm{Mat}(n, \mathbb{K})}{AM = -MA^*}\). Então \((\mathfrak{g}, [\noarg, \noarg])\) é uma álgebra de Lie sobre \(\mathbb{R}\).
+\end{proposition}
+\begin{proof}
+    Sejam \(A, B \in \mathfrak{g}\) e \(\lambda \in \mathbb{R}\), então
+    \begin{equation*}
+        (A+ \lambda B)M = AM + \lambda BM = -MA^* - M(\conj{\lambda}B^*) = -M(A + \lambda B)^*,
+    \end{equation*}
+    portanto \(\mathfrak{g}\) é um subespaço linear real de \(\mathrm{Mat}(n, \mathbb{K})\). Temos também
+    \begin{equation*}
+        [A,B]M = (AB - BA)M = -AMB^* + BMA^* = MA^*B^* - MB^*A^* = -M(AB - BA)^* = -M[A, B]^*,
+    \end{equation*}
+    isto é, \(\mathfrak{g}\) é uma subálgebra de Lie real de \(\mathrm{Mat}(n, \mathbb{K})\).
+\end{proof}
