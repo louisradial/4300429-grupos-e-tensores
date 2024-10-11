@@ -5,10 +5,70 @@
         \oplus : V \times V &\to V&
         \odot : \mathbb{R} \times V &\to V\\
         (x,y) &\mapsto \frac{xy}{1 - x - y + 2xy}&
-        (\alpha,x) &\mapsto \frac{x^\alpha}{x^\alpha - (1-x)^\alpha}.
+        (\alpha,x) &\mapsto \frac{x^\alpha}{x^\alpha + (1-x)^\alpha}.
     \end{align*}
     Então, \((V, \oplus, \odot)\) é um espaço linear sobre \(\mathbb{R}\).
 \end{proposition}
 \begin{proof}
+    Sejam \(u, v \in V\) e \(\gamma \in \mathbb{R}\). Então \(u^\gamma + (1 - u)^\gamma > 0\) e
+    \begin{equation*}
+        \gamma \oplus u = \frac{u^\gamma}{u^\gamma + (1 - u)^\gamma} = \frac{1}{1 + \left(\frac{1}{u} - 1\right)^\gamma} \in (0,1)
+    \end{equation*}
+    já que \(\frac{1}{u} > 1\). Notemos que \(1 - u - v + 2uv = (1 - u)(1 - v) + uv > 0\), logo
+    \begin{equation*}
+        u \oplus v = \frac{uv}{1 - u - v + 2uv} = \frac{1}{\left(\frac{1}{u} - 1\right)(\frac{1}{v} - 1) + 1} \in (0,1),
+    \end{equation*}
+    uma vez que \(\frac{1}{v} > 1\). Desse modo concluímos que \(\oplus\) e \(\odot\) são aplicações com contradomínio em \(V\).
 
+    Sejam \(x, y, z \in V\), então
+    \begin{equation*}
+        x \oplus y = \frac{xy}{1 - x - y + 2xy} = \frac{yx}{1 - y - x + 2yx} = y \oplus x,
+    \end{equation*}
+    e
+    \begin{align*}
+        x \oplus (y \oplus z) &= x \oplus \frac{yz}{1 - y - z + 2yz}&
+        (x \oplus y) \oplus z &= \frac{xy}{1 - x - y + 2xy} \oplus z\\
+                              &= \frac{x\frac{yz}{1 - y - z + 2yz}}{1 - x - \frac{yz}{1 - y - z + 2yz} + 2x\frac{yz}{1 - y - z + 2yz}}&
+                              &= \frac{\frac{xy}{1 - x - y + 2xy}z }{1 - \frac{xy}{1 - x - y + 2xy} - z + 2\frac{xy}{1 - x - y + 2xy}z}\\
+                              &= \textstyle\frac{xyz}{1- x - y - z + yz + xy + xz + 4xyz}&
+                              &= \textstyle\frac{xyz}{1 - x - y - z + yz + xy + xz + 4x yz},
+    \end{align*}
+    portanto \(\oplus\) é comutativo e associativo. Notemos que
+    \begin{equation*}
+        \frac12 \oplus x = \frac{\frac12x}{\frac12 - x + x} = x,
+    \end{equation*}
+    portanto \(\frac12 \in V\) é o elemento neutro de \(\oplus\). Notemos que \(1 - x \in V\) é o elemento inverso de \(x \in V\) pois
+    \begin{equation*}
+        (1-x) \oplus x = \frac{(1-x)x}{1 - (1 - x) - x + 2x(1-x)} = \frac{x(1-x)}{2x(1-x)} = \frac12,
+    \end{equation*}
+    então concluímos que \((V, \oplus)\) é um grupo abeliano.
+
+    Sejam \(\alpha, \beta \in \mathbb{R}\), então
+    \begin{equation*}
+        \alpha \odot (\beta \odot x)
+        = \alpha \odot \frac{x^\beta}{x^\beta + (1 - x)^\beta}
+        = \frac{\left[\frac{x^\beta}{x^\beta + (1 - x)^\beta} \right]^\alpha}{\left[\frac{x^\beta}{x^\beta + (1 - x)^\beta}\right]^\alpha + \left[\frac{(1- x)^\beta}{x^\beta + (1 - x)^\beta}\right]^\alpha} = \frac{x^{\beta \alpha}}{x^{\beta \alpha} + (1 - x)^{\beta \alpha}} = (\alpha \beta)\odot x,
+    \end{equation*}
+    portanto \(\odot\) é compatível com a multiplicação em \(\mathbb{R}\). Temos
+    \begin{align*}
+        \alpha\odot x + \beta\odot x
+        &= \frac{\frac{x^\alpha}{x^\alpha + (1- x)^\alpha}\frac{x^\beta}{x^\beta + (1- x)^\beta}}{1 - \frac{x^\alpha}{x^\alpha + (1- x)^\alpha} - \frac{x^\beta}{x^\beta + (1- x)^\beta} + 2 \frac{x^\alpha}{x^\alpha + (1- x)^\alpha}\frac{x^\beta}{x^\beta + (1- x)^\beta}}\\
+        &= \frac{x^{\alpha + \beta}}{[x^\alpha + (1 - x)^\alpha][x^\beta + (1 - x)^\beta] - x^\alpha[x^\beta + (1 - x)^\beta] - x^\beta [x^\alpha + (1 - x)^\alpha] + 2x^{\alpha + \beta}}\\
+        &= \frac{x^{\alpha + \beta}}{x^{\alpha + \beta} + (1 - x)^{\alpha + \beta}}\\
+        &= (\alpha + \beta)\odot x,
+    \end{align*}
+    e
+    \begin{align*}
+        \alpha \odot x \oplus \alpha \odot y
+        &= \frac{\frac{x^\alpha}{x^\alpha + (1-x)^\alpha}\frac{y^\alpha}{y^\alpha + (1-y)^\alpha}}{1 - \frac{x^\alpha}{x^\alpha + (1-x)^\alpha} - \frac{y^\alpha}{y^\alpha + (1-y)^\alpha} + 2 \frac{x^\alpha}{x^\alpha + (1-x)^\alpha}\frac{y^\alpha}{y^\alpha + (1-y)^\alpha}}\\
+        &= \frac{(xy)^\alpha}{[x^\alpha + (1 - x)^\alpha][y^\alpha + (1-y)^\alpha] - x^\alpha [y^\alpha + (1 - y)^\alpha] - y^\alpha[x^\alpha + (1 - x)^\alpha] + 2(xy)^\alpha}\\
+        &= \frac{(xy)^\alpha}{[(1 - x)(1 - y)]^\alpha + (xy)^\alpha}\\
+        &= \frac{\left(\frac{xy}{1 - x - y + 2xy}\right)^\alpha}{\left(1 - \frac{xy}{1 - x - y + 2xy}\right)^\alpha + \left(\frac{xy}{1 - x - y +2xy}\right)^\alpha}\\
+        &= \alpha \odot (x \oplus y),
+    \end{align*}
+    portanto \(\odot\) é distributivo em relação à soma em \(\mathbb{R}\) e em relação à soma em \(V\). Como
+    \begin{equation*}
+        1 \odot x = \frac{x}{x + (1-x)} = x,
+    \end{equation*}
+    mostramos que \((V, \oplus, \odot)\) é um espaço linear sobre \(\mathbb{R}\).
 \end{proof}
