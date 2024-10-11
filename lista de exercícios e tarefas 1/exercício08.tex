@@ -1,0 +1,205 @@
+\section{Álgebra quaterniônica}
+\begin{definition}{Produto quaterniônico}{exercício8}
+    Seja \(\set{\vetor{e}_0, \vetor{e}_1, \vetor{e}_2, \vetor{e}_3}\) a base canônica de \(\mathbb{R}^4\). A aplicação definida por
+    \begin{align*}
+        \cdot : \mathbb{R}^4 \times \mathbb{R}^4 &\to \mathbb{R}^4\\
+        (\vetor{x},\vetor{y}) &\mapsto (x_0 y_0 - x_1 y_1 - x_2y_2 - x_3y_3)\vetor{e}_0 + (x_0y_1 + y_0x_1 + x_2y_3 - x_3 y_2)\vetor{e}_1 + \\
+                              &\mathrel{\phantom{\mapsto}} (x_0y_2 + y_0x_2 + x_3y_1 - x_1y_3)\vetor{e}_2 + (x_0y_3 + y_0x_3 + x_1y_2 - x_2y_1)\vetor{e}_3
+    \end{align*}
+    é chamada de \emph{produto quaterniônico}. O espaço linear \(\mathbb{R}^4\) sobre \(\mathbb{R}\) dotado deste produto é denotado por \(\mathbb{H}\) e é denominada \emph{álgebra dos quatérnios}.
+\end{definition}
+\begin{remark}
+    Utilizaremos a notação de Einstein com a convenção de que índices do alfabeto latino pertencem ao conjunto \(\set{1,2,3}\) e do alfabeto grego pertencem ao conjunto \(\set{0,1,2,3}\).
+\end{remark}
+
+\begin{proposition}{Álgebra dos quatérnios}{exercício8a}
+    O produto quaterniônico é bilinear e
+    \begin{enumerate}[label=(\alph*)]
+        \item \(\vetor{e}_0\cdot\vetor{x} = \vetor{x}\cdot\vetor{e}_0 = \vetor{x}\) para todo \(\vetor{x} \in \mathbb{H}\); e
+        \item \(\vetor{e}_{i}\cdot\vetor{e}_j = - \delta_{ij} \vetor{e}_0 + \epsilon_{ijk} \vetor{e}_k\).
+    \end{enumerate}
+    Assim, \(\mathbb{H}\) é uma álgebra unital associativa não abeliana.
+\end{proposition}
+\begin{proof}
+    Sejam \(\vetor{x}, \vetor{y}, \vetor{z} \in \mathbb{H}\) e \(\lambda \in \mathbb{R}\), então
+    \begin{align*}
+        \vetor{x}\cdot(\vetor{y} + \vetor{z}) &= [x_0 (y_0+z_0) - x_1 (y_1+z_1) - x_2(y_2+z_2) - x_3(y_3+z_3)]\vetor{e}_0 +\\
+                                              &\mathrel{\phantom{=}}[x_0(y_1+z_1) + (y_0+z_0) x_1 + x_2(y_3+z_3) - x_3 (y_2+z_2)]\vetor{e}_1 +\\
+                                              &\mathrel{\phantom{=}}[x_0(y_2+z_2) + (y_0+z_0)x_2 + x_3(y_1+z_1) - x_1(y_3+z_3)]\vetor{e}_2 +\\
+                                              &\mathrel{\phantom{=}}[x_0(y_3+z_3) + (y_0+z_0)x_3 + x_1(y_2+z_2) - x_2(y_1+z_1)]\vetor{e}_3\\
+                                              &= [x_0 y_0 - x_1 y_1 - x_2y_2 - x_3y_3]\vetor{e}_0 +[x_0 z_0 - x_1 z_1 - x_2z_2 - x_3z_3]\vetor{e}_0 +\\
+                                              &\mathrel{\phantom{=}}[x_0y_1+ y_0 x_1 + x_2y_3 - x_3 y_2]\vetor{e}_1 +[x_0z_1+ z_0 x_1 + x_2z_3 - x_3 z_2]\vetor{e}_1 +\\
+                                              &\mathrel{\phantom{=}}[x_0y_2 + y_0x_2 + x_3y_1 - x_1y_3]\vetor{e}_2 +[x_0z_2 + z_0x_2 + x_3z_1 - x_1z_3]\vetor{e}_2 +\\
+                                              &\mathrel{\phantom{=}}[x_0y_3 + y_0x_3 + x_1y_2 - x_2y_1]\vetor{e}_3 + [x_0z_3 + z_0x_3 + x_1z_2 - x_2z_1]\vetor{e}_3\\
+                                              &= \vetor{x}\cdot\vetor{y} + \vetor{x}\cdot\vetor{z},\\
+        (\vetor{x}+\vetor{z})\cdot\vetor{y} &=
+        [(x_0 + z_0) y_0 - (x_1 + z_1) y_1 - (x_2 + z_2)y_2 - (x_3 + z_3)y_3]\vetor{e}_0 +\\
+                                            &\mathrel{\phantom{=}}[(x_0 + z_0)y_1 + y_0 (x_1 + z_1) + (x_2 + z_2)y_3 - (x_3 + z_3) y_2]\vetor{e}_1 + \\
+                                            &\mathrel{\phantom{=}}[(x_0 + z_0)y_2 + y_0(x_2 + z_2) + (x_3 + z_3)y_1 - (x_1 + z_1)y_3]\vetor{e}_2 +\\
+                                            &\mathrel{\phantom{=}}[(x_0 + z_0)y_3 + y_0(x_3 + z_3) + (x_1 + z_1)y_2 - (x_2 + z_2)y_1]\vetor{e}_3\\
+                                            &= [x_0 y_0 - x_1 y_1 - x_2y_2 - x_3y_3]\vetor{e}_0 + [z_0 y_0 - z_1 y_1 - z_2y_2 - z_3y_3]\vetor{e}_0 +\\
+                                            &\mathrel{\phantom{=}}[x_0y_1 + y_0 x_1 + x_2y_3 - x_3 y_2]\vetor{e}_1 + [z_0y_1 + y_0 z_1 + z_2y_3 - z_3 y_2]\vetor{e}_1 +\\
+                                            &\mathrel{\phantom{=}}[x_0y_2 + y_0x_2 + x_3y_1 - x_1y_3]\vetor{e}_2 + [z_0y_2 + y_0z_2 + z_3y_1 - z_1y_3]\vetor{e}_2 +\\
+                                            &\mathrel{\phantom{=}}[x_0y_3 + y_0x_3 + x_1y_2 - x_2y_1]\vetor{e}_3+ [z_0y_3 + y_0z_3 + z_1y_2 - z_2y_1]\vetor{e}_3\\
+                                            &= \vetor{x}\cdot\vetor{y} + \vetor{z}\cdot\vetor{y},
+    \end{align*}
+    e
+    \begin{align*}
+        \vetor{x}\cdot(\lambda\vetor{y}) &= [x_0 (\lambda y_0) - x_1 (\lambda y_1) - x_2(\lambda y_2) - x_3(\lambda y_3)]\vetor{e}_0 + [x_0(\lambda y_1) + (\lambda y_0)x_1 + x_2(\lambda y_3) - x_3 (\lambda y_2)]\vetor{e}_1 + \\
+                                         &\mathrel{\phantom{=}} [x_0(\lambda y_2) + (\lambda y_0)x_2 + x_3(\lambda y_1) - x_1(\lambda y_3)]\vetor{e}_2 + [x_0(\lambda y_3) + (\lambda y_0)x_3 + x_1(\lambda y_2) - x_2(\lambda y_1)]\vetor{e}_3\\
+                                         &= [(\lambda x_0) y_0 - (\lambda x_1) y_1 - (\lambda x_2)y_2 - (\lambda x_3)y_3]\vetor{e}_0 + [(\lambda x_0)y_1 + y_0(\lambda x_1) + (\lambda x_2)y_3 - (\lambda x_3) y_2]\vetor{e}_1 + \\
+                                         &\mathrel{\phantom{=}} [(\lambda x_0)y_2 + y_0(\lambda x_2) + (\lambda x_3)y_1 - (\lambda x_1)y_3]\vetor{e}_2 + [(\lambda x_0)y_3 + y_0(\lambda x_3) + (\lambda x_1)y_2 - (\lambda x_2)y_1]\vetor{e}_3\\
+                                         &= (\lambda \vetor{x})\cdot\vetor{y}\\
+                                         &= (\lambda x_0 y_0 - \lambda x_1 y_1 - \lambda x_2y_2 - \lambda x_3y_3)\vetor{e}_0 + (\lambda x_0y_1 + \lambda y_0 x_1 + \lambda x_2y_3 - \lambda x_3 y_2)\vetor{e}_1 +\\
+                                         &\mathrel{\phantom{=}}(\lambda x_0y_2 + \lambda y_0x_2 + \lambda x_3y_1 - \lambda x_1y_3)\vetor{e}_2 + (\lambda x_0y_3 + \lambda y_0x_3 + \lambda x_1y_2 - \lambda x_2y_1)\vetor{e}_3 \\
+                                         &= \lambda\left[(x_0 y_0 - x_1 y_1 - x_2y_2 - x_3y_3)\vetor{e}_0 + (x_0y_1 + y_0 x_1 + x_2y_3 - x_3 y_2)\vetor{e}_1 +\right.\\
+                                         &\mathrel{\phantom{=}}\phantom{\lambda[}\left.(x_0y_2 + y_0x_2 + x_3y_1 - x_1y_3)\vetor{e}_2 + (x_0y_3 + y_0x_3 + x_1y_2 - x_2y_1)\vetor{e}_3\right]\\
+                                         &= \lambda(\vetor{x}\cdot \vetor{y})
+    \end{align*}
+    logo o produto quaterniônico é \(\mathbb{R}\)-bilinear e concluímos que \(\mathbb{H}\) é uma álgebra sobre \(\mathbb{R}\). Desse modo, podemos estudar o produto utilizando apenas a base \(\set{\vetor{e}_0, \vetor{e}_1, \vetor{e}_2, \vetor{e}_3}\). Notemos que
+    \begin{equation*}
+        \vetor{e}_0\cdot\vetor{y} = y_0\vetor{e}_0 + y_1\vetor{e}_1 + y_2 \vetor{e}_2 + y_3\vetor{e}_3 = \vetor{y} = \vetor{y}\cdot\vetor{e}_0,
+    \end{equation*}
+    portanto \(\vetor{e}_0\) é a identidade de \(\mathbb{H}\). Para \(i,j \in \set{1,2,3}\) temos
+    \begin{align*}
+        \vetor{e}_i\cdot\vetor{e}_j
+        &= (\delta_{0 i} \delta_{0 j} - \delta_{1 i} \delta_{1 j} - \delta_{2 i}\delta_{2 j} - \delta_{3 i}\delta_{3 j})\vetor{e}_0 + (\delta_{0 i}\delta_{1 j} + \delta_{0 j}\delta_{1 i} + \delta_{2 i}\delta_{3 j} - \delta_{3 i} \delta_{2 j})\vetor{e}_1 + \\
+        &\mathrel{\phantom{=}} (\delta_{0 i}\delta_{2 j} + \delta_{0 j}\delta_{2 i} + \delta_{3 i}\delta_{1 j} - \delta_{1 i}\delta_{3 j})\vetor{e}_2 + (\delta_{0 i}\delta_{3 j} + \delta_{0 j}\delta_{3 i} + \delta_{1 i}\delta_{2 j} - \delta_{2 i}\delta_{1 j})\vetor{e}_3\\
+        &= -(\delta_{1 i} \delta_{1 j} + \delta_{2 i}\delta_{2 j} + \delta_{3 i}\delta_{3 j})\vetor{e}_0 + (\delta_{2 i}\delta_{3 j} - \delta_{3 i} \delta_{2 j})\vetor{e}_1 +
+        (\delta_{3 i}\delta_{1 j} - \delta_{1 i}\delta_{3 j})\vetor{e}_2 + (\delta_{1 i}\delta_{2 j} - \delta_{2 i}\delta_{1 j})\vetor{e}_3\\
+        &= -\delta_{ij} \vetor{e}_0 + \epsilon_{ij\ell } \epsilon_{\ell 23} \vetor{e}_1 + \epsilon_{ij\ell }\epsilon_{\ell 31}\vetor{e}_2 + \epsilon_{ij\ell }\epsilon_{\ell 12} \vetor{e}_3\\
+        &= -\delta_{ij}\vetor{e}_0 + \epsilon_{ij\ell } (\delta_{\ell 1}\vetor{e}_1 + \delta_{\ell 2} \vetor{e}_2 + \delta_{\ell 3}\vetor{e}_3)\\
+        &= -\delta_{ij}\vetor{e}_0 + \epsilon_{ij\ell} \delta_{\ell k} \vetor{e}_k\\
+        &= -\delta_{ij}\vetor{e}_0 + \epsilon_{ijk}\vetor{e}_k.
+    \end{align*}
+    Este resultado nos mostra que, por exemplo, \(\vetor{e}_1\cdot\vetor{e}_2 = - \vetor{e}_2 \cdot\vetor{e}_1\), portanto \(\mathbb{H}\) é uma álgebra unital não abeliana. Assim, temos
+    \begin{align*}
+        (\vetor{e}_i \cdot \vetor{e}_j)\cdot\vetor{e}_k
+        &= (-\delta_{ij}\vetor{e}_0 + \epsilon_{ij\ell}\vetor{e}_\ell)\cdot\vetor{e}_k\\
+        &= -\delta_{ij}\vetor{e}_k + \epsilon_{ij\ell}(-\delta_{\ell k}\vetor{e}_0 + \epsilon_{\ell k m}\vetor{e}_m)\\
+        &= -\epsilon_{ijk}\vetor{e}_0 - \delta_{ij}\vetor{e}_k + (\delta_{i k}\delta_{jm} - \delta_{im}\delta_{jk})\vetor{e}_m\\
+        &= -\epsilon_{ijk} \vetor{e}_0 - \delta_{ij}\vetor{e}_k + \delta_{ik}\vetor{e}_j - \delta_{jk}\vetor{e}_i
+    \end{align*}
+    e
+    \begin{align*}
+        \vetor{e}_i \cdot(\vetor{e}_j \cdot \vetor{e}_k)
+        &= \vetor{e}_i\cdot\left(-\delta_{jk}\vetor{e}_0 + \epsilon_{jk\ell}\vetor{e}_\ell\right)\\
+        &= -\delta_{jk}\vetor{e}_i + \epsilon_{jk\ell} (-\delta_{i\ell}\vetor{e}_0 + \epsilon_{i\ell m}\vetor{e}_m)\\
+        &= - \epsilon_{jki} \vetor{e}_0 - \delta_{jk}\vetor{e}_i + (\delta_{jm} \delta_{ki} - \delta_{ji}\delta_{km})\vetor{e}_m\\
+        &= -\epsilon_{ijk}\vetor{e}_0 - \delta_{jk}\vetor{e}_i + \delta_{ik}\vetor{e}_j - \delta_{ij}\vetor{e}_k,
+    \end{align*}
+    isto é, \(\vetor{e}_i\cdot(\vetor{e}_j\cdot\vetor{e}_k)= (\vetor{e}_i\cdot\vetor{e}_j)\cdot\vetor{e}_k\) para todos \(i,j,k \in \set{1,2,3}\) e, então, podemos escrever o resultado como \(\vetor{e}_i\vetor{e}_j\vetor{e}_k\) sem ambiguidade. Desse modo, temos
+    \begin{align*}
+        (\vetor{e}_{\alpha}\cdot\vetor{e}_{\beta})\cdot\vetor{e}_{\gamma}
+        &= (\delta_{\alpha0}\vetor{e}_{\beta} + \delta_{\alpha a}\vetor{e}_a\cdot \vetor{e}_{\beta})\cdot\vetor{e}_{\gamma}
+        = \delta_{\alpha 0}\vetor{e}_{\beta}\cdot \vetor{e}_{\gamma} + \delta_{\alpha a} \delta_{\beta 0} \vetor{e}_{a} \cdot\vetor{e}_{\gamma} + \delta_{\alpha a} \delta_{\beta b}(\vetor{e}_a \cdot \vetor{e}_b) \cdot \vetor{e}_{\gamma}\\
+        &= \delta_{\alpha 0}\vetor{e}_{\beta}\cdot \vetor{e}_{\gamma} + \delta_{\alpha a} \delta_{\beta 0} \vetor{e}_{a} \cdot\vetor{e}_{\gamma} + \delta_{\alpha a} \delta_{\beta b} \delta_{\gamma 0}\vetor{e}_a \cdot \vetor{e}_b + \delta_{\alpha a} \delta_{\beta b} \delta_{\gamma c} \vetor{e}_a\vetor{e}_b\vetor{e}_c
+        % &= (\delta_{\alpha0}\delta_{\beta 0}\vetor{e}_0 + \delta_{\alpha0}\delta_{\beta b} \vetor{e}_{b} + \delta_{\alpha a}\delta_{\beta 0}\vetor{e}_a  + \delta_{\alpha a}\delta_{\beta b}\vetor{e}_a\cdot \vetor{e}_b)\cdot\vetor{e}_{\gamma}\\
+        % &= \delta_{\alpha0}\delta_{\beta0}\delta_{\gamma 0} \vetor{e}_0 + \delta_{\alpha a}\delta_{\beta 0}\delta_{\gamma 0} \vetor{e}_a + \delta_{\alpha0} \delta_{\beta b}\delta_{\gamma 0} \vetor{e}_b +  \delta_{\alpha 0} \delta_{\beta 0} \delta_{\gamma c} \vetor{e}_c +\\
+        % &\mathrel{\phantom{=}} \delta_{\alpha 0} \delta_{\beta b} \delta_{\gamma c}\vetor{e}_b\cdot\vetor{e}_c + \delta_{\alpha a}\delta_{\beta 0} \delta_{\gamma c} \vetor{e}_a \cdot \vetor{e}_c + \delta_{\alpha a}\delta_{\beta b}\delta_{\gamma c} \vetor{e}_a\vetor{e}_b\vetor{e}_c
+    \end{align*}
+    e
+    \begin{align*}
+        \vetor{e}_{\alpha}\cdot(\vetor{e}_{\beta}\cdot\vetor{e}_{\gamma})
+        &= \delta_{\alpha 0} \vetor{e}_{\beta}\cdot\vetor{e}_{\gamma} + \delta_{\alpha a}\vetor{e}_{a}\cdot(\delta_{\beta0} \vetor{e}_{\gamma} + \delta_{\beta b}\vetor{e}_b \cdot \vetor{e}_{\gamma})\\
+        &= \delta_{\alpha 0} \vetor{e}_{\beta}\cdot\vetor{e}_{\gamma} + \delta_{\alpha a}\delta_{\beta 0} \vetor{e}_{a}\cdot \vetor{e}_{\gamma} + \delta_{\alpha a} \delta_{\beta b}\delta_{\gamma 0}\vetor{e}_{a}\cdot\vetor{e}_{b} + \delta_{\alpha a}\delta_{\beta b} \delta_{\gamma c} \vetor{e}_a\vetor{e}_{b}\vetor{e}_c,
+    \end{align*}
+    isto é, \(\vetor{e}_{\alpha}\cdot(\vetor{e}_{\beta}\cdot\vetor{e}_{\gamma}) = (\vetor{\alpha}\cdot\vetor{e}_{\beta})\vetor{e}_{\gamma}\) para todos \(\alpha,\beta, \gamma \in \set{0,1,2,3}\), e então concluímos que o produto é associativo.
+\end{proof}
+
+\begin{proposition}{Álgebra em \(\mathrm{Mat}(2, \mathbb{C})\) sobre \(\mathbb{R}\)}{exercício8b}
+    A aplicação
+    \begin{align*}
+        M : \mathbb{C} \times \mathbb{C} &\to \mathrm{Mat}(2, \mathbb{C})\\
+                                   (z,w) &\mapsto \begin{pmatrix}
+                                             z & w\\
+                                             -\conj{w} & \conj{z}
+                                         \end{pmatrix},
+    \end{align*}
+    satisfaz
+    \begin{enumerate}[label=(\alph*)]
+        \item \(M(x, y) + \lambda M(z, w) = M(x + \lambda z, y + \lambda w)\), para todos \(x,y,z,w \in \mathbb{C}\) e todo \(\lambda \in \mathbb{C}\); e
+        \item \(M(a,b)M(c,d) = M(ac - b\conj{d}, ad + b\conj{c})\), para todos \(a,b,c,d \in \mathbb{C}\).
+    \end{enumerate}
+    A sua imagem,
+    \begin{equation*}
+        \mathfrak{A} = \setc{M(z,w)}{z,w \in \mathbb{C}},
+    \end{equation*}
+    é uma álgebra sobre \(\mathbb{R}\) com o produto usual de matrizes.
+\end{proposition}
+\begin{proof}
+    É evidente que \(M(0,0) = 0 \in \mathfrak{A}\). Sejam \(A, B \in \mathfrak{A}\) e \(\lambda \in \mathbb{R}\) então existem \(x,y,z,w \in \mathbb{C}\) tais que \(A = M(x,y)\) e \(B = M(z,w)\), e então
+    \begin{align*}
+        A + \lambda B = M(x,y) + \lambda M(z,w) &=
+        \begin{pmatrix}
+            x + \lambda z & y + \lambda w\\
+            -y-\lambda\conj{w} & \conj{x} + \lambda\conj{z}
+        \end{pmatrix}\\&=
+        \begin{pmatrix}
+            x + \lambda z & y + \lambda w\\
+            -(\conj{y + \lambda w}) & \conj{x + \lambda z}
+        \end{pmatrix}\\
+        &= M(x + \lambda z, y + \lambda w) \in \mathfrak{A},
+    \end{align*}
+    portanto \(\mathfrak{A}\) é um subespaço linear de \(\mathrm{Mat}(2,\mathbb{C})\) sobre \(\mathbb{R}\). Sejam \(a,b,c,d \in \mathbb{C}\), então
+    \begin{align*}
+        M(a,b)M(c,d) &=
+        \begin{pmatrix}
+            a & b\\
+            -\conj{b} & \conj{a}
+        \end{pmatrix}
+        \begin{pmatrix}
+            c & d\\
+            -\conj{d} & \conj{c}
+        \end{pmatrix} \\
+        &=
+        \begin{pmatrix}
+            ac - b\conj{d} & ad + b \conj{c}\\
+            -\conj{b} c - \conj{d} \conj{a} & -\conj{b} d + \conj{a} \conj{c}
+        \end{pmatrix}
+        \begin{pmatrix}
+            ac - b\conj{d} & ad + b \conj{c}\\
+            -(\conj{ad + b\conj{c}}) & \conj{ac - b\conj{d}}
+        \end{pmatrix} \\
+        &= M(ac - b\conj{d}, ad + b\conj{c}),
+    \end{align*}
+    o que nos mostra que \(\mathfrak{A}\) é fechado em relação ao produto matricial. Isto é, \(\mathfrak{A}\) é uma subálgebra real de \(\mathrm{Mat}(2, \mathbb{C})\).
+\end{proof}
+
+\begin{proposition}{\(\mathbb{H}\) e \(\mathfrak{A}\) são álgebras isomórficas}{exercício8c}
+    A aplicação
+    \begin{align*}
+        \psi : \mathbb{H} &\to \mathfrak{A}\\
+                \vetor{x} &\mapsto M(x_0 - i x_3, x_2 + ix_1)
+    \end{align*}
+    é um isomorfismo linear, com
+    \begin{enumerate}[label=(\alph*)]
+        \item \(\psi(\vetor{e}_0) = \unity,\) \(\psi(\vetor{e}_1) = i \sigma_1\), \(\psi(\vetor{e}_2) = i \sigma_2\), e \(\psi(\vetor{e}_3) =-i \sigma_3\); e
+        \item \(\psi(\vetor{x})\psi(\vetor{y}) = \psi(\vetor{x}\cdot\vetor{y})\), para todos \(\vetor{x}, \vetor{y} \in \mathbb{H}\).
+    \end{enumerate}
+    Assim, \(\mathbb{H}\) e \(\mathfrak{A}\) são álgebras isomórficas.
+\end{proposition}
+\begin{proof}
+    A afirmação (a) é evidente. Sejam \(\vetor{x}, \vetor{y} \in \mathbb{H}\) e \(\lambda \in \mathbb{R}\), então
+    \begin{align*}
+        \psi(\vetor{x} + \lambda \vetor{y})
+        &= M(x_0 + \lambda y_0 - i x_3 - i \lambda y_3, x_2 + \lambda y_2 + i x_1 + i \lambda y_1)\\
+        &= M(x_0 - i x_3, x_2 + i x_1) + \lambda M(y_0 - i y_3, y_2 + i y_1) \\
+        &= \psi(\vetor{x}) + \lambda \psi(\vetor{y}),
+    \end{align*}
+    portanto \(\psi\) é linear. Seja \(\vetor{z} \in \ker{\psi}\), então da linearidade e de (a), segue que
+    \begin{equation*}
+        z_0 \unity +iz_1 \sigma_1 + iz_2 \sigma_2 - iz_3 \sigma_3 = 0,
+    \end{equation*}
+    portanto sabemos que \(z_0 = iz_1 = iz_2 =-iz_3 = 0\), já que \(\set{\unity, \sigma_1, \sigma_2, \sigma_3}\) é linearmente independente pela \cref{prop:base}. Isto é, \(\vetor{z} = 0\) e concluímos que \(\psi\) é injetora. Seja \(A \in \mathfrak{A}\), então existem \(\alpha, \beta \in \mathbb{C}\) tais que \(A = M(\alpha, \beta)\), isto é, \(A = \psi(\Re{\alpha} \vetor{e}_0+ \Im{\beta}\vetor{e}_1 + \Re{\beta}\vetor{e}_2 - \Im{\alpha}\vetor{e}_3) \in \psi(\mathbb{H})\), mostrando que \(\psi\) é sobrejetora. Finalmente, temos
+    \begin{align*}
+        \psi(\vetor{x})\psi(\vetor{y})
+        &= M(x_0 - ix_3, x_2 + ix_1) M(y_0 - iy_3, y_2 + iy_1)\\
+        &= M[(x_0 - ix_3)(y_0 - iy_3) - (x_2 + ix_1)(y_2 - iy_1), (x_0 - i x_3)(y_2 + iy_1) + (x_2 + i x_1)(y_0 + i y_3)]\\
+        &= M\left[x_0 y_0 - x_1 y_1 - x_2 y_2 - x_3 y_3 - i\left(x_0 y_3 + y_0 x_3 + y_2 x_1 - x_2 y_1\right),\right. \\
+        &\mathrel{\phantom{=}}\phantom{M\mathopen{[}}\left.x_0 y_2 + y_0 x_2 +x_3 y_1 -x_1 y_3 +i\left(x_0y_1 + y_0 x_1 + x_2y_3 - x_3 y_2\right)\right]\\
+        &= M\left[(\vetor{x}\cdot\vetor{y})_0 - i(\vetor{x}\cdot{y})_3, (\vetor{x}\cdot\vetor{y})_2 + i(\vetor{x}\cdot\vetor{y})_1\right]\\
+        &= \psi(\vetor{x}\cdot\vetor{y}),
+    \end{align*}
+    portanto \(\psi\) é um isomorfismo da álgebra \(\mathbb{H}\) na álgebra \(\mathfrak{A}\).
+\end{proof}
