@@ -1,4 +1,47 @@
-\section[Geometria e a fórmula de Rodrigues para o grupo SO(3)]{Geometria e a fórmula de Rodrigues para o grupo \(\mathrm{SO}(3)\)}
+\section[Geometria e a fórmula de Rodrigues para o grupo SO(3)]{Geometria e a fórmula de Rodrigues para o grupo \(\mathrm{SO}(2n - 1)\)}
+\begin{lemma}{1 é autovalor de todo elemento de \(\mathrm{SO}(3)\)}{autovalor_son}
+    Seja \(n \in \mathbb{N}\). Se \(R \in \mathrm{SO}(2n - 1)\), então \(\ker{(\unity - R)}\) é não trivial.
+\end{lemma}
+\begin{proof}
+    Como \(R \in \mathrm{SO}(2n - 1)\), então \(R^\intercal R = \unity\) e \(\det{R} = 1\). Assim, temos
+    \begin{equation*}
+        \det(\unity - R) = \det(R^\intercal R - R) = \det(R^\intercal -\unity)\det{R} = \det{(R-\unity)} = (-1)^{2n - 1}\det{(\unity - R)} = -\det{(\unity - R)},
+    \end{equation*}
+    isto é, \(\det(\unity - R) = 0\). Como \(\unity - R\) não é inversível, então \(\unity - R\) não é injetora, logo seu núcleo é não trivial, \(\ker{(\unity - R)} \neq \set{0}\).
+\end{proof}
+
+\begin{lemma}{Subespaços invariantes de um elemento do grupo \(\mathrm{SO}(2n-1)\)}{subespaços_invariantes}
+    Sejam \(n \in \mathbb{N}\), \(R \in \mathrm{SO}(2n-1)\) e \(V = \ker{(\unity - R)}\). Então \(R(V) = V\) e \(R(V^\perp) = V^\perp\).
+\end{lemma}
+\begin{proof}
+    Seja \(\vetor{v} \in R(V)\), então existe \(\vetor{u} \in V\) tal que \(R\vetor{u} = \vetor{v}\). Como \((\unity - R)\vetor{u} = \vetor{0}\), temos \(\vetor{v} = R\vetor{u} = \vetor{u}\), isto é, \(\vetor{w} \in V\). Seja agora \(\vetor{v} \in V\), então de \((\unity - R)\vetor{v} = 0\) segue que \(\vetor{v} = R\vetor{v} \in R(V)\), portanto \(R(V) = V\).
+
+    Seja \(\vetor{w} \in V^\perp\), então para todo \(\vetor{v} \in V\) temos \(\inner{\vetor{v}}{\vetor{w}} = 0\). Como \(R \in O(2n - 1)\), segue que
+    \begin{equation*}
+        \forall \vetor{v} \in V : 0 = \inner{\vetor{w}}{\vetor{v}} = \inner{R\vetor{w}}{R\vetor{v}} = \inner{R\vetor{w}}{\vetor{v}},
+    \end{equation*}
+    isto é, \(R\vetor{w} \in V^\perp\). Seja agora \(\vetor{w} \in R(V^\perp)\), então existe \(\vetor{u} \in V^\perp\) tal que \(\vetor{w} = R\vetor{u}\). Pelo mesmo argumento, mostra-se que \(\vetor{w} \in V^\perp\), donde segue que \(R(V^\perp) = V^\perp\).
+\end{proof}
+\begin{proposition}{Autoespaço de um elemento de \(\mathrm{SO}(3)\) associado ao autovalor 1}{autoespaço_so3}
+    Seja \(R \in \mathrm{SO}(3) \setminus \set{\unity}\), então \(\dim\ker{(\unity - R)} = 1\).
+\end{proposition}
+\begin{proof}
+    Suponhamos, por contradição, que \(\dim\ker{(\unity - R)} > 1\). Notemos que não podemos ter \(\dim\ker{(\unity - R)} = 3\), pois isso implicaria que \(R\vetor{v} = \vetor{v}\) para todo \(\vetor{v} \in \mathbb{R}^3\), isto é, \(R = \unity\), que foi descartado por hipótese. Assim, \(\dim\ker{(\unity - R)} = 2\) e \(\dim{\ker{(\unity - R)}^\perp} = 1\).
+
+    Seja \(\vetor{w} \in \ker{(\unity - R)}^\perp\), então pelo \cref{lem:subespaços_invariantes}, existe \(\lambda \in \mathbb{R}\) tal que \(R\vetor{w} = \lambda \vetor{w}\). Desse modo,
+    \begin{equation*}
+        \norm{\vetor{w}}^2 = \norm{R\vetor{w}}^2 = \lambda^2\norm{\vetor{w}}^2 \implies \lambda \in \set{-1,1}.
+    \end{equation*}
+    Como \(\vetor{w} \notin \ker{(\unity - R)}\), temos \(\lambda = -1\) e concluímos que \(-1\) é autovalor de \(R\). Isto é, os autovalores de \(R\) são \(1\) com multiplicidade \(2\) e \(-1\), portanto \(\det{R} = -1\). Essa contradição nos garante que \(\dim\ker{(\unity - R)} \leq 1\), portanto concluímos que \(\dim\ker{(\unity - R)} = 1\) pelo \cref{lem:autovalor_son}.
+\end{proof}
+
+\begin{proposition}{Representação de \(\mathrm{SO}(3)\) em \(\mathbb{R}^3\)}{representação_so3}
+    Seja \(R \in \mathrm{SO}(3)\), então existem \(\vetor{\eta} \in S^2 = \setc{\vetor{x} \in \mathbb{R}^3}{\norm{\vetor{x}} = 1}\) e \(\theta \in [0, 2\pi)\) tais que \(R = R(\theta, \vetor{\eta})\), onde \(R(\theta, \vetor{\eta})\) é a matriz de rotação por um ângulo \(\theta\) no sentido anti-horário ao redor do eixo definido por \(\vetor{\eta}\).
+\end{proposition}
+\begin{proof}
+
+\end{proof}
+
 \begin{proposition}{Geometria e a fórmula de Rodrigues para o grupo \(\mathrm{SO}(3)\)}{exercício5}
     Sejam \(\theta\in [0,2\pi)\) e \(\vetor{\eta} \in S^2 = \setc{\vetor{x}\in \mathbb{R}^3}{\norm{\vetor{x}}= 1}\), e seja \(R(\theta, \vetor{\eta}) \in \mathrm{SO}(3)\) a matriz de rotação pelo ângulo \(\theta\) no sentido anti-horário em torno de um eixo definido pelo vetor unitário \(\vetor{\eta}\). Então
     \begin{equation*}
