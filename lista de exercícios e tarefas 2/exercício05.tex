@@ -1,5 +1,5 @@
-\section[Geometria e a fórmula de Rodrigues para o grupo SO(3)]{Geometria e a fórmula de Rodrigues para o grupo \(\mathrm{SO}(2n - 1)\)}
-\begin{lemma}{1 é autovalor de todo elemento de \(\mathrm{SO}(3)\)}{autovalor_son}
+\section[Geometria e a fórmula de Rodrigues para o grupo SO(3)]{Geometria e a fórmula de Rodrigues para o grupo \(\mathrm{SO}(3)\)}
+\begin{lemma}{Todo elemento de \(\mathrm{SO}(2n-1)\) tem 1 como autovalor}{autovalor_son}
     Seja \(n \in \mathbb{N}\). Se \(R \in \mathrm{SO}(2n - 1)\), então \(\ker{(\unity - R)}\) é não trivial.
 \end{lemma}
 \begin{proof}
@@ -36,10 +36,46 @@
 \end{proof}
 
 \begin{proposition}{Representação de \(\mathrm{SO}(3)\) em \(\mathbb{R}^3\)}{representação_so3}
-    Seja \(R \in \mathrm{SO}(3)\), então existem \(\vetor{\eta} \in S^2 = \setc{\vetor{x} \in \mathbb{R}^3}{\norm{\vetor{x}} = 1}\) e \(\theta \in [0, 2\pi)\) tais que \(R = R(\theta, \vetor{\eta})\), onde \(R(\theta, \vetor{\eta})\) é a matriz de rotação por um ângulo \(\theta\) no sentido anti-horário ao redor do eixo definido por \(\vetor{\eta}\).
+    Seja \(S^2 = \setc{\vetor{x} \in \mathbb{R}^3}{\norm{x} = 1}\) e a aplicação \(R : [0,2\pi) \times S^2 \to \mathrm{Aut}(\mathbb{R}^3)\), onde \(R(\theta, \vetor{\eta}) \in \mathrm{Aut}(\mathbb{R}^3)\) é a transformação linear de rotação em \(\mathbb{R}^3\) por um ângulo \(\theta\) no sentido anti-horário ao redor do eixo definido por \(\vetor{\eta}\). Então, \(\mathrm{SO}(3) = R([0,2\pi), S^2)\).
 \end{proposition}
 \begin{proof}
+    Seja \(M \in R([0,2\pi), S^2)\), então existem \(\theta \in [0,2\pi)\) e \(\vetor{f}_1 \in S^2\) tais que \(M = R(\theta, \vetor{f}_1)\). Seja ainda \(\vetor{f}_2 \in S^2 \cap \set{\vetor{f}_1}^\perp\) e \(\vetor{f}_3 = \vetor{f}_1 \times \vetor{f}_2\), então \(\set{\vetor{f}_1, \vetor{f}_2, \vetor{f}_3} \subset \mathbb{R}^3\) é uma base ortonormal positivamente orientada de \(\mathbb{R}^3\). Como \(M\) é a transformação linear de rotação pelo ângulo \(\theta\) no sentido anti-horário ao redor do eixo definido por \(\vetor{f}_1\), temos
+    \begin{equation*}
+        M\vetor{f}_1 = \vetor{f}_1,
+        \quad
+        M\vetor{f}_2 = \cos\theta \vetor{f}_2 + \sin\theta \vetor{f}_3,
+        \quad \text{e}\quad
+        M\vetor{f}_3 = -\sin\theta \vetor{f}_2 + \cos\theta \vetor{f}_3.
+    \end{equation*}
+    Como o determinante não depende da escolha de base, sabemos que \(\det{M} = \cos^2\theta + \sin^2 \theta = 1\). Sejam \(\vetor{a}, \vetor{b} \in \mathbb{R}^3\), então escrevendo \(a_i = \inner{\vetor{f}_i}{\vetor{a}}\) e \(b_i = \inner{\vetor{f}_i}{\vetor{b}}\) para \(i \in \set{1,2,3}\), temos
+    \begin{equation*}
+        M\vetor{a} = a_1 \vetor{f}_1 + (a_2 \cos\theta - a_3 \sin\theta)\vetor{f}_2 + (a_2 \sin\theta + a_3 \cos\theta)\vetor{f}_3
+    \end{equation*}
+    e analogamente para \(M\vetor{b}\). Assim, vemos que
+    \begin{align*}
+        \inner{M\vetor{a}}{M\vetor{b}}  &= a_1 b_1 + (a_2b_2 + a_3 b_3)(\cos^2\theta + \sin^2\theta) + (a_2b_3 + a_3b_2 - a_2b_3 - a_3 b_2)\sin\theta\cos\theta\\
+                                        &= a_1 b_1 + a_2 b_2 + a_3 b_3 = \inner{\vetor{a}}{\vetor{b}},
+    \end{align*}
+    isto é, \(M \in \mathrm{SO}(3)\) e concluímos que \(R([0,2\pi), S^2) \subset \mathrm{SO}(3)\).
 
+    Seja \(T \in \mathrm{SO}(3)\). Podemos assumir sem perda de generalidade que \(T \neq \unity\), pois se \(T = \unity\) podemos tomar \(T = R(0, \vetor{\eta})\) para qualquer \(\vetor{\eta} \in S^2\). Assim, pela \cref{prop:autoespaço_so3}, sabemos que existe \(\vetor{\eta} \in \mathbb{R}^3 \setminus \set{\vetor{0}}\) tal que \(\ker{(\unity - T)} = \lspan_{\mathbb{R}}\set{\vetor{\eta}}\). Consideremos \(\vetor{\xi} \in S^2 \cap \set{\vetor{\eta}}^\perp\), então \(\set{\vetor{\xi}, \vetor{\eta}\times\vetor{\xi}}\) é uma base ortonormal positivamente orientada de \(\ker(\unity - T)^\perp = \set{\vetor{\eta}}^\perp\). Assim, existem \(a,b,c,d \in \mathbb{R}\) tais que
+    \begin{equation*}
+        T\vetor{\xi} = a\vetor{\xi} + b \vetor{\eta}\times\vetor{\xi}\quad\text{e}\quad
+        T(\vetor{\eta}\times\vetor{\xi}) = c\vetor{\xi} + d\vetor{\eta}\times\vetor{\xi},
+    \end{equation*}
+    pelo \cref{lem:subespaços_invariantes}. Como \(\norm{T\vetor{\xi}} = \norm{\vetor{\xi}}= 1\), sabemos que \(a^2 + b^2 = 1\), portanto existe \(\theta \in [0,2\pi)\) tal que \(a = \cos\theta\) e \(b = \sin\theta\). De forma análoga, concluímos que existe \(\psi \in [0,2\pi)\) tal que \(c = -\sin\psi\) e \(d = \cos\psi\). Como \(\inner{T\vetor{\xi}}{T(\vetor{\eta}\times\vetor{\xi})} = \inner{\vetor{\xi}}{\vetor{\eta}\times\vetor{\xi}} = 0\), temos
+    \begin{equation*}
+        \inner{T\vetor{\xi}}{T(\vetor{\eta}\times\vetor{\xi})} = 0 \implies \sin\theta\cos\psi - \cos\theta\sin\psi = 0 \implies \sin(\theta - \psi) = 0 \implies \theta = \psi,
+    \end{equation*}
+    e portanto
+    \begin{equation*}
+        T\vetor{\eta} = \vetor{\eta},
+        \quad
+        T\vetor{\xi} = \cos\theta \vetor{\xi} + \sin\theta \vetor{\eta}\times\vetor{\xi},
+        \quad \text{e}\quad
+        T(\vetor{\eta}\times\vetor{\xi}) = -\sin\theta \vetor{\xi} + \cos\theta \vetor{\eta}\times\vetor{\xi}
+    \end{equation*}
+    e vemos que \(T = R(\theta, \vetor{\eta})\). Isto é, \(\mathrm{SO}(3) \subset R([0,2\pi), S^2),\) concluindo a demostração.
 \end{proof}
 
 \begin{proposition}{Geometria e a fórmula de Rodrigues para o grupo \(\mathrm{SO}(3)\)}{exercício5}
