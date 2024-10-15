@@ -4,7 +4,7 @@
     \begin{equation*}
         \exp(\mathfrak{sl}(2,\mathbb{C})) = \setc{a\unity + \vetor{\alpha}\cdot\vetor{\sigma}}{a \in \mathbb{C}\setminus\set{-1}, \vetor{\alpha} \in \mathbb{C}^3 : \alpha_1^2 + \alpha_2^2 + \alpha_3^2 = a^2 - 1}\cup\set{-\unity}
     \end{equation*}
-    como um subconjunto próprio de \(\mathfrak{sl}(2,\mathbb{C})\).
+    como um subconjunto próprio de \(\mathrm{SL}(2,\mathbb{C})\).
 \end{proposition}
 \begin{proof}
     Considere a forma bilinear em \(\mathbb{C}\) definida por
@@ -67,7 +67,7 @@
         &= \cosh^2\left[\sqrt{\omega(\vetor{\alpha},\vetor{\alpha})}\right] - \frac{\sinh^2\left[\sqrt{\omega(\vetor{\alpha},\vetor{\alpha})}\right]}{\omega(\vetor{\alpha}, \vetor{\alpha})}(\alpha_3^2 + \alpha_1^2 + \alpha_2^2)\\
         &= \cosh^2\left[\sqrt{\omega(\vetor{\alpha},\vetor{\alpha})}\right] - \sinh^2\left[\sqrt{\omega(\vetor{\alpha},\vetor{\alpha})}\right] = 1,
     \end{align*}
-    isto é, \(\exp(\vetor{\alpha}\cdot \vetor{\sigma}) \in \mathrm{SL}(2, \mathbb{C})\)\footnote{Usando \(\det(e^X) = e^{\Tr(X)}\), esse resultado segue trivialmente.} para todo \(\vetor{\alpha} \in \mathbb{C}^3\). Isto é, \(\setc{\exp(\vetor{\alpha}\cdot\vetor{\sigma})}{\vetor{\alpha} \in \mathbb{C}^3} \subset \mathrm{SL}(2,\mathbb{C})\).
+    isto é, \(\exp(\vetor{\alpha}\cdot \vetor{\sigma}) \in \mathrm{SL}(2, \mathbb{C})\) para todo \(\vetor{\alpha} \in \mathbb{C}^3\). Isto é, \(\setc{\exp(\vetor{\alpha}\cdot\vetor{\sigma})}{\vetor{\alpha} \in \mathbb{C}^3} \subset \mathrm{SL}(2,\mathbb{C})\).\footnote{Usando \(\det(e^X) = e^{\Tr(X)}\), esse resultado segue trivialmente.}
 
     Seja \(S = \setc{a\unity + \vetor{\alpha}\cdot\vetor{\sigma}}{a \in \mathbb{C}\setminus\set{-1}, \vetor{\alpha} \in \mathbb{C}^3 : \omega(\vetor{\alpha}, \vetor{\alpha})= a^2 - 1}\cup\set{-\unity}\). Notando que \(\omega(i\pi\vetor{e}_1, i\pi \vetor{e}_1) = -\pi^2\), temos \(S \ni -\unity \in \exp(i\pi \sigma_1) \in \exp(\mathrm{sl}(2,\mathbb{C}))\). Seja \(A \in S \setminus \set{-\unity}\), então existem únicos \(\vetor{\alpha} \in \mathbb{C}^3\) e \(a \in \mathbb{C}\setminus\set{-1}\) com \(\omega(\vetor{\alpha}, \vetor{\alpha}) = a^2 - 1\) tais que \(A = a \unity + \vetor{\alpha}\cdot{\vetor{\sigma}}\), pela independência linear de \(\set{\unity, \sigma_1, \sigma_2, \sigma_3}\).  Se \(a = 1\), então \(\omega(\vetor{\alpha},\vetor{\alpha}) = 0\) e temos \(\exp(\vetor{\alpha}\cdot\vetor{\sigma}) = \unity + \vetor{\alpha}\cdot\vetor{\sigma} = A\). Se \(a \in \mathbb{C} \setminus\set{-1, 1}\), existe \(z\in \mathbb{C}\setminus\set{0}\) tal que \(\cosh{z} = a\), então \(\omega(\vetor{\alpha}, \vetor{\alpha}) = a^2 - 1 = \sinh^2{z} \neq 0\). Assim, definimos \(\vetor{\eta} = \csch{z} \vetor{\alpha},\) que satisfaz \(\omega(z\vetor{\eta},z\vetor{\eta}) = z^2\csch{z}^2 \omega(\vetor{\alpha}, \vetor{\alpha}) = z^2\) e temos
     \begin{equation*}
