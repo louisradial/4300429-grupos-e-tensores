@@ -1,0 +1,24 @@
+\section{Primeiro teorema de isomorfismos}
+\begin{proposition}{Primeiro teorema de isomorfismos}{exercício04}
+    Sejam \(G\) e \(H\) dois grupos e \(\varphi : G \to H\) um homomorfismo. Mostre que \(G/\Ker(\varphi)\) e \(\Ran(\varphi)\) são grupos isomorfos.
+\end{proposition}
+\begin{proof}
+    Consideremos a aplicação
+    \begin{align*}
+        \Psi : G/\Ker(\varphi) &\to \Ran(\varphi)\\
+                           [g] &\mapsto \varphi(g),
+    \end{align*}
+    que é bem definida pois se \(g' \in [g]\), então existe \(h \in \Ker(\varphi)\) tal que \(g' = h g\), e temos
+    \begin{equation*}
+        \varphi(g') = \varphi(h)\varphi(g) = e_H\varphi(g) = \varphi(g).
+    \end{equation*}
+    Sejam \([g_1], [g_2] \in G/\Ker(\varphi)\) tais que \(\Psi([g_1]) = \Psi([g_2])\), então \(\varphi(g_1) = \varphi(g_2)\). Assim, ao multiplicar ambos os lados por \(\varphi(g_2)^{-1} = \varphi(g_2^{-1})\), obtemos \(\varphi(g_1 g_2^{-1}) = e_H\). Portanto, existe \(h \in \Ker(\varphi)\) tal que \(g_1 g_2^{-1} = h,\) isto é, \(g_1 \sim g_2\) e concluímos que \([g_1] = [g_2]\), logo \(\Psi\) é injetora. Que \(\Psi\) é sobrejetora é claro pois
+    \begin{equation*}
+        \gamma \in \Ran(\varphi) \iff \exists g \in G : \varphi(g) = \gamma \iff \exists g \in G : \Psi([g]) = \gamma,
+    \end{equation*}
+    portanto \(\Psi\) é bijetora. Temos ainda
+    \begin{equation*}
+        \Psi([g][h]) = \Psi([gh]) = \varphi(gh) = \varphi(g)\varphi(h) = \Psi([g])\Psi([h]),
+    \end{equation*}
+    para todos \(g, h \in G\), portanto \(\Psi\) é um isomorfismo.
+\end{proof}
