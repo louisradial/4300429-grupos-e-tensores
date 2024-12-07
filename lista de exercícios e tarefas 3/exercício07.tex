@@ -1,6 +1,12 @@
-\begin{exercício}{}{exercício07}
-
-\end{exercício}
+\section[Grupo quociente O(n)/SO(n)]{Grupo quociente \(\mathrm{O}(n)/\mathrm{SO(n)}\)}
+\begin{proposition}{O grupo quociente \(\mathrm{O}(n)/\mathrm{SO}(n)\)}{exercício07}
+    O grupo \(\mathrm{SL}(n,\mathbb{C})\) é um subgrupo normal de \(\mathrm{GL}(n,\mathbb{C})\) e \(\mathrm{GL}(n,\mathbb{C})/\mathrm{SL}(n,\mathbb{C})\) é isomorfo ao grupo multiplicativo dos complexos \(\mathbb{C}\setminus\set{0}\).
+\end{proposition}
 \begin{proof}[Resolução]
-
+    A aplicação
+    \begin{align*}
+        \varphi : \mathrm{GL}(n, \mathbb{C}) &\to \mathbb{C}\setminus\set{0}\\
+                                           A &\mapsto \det{A}
+    \end{align*}
+    é um homomorfismo com \(\Ker(\varphi) = \mathrm{SL}(n,\mathbb{C})\). De fato, \(\mathrm{SL}(n,\mathbb{C})\) é o núcleo de \(\varphi\) por definição, e temos \(\det(AB)=\det(A)\det(B)\) para quaisquer matrizes \(A,B \in \mathrm{Mat}(n,\mathbb{C})\). Notemos ainda que \(\varphi\) é sobrejetora, visto que para todo \(z \in \mathbb{C}\setminus\set{0}\), temos \(\varphi(z^{\frac1n} \unity) = z\). Com isso, pelo \cref{prop:exercício04}, segue que \(\mathrm{GL}(n,\mathbb{C})/\mathrm{SL}(n,\mathbb{C})\) é isomorfo a \(\mathbb{C}\setminus \set{0}\).
 \end{proof}
