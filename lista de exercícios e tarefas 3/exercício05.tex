@@ -1,6 +1,43 @@
-\begin{exercício}{}{exercício05}
+\begin{lemma}{Homomorfismo entre \(\mathbb{Z}\) e \(U(1)\)}{exercício5c}
+    Seja \(n \geq 2\) um número natural. A aplicação
+    \begin{align*}
+        \varphi_n : \mathbb{Z} &\to \mathrm{U}(1)\\
+                             m &\mapsto \exp\left(\frac{2\pi i m}{n}\right)
+    \end{align*}
+    é um homomorfismo e o conjunto
+    \begin{equation*}
+        \Ran(\varphi_n) = \setc*{\exp\left(\frac{2\pi i m}{n}\right)}{m \in \set{0, 1,\dots, n-1}}
+    \end{equation*}
+    é sua imagem.
+\end{lemma}
+\begin{proof}
+    Seja \(m, \ell \in \mathbb{Z}\), então
+    \begin{equation*}
+        \varphi_n(m)\varphi_n(\ell) = \exp\left(\frac{2\pi i m}{n}\right)\exp\left(\frac{2\pi i \ell}{n}\right) = \exp\left[\frac{2\pi i(m+ \ell)}{n}\right] = \varphi_n(m + \ell),
+    \end{equation*}
+    portanto \(\varphi_n\) é um homomorfismo. Seja \(z \in \Ran(\varphi_n)\), então existe \(k \in \mathbb{Z}\) tal que \(z = \varphi_n(k)\). Consideremos \(m = k \bmod n \in \set{0, 1,\dots n-1}\), logo existe \(\ell \in \mathbb{Z}\) tal que \(k = \ell n + m\). Assim, temos
+    \begin{equation*}
+        z = \varphi_n(k) = \varphi_n(\ell n + m) = \varphi_n(\ell n)\varphi_n(m) = \varphi_n(m),
+    \end{equation*}
+    e o resultado segue.
+\end{proof}
 
-\end{exercício}
-\begin{proof}[Resolução]
+\begin{proposition}{O grupo quociente \(\mathbb{Z}/(n \mathbb{Z})\)}{exercício5a}
+    Seja \(n \geq 2\) um número natural. O conjunto \(n \mathbb{Z} = \setc{nm}{m \in \mathbb{Z}}\) é um subgrupo normal de \((\mathbb{Z}, +)\) e \(\mathbb{Z}/(n \mathbb{Z})\) é isomorfo ao grupo \((\mathbb{Z}_n, \oplus),\) onde \(\oplus\) denota a soma módulo \(n\), e é isomorfo ao grupo \(\Ran(\phi_n)\).
+\end{proposition}
+\begin{proof}
+    Notemos que \(0 \in n \mathbb{Z}\), já que \(0n = 0.\) Sejam \(m, \tilde{m} \in n \mathbb{Z}\), então existem inteiros \(a, \tilde{a} \in \mathbb{Z}\) tais que \(m = a n\) e \(\tilde{m} = \tilde{a}n\). Assim, temos \(m + \tilde{m} = (a+\tilde{a})n \in n \mathbb{Z}\). É claro que \(- \ell + m + \ell = m\) para todo \(\ell \in \mathbb{Z}\), portanto \(n \mathbb{Z} \normal \mathbb{Z}\).
 
+    Consideremos a aplicação
+    \begin{align*}
+        \psi : \mathbb{Z}_n &\to \mathbb{Z}/(n \mathbb{Z})\\
+                          k &\mapsto [\iota(k)],
+    \end{align*}
+    onde \(\iota : \mathbb{Z}_n \to \mathbb{Z}\) é a aplicação de inclusão. Notemos que todo elemento de \(n \mathbb{Z}\) é divisível por \(n\), isto é, se \(m \in n \mathbb{Z}\) então \(m =0 \bmod n\). Sejam \(k_1, k_2 \in \mathbb{Z}_n\) tais que \(\psi(k_1) = \psi(k_2)\), então \(\iota(k_1) \in [\iota(k_2)]\). Isto é, existe \(m \in n\mathbb{Z}\) tal que \(\iota(k_1) - \iota(k_2) = m\), portanto tomando o módulo \(n\) desta relação temos \(\iota(k_1) = \iota(k_2) \bmod n\). Com isso concluímos que \(k_1 = k_2\), isto é, \(\psi\) é injetiva. Seja \([p] \in \mathbb{Z}/(n \mathbb{Z})\), então existe \(k \in \mathbb{Z}_n\) tal que \(\iota(k) = p \bmod n\). Ou seja, \(\iota(k) \in [p]\), logo \(\psi(k) = [\iota(k)] = [p]\), portanto \(\psi\) é sobrejetora. Agora, sejam \(a, b \in \mathbb{Z}_n\), então
+    \begin{equation*}
+        \psi(a) + \psi(b) = [\iota(a)] + [\iota(b)] = [\iota(a) + \iota(b)] = [a \oplus b] = \psi(a \oplus b),
+    \end{equation*}
+    já que \([q] = [q \bmod n]\) para todo \(q \in \mathbb{Z}\). Concluímos então que \(\psi\) é um isomorfismo dos grupos \(\mathbb{Z}_n\) e \(\mathbb{Z}/(n \mathbb{Z})\).
+
+    Consideremos agora o homomorfismo \(\varphi_n : \mathbb{Z} \to U(1)\) definido no \cref{lem:exercício5c}. É evidente que \(n \mathbb{Z} \subset \Ker(\varphi_n)\), já que \(\exp(2\pi i m) = 1\) para todo \(m \in \mathbb{Z}\). Seja \(p \in \Ker(\varphi_n),\) então \(p = 0 \bmod n\), isto é, \(p \in [0] = n \mathbb{Z}\), portanto \(\Ker(\varphi_n) = n \mathbb{Z}\). Pelo primeiro teorema de isomorfismos, sabemos que \(\mathbb{Z}/(n \mathbb{Z}) \simeq \Ran(\varphi_n)\).
 \end{proof}
