@@ -11,5 +11,20 @@
     para todo \(\tilde{h} \in H\).
 \end{proposition}
 \begin{proof}
-
+    Seja \(f \in \mathfrak{F}(H)\), então
+    \begin{equation*}
+        \left(\mathscr{A}_{(e_G, e_H)}f\right)(\tilde{h}) = f\left(\alpha_{e_G}(e_H \tilde{h})\right) = f(e_H \tilde{h}) = f(\tilde{h})
+    \end{equation*}
+    para todo \(\tilde{h} \in H\), isto é, \(\mathscr{A}_{(e_G, e_H)}f = f\), portanto \(\mathscr{A}_{(e_G, e_H)} = \id{\mathfrak{F}(H)}\). Sejam \((g_1, h_1), (g_2, h_2) \in G \rtimes_{\alpha} H\), então
+    \begin{align*}
+        \left(\mathscr{A}_{(g_1,h_1)} \circ \mathscr{A}_{(g_2, h_2)}f\right)(\tilde{h})
+        &= \left(\mathscr{A}_{(g_2, h_2)}f\right)\left(\alpha_{g_1^{-1}}(h_1^{-1}\tilde{h})\right)\\
+        &= f\left(\alpha_{g_2^{-1}}\left(h_2^{-1} \alpha_{g_1^{-1}}(h_1^{-1} \tilde{h})\right)\right)\\
+        &= f\left(\alpha_{g_2^{-1}} \circ \alpha_{g_1^{-1}} \circ \alpha_{g_1} \left(h_2^{-1} \alpha_{g_1^{-1}}(h_1^{-1} \tilde{h})\right)\right)\\
+        &= f\left(\alpha_{g_2^{-1} g_1^{-1}}\left(\alpha_{g_1}(h_2^{-1}) h_1^{-1} \tilde{h}\right)\right)\\
+        &= f\left(\alpha_{(g_1 g_2)^{-1}}\left((h_1 \alpha_{g_1}(h_2))^{-1} \tilde{h}\right)\right)\\
+        &= \left(\mathscr{A}_{(g_1g_2, h_1 \alpha_{g_1}(h_2))}f\right)(\tilde{h})\\
+        &= \left(\mathscr{A}_{(g_1, h_1)\cdot(g_2, h_2)}f\right)(\tilde{h})
+    \end{align*}
+    para todo \(\tilde{h} \in H\), logo \(\mathscr{A}_{(g_1, h_1)} \circ \mathscr{A}_{(g_2, h_2)} = \mathscr{A}_{(g_1, h_1)\cdot (g_2, h_2)}\). Pelo \cref{lem:ação}, segue que \(\mathscr{A}\) é uma ação de \(G \rtimes_{\alpha} H\) em \(\mathfrak{F}(H)\).
 \end{proof}
