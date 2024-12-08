@@ -1,6 +1,18 @@
 \section{Primeiro teorema de isomorfismos}
+\begin{definition}{Subgrupo normal e grupo quociente}{subgrupo_normal}
+    Seja \(G\) um grupo. Um subgrupo \(N \subset G\) é dito \emph{normal}, denotado por \(N \normal G\), se para todo \(n \in N\) valer que \(g^{-1} n g \in N\). O grupo quociente \(G/N\) é definido pelo conjunto
+    \begin{equation*}
+        G / N = \setc{[g] \in \mathbb{P}(G)}{g \in G},
+    \end{equation*}
+    onde a classe de equivalência de \(g \in G\) é definida por \([g] = \setc{h \in G}{\exists n \in N : g^{-1}h = n}\), e o produto é dado por
+    \begin{align*}
+        \cdot : G/N \times G/N &\to G/N\\
+                     ([g],[h]) &\mapsto [g h],
+    \end{align*}
+    que é bem definido.
+\end{definition}
 \begin{proposition}{Primeiro teorema de isomorfismos}{exercício04}
-    Sejam \(G\) e \(H\) dois grupos e \(\varphi : G \to H\) um homomorfismo. Mostre que \(G/\Ker(\varphi)\) e \(\Ran(\varphi)\) são grupos isomorfos.
+    Sejam \(G\) e \(H\) dois grupos e \(\varphi : G \to H\) um homomorfismo. Os grupos \(G/\Ker(\varphi)\) e \(\Ran(\varphi)\) são isomorfos.
 \end{proposition}
 \begin{proof}
     Consideremos a aplicação
