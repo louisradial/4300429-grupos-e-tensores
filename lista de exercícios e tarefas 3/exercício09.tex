@@ -1,6 +1,24 @@
-\begin{exercício}{}{exercício09}
-
-\end{exercício}
-\begin{proof}[Resolução]
-
+\begin{definition}{Ação de um grupo em um conjunto não vazio}{ação}
+    Seja \(G\) um grupo, cujo elemento neutro é \(e\), e seja \(M\) um conjunto não vazio. Uma ação à esquerda de \(G\) em \(M\) é uma aplicação
+    \begin{align*}
+        \alpha : G \times M &\to M\\
+                      (g,m) &\mapsto \alpha_g(m)
+    \end{align*}
+    tal que
+    \begin{enumerate}[label=(\alph*)]
+        \item \(\alpha_e = \id{M}\);
+        \item \(\alpha_g \circ \alpha_{\tilde{g}} = \alpha_{g \tilde{g}}\) para todos \(g, \tilde{g} \in G\);
+        \item \(\alpha_g : M \to M\) é bijetora para todo \(g \in G\).
+    \end{enumerate}
+\end{definition}
+\begin{lemma}{Hipótese de bijeção para ação é supérflua}{ação}
+    Seja \(G\) um grupo, cujo elemento neutro é \(e\), e seja \(M\) um conjunto não vazio. Se a aplicação
+    \begin{align*}
+        \alpha : G \times M &\to M\\
+                      (g,m) &\mapsto \alpha_g(m)
+    \end{align*}
+    satisfaz \(\alpha_e = \id{M}\) e \(\alpha_g \circ \alpha_{\tilde{g}} = \alpha_{g \tilde{g}}\) para todos \(g, \tilde{g} \in G\), então \(\alpha\) é uma ação à esquerda de \(G\) em \(M\).
+\end{lemma}
+\begin{proof}
+    Seja \(g \in G\), então \(\alpha_{g} \circ \alpha_{g^{-1}} = \alpha_{g g^{-1}} = \alpha_{e} = \id{M}\) e, analogamente, \(\alpha_{g^{-1}} \circ \alpha_{g} = \id{M}\), portanto \(\alpha_{g}\) admite a aplicação inversa \(\alpha_{g^{-1}}\), isto é, \(\alpha_g\) é uma bijeção.
 \end{proof}
