@@ -1,3 +1,43 @@
 \begin{definition}{Ação por automorfismos}{ação_automorfismos}
     Sejam \(G, H\) grupos. Uma ação à esquerda de \(G\) sobre \(H\) por automorfismos é uma ação à esquerda \(\alpha : G \times H \to H\) tal que para todo \(g \in G\) a aplicação \(\alpha_{g} : H \to H\) é um homomorfismo.
 \end{definition}
+
+\begin{proposition}{Produto semidireto de grupos}{exercício11}
+    Sejam \(G\) e \(H\) dois grupos, cujos elementos neutros são \(e_G \in G\) e \(e_H \in H\), e seja \(\alpha : G \times H \to H\) uma ação à esquerda de \(G\) sobre \(H\) por automorfismos. Consideramos o produto em \(G \times H\) definido por
+    \begin{align*}
+        \cdot : (G \times H) \times (G \times H) &\to G\times H\\
+                \left((g_1,h_1),(g_2,h_2)\right) &\mapsto \left(g_1 g_2, h_1 \alpha_{g_1}(h_2)\right),
+    \end{align*}
+    então \((G \times H, \cdot)\) é um grupo, chamado de produto semidireto de \(G\) por \(H\), denotado por \(G \rtimes_{\alpha} H\).
+\end{proposition}
+\begin{proof}
+    Sejam \( (g_1, h_1), (g_2, h_2), (g_3, h_3) \in G \times H\), então
+    \begin{equation*}
+        (g_1, h_1) \cdot \left((g_2, h_2)\cdot (g_3,h_3)\right) = (g_1,h_1) \cdot \left(g_2g_3, h_2 \alpha_{g_2}(h_3)\right) = \left(g_1 g_2 g_3, h_1 \alpha_{g_1}( h_2 \alpha_{g_2}(h_3))\right)
+    \end{equation*}
+    e
+    \begin{equation*}
+        \left((g_1, h_1)\cdot (g_2,h_2)\right) \cdot  (g_3, h_3) = \left(g_1 g_2, h_1 \alpha_{g_1}(h_2)\right) \cdot (g_3, h_3) = \left(g_1 g_2 g_3, h_1 \alpha_{g_1}(h_2) \alpha_{g_1 g_2}(h_3)\right).
+    \end{equation*}
+    Como \(\alpha\) é uma ação por automorfismos temos
+    \begin{equation*}
+        h_1 \alpha_{g_1}(h_2)\alpha_{g_1 g_2}(h_3) = h_1 \alpha_{g_1}(h_2) \alpha_{g_1}\left(\alpha_{g_2} (h_3)\right) = h_1 \alpha_{g_1}\left(h_2 \alpha_{g_2}(h_3)\right),
+    \end{equation*}
+    isto é, \((g_1, h_1) \cdot \left((g_2, h_2)\cdot (g_3,h_3)\right) =\left((g_1, h_1)\cdot (g_2,h_2)\right) \cdot  (g_3, h_3)\), logo o produto é associativo. Para \((g, h) \in G \times H\), temos
+    \begin{equation*}
+        (e_G, e_H)\cdot (g, h) = (e_Gg, e_H \alpha_{e_G}(h)) = \left(g, \id{H}(h)\right) = (g, h)
+    \end{equation*}
+    e
+    \begin{equation*}
+        (g,h)\cdot (e_G, e_H) = (g e_G, h \alpha_{g}(e_H)) = (g, h e_H) = (g,h),
+    \end{equation*}
+    portanto \(G \rtimes_{\alpha} H\) é um monoide e \((e_G, e_H)\) é seu elemento neutro. Mostremos que o elemento inverso de \((g, h) \in G \times H\) é \(\left(g^{-1}, \alpha_{g^{-1}(h^{-1})}\right) \in G \times H\), pois temos
+    \begin{equation*}
+        \left(g^{-1}, \alpha_{g^{-1}(h^{-1})}\right)\cdot(g, h) = \left(g^{-1}g, \alpha_{g^{-1}}(h^{-1}) \alpha_{g^{-1}}(h)\right) = \left(e_G, \alpha_{g^{-1}}(h^{-1} h)\right) = \left(e_G, \alpha_{g^{-1}}(e_H)\right) = (e_G, e_H)
+    \end{equation*}
+    e
+    \begin{equation*}
+        (g, h) \cdot \left(g^{-1}, \alpha{g^{-1}}(h^{-1})\right) = \left(gg^{-1}, h \alpha_{g}\circ \alpha_{g^{-1}}(h^{-1})\right) = \left(e_G, h \alpha_{e_G}(h^{-1})\right) = (e_G, h h^{-1}) = (e_G, e_H),
+    \end{equation*}
+    e então concluímos que \(G \rtimes_{\alpha} H\) é um grupo.
+\end{proof}
