@@ -1,12 +1,35 @@
-\section[Grupo quociente O(n)/SO(n)]{Grupo quociente \(\mathrm{O}(n)/\mathrm{SO(n)}\)}
-\begin{proposition}{O grupo quociente \(\mathrm{O}(n)/\mathrm{SO}(n)\)}{exercício07}
-    O grupo \(\mathrm{SL}(n,\mathbb{C})\) é um subgrupo normal de \(\mathrm{GL}(n,\mathbb{C})\) e \(\mathrm{GL}(n,\mathbb{C})/\mathrm{SL}(n,\mathbb{C})\) é isomorfo ao grupo multiplicativo dos complexos \(\mathbb{C}\setminus\set{0}\).
+\begin{lemma}{Isomorfismo entre \(\set{-\unity, \unity}\) e \(\mathbb{Z}_2\)}{exercício07}
+    A aplicação
+    \begin{align*}
+        \chi : \mathbb{Z}_2 &\to \set{-\unity, \unity}\\
+                          n &\mapsto (-1)^n \unity
+    \end{align*}
+    é um isomorfismo do grupo \(\set{-\unity, \unity}\) e do grupo \((\mathbb{Z}_2, \oplus)\).
+\end{lemma}
+\begin{proof}
+    Como \(\chi(0) = \unity\) e \(\chi(1) = -\unity\), verificamos que \(\chi\) é uma bijeção. Sejam \(n, m \in \mathbb{Z}_2\), então se \(n = m\) temos \(n \oplus m = 0\) e então \(\chi(n)\chi(m) = \unity = \chi(0) = \chi(n \oplus m)\), e se \(n \neq m\), temos \(n \oplus m = 1\), e então \(\chi(n)\chi(m) = - \unity = \chi(1) = \chi(n \oplus m)\). Como \(\chi\) é um homomorfismo e uma bijeção, os grupos \(\set{-\unity, \unity}\) e \(\mathbb{Z}_2\) são isomórficos.
+\end{proof}
+
+\begin{proposition}{O grupo quociente \(\mathrm{O}(n)/\mathrm{SO}(n)\)}{exercício07a}
+    O grupo \(\mathrm{SO}(n)\) é um subgrupo normal de \(\mathrm{O}(n)\) e \(\mathrm{O}(n)/\mathrm{SO}(n)\) é isomorfo a \(\set{-\unity, \unity} \simeq \mathbb{Z}_2\).
 \end{proposition}
 \begin{proof}[Resolução]
     A aplicação
     \begin{align*}
-        \varphi : \mathrm{GL}(n, \mathbb{C}) &\to \mathbb{C}\setminus\set{0}\\
-                                           A &\mapsto \det{A}
+        \varphi : \mathrm{O}(n) &\to \set{-\unity, \unity}\\
+                              A &\mapsto \det(A) \unity
     \end{align*}
-    é um homomorfismo com \(\Ker(\varphi) = \mathrm{SL}(n,\mathbb{C})\). De fato, \(\mathrm{SL}(n,\mathbb{C})\) é o núcleo de \(\varphi\) por definição, e temos \(\det(AB)=\det(A)\det(B)\) para quaisquer matrizes \(A,B \in \mathrm{Mat}(n,\mathbb{C})\). Notemos ainda que \(\varphi\) é sobrejetora, visto que para todo \(z \in \mathbb{C}\setminus\set{0}\), temos \(\varphi(z^{\frac1n} \unity) = z\). Com isso, pelo \cref{prop:exercício04}, segue que \(\mathrm{GL}(n,\mathbb{C})/\mathrm{SL}(n,\mathbb{C})\) é isomorfo a \(\mathbb{C}\setminus \set{0}\).
+    é um homomorfismo com \(\Ker(\varphi) = \mathrm{SO}(n)\). De fato, \(\mathrm{SO}(n)\) é o núcleo de \(\varphi\) por definição, e temos \(\det(AB)=\det(A)\det(B)\) para quaisquer matrizes \(A,B \in \mathrm{Mat}(n,\mathbb{C})\). Notemos ainda que \(\varphi\) é sobrejetora, visto que para todo \(A \in \mathrm{SO}(n)\) temos \(\varphi(A) = \unity\) e para todo \(B \in \mathrm{O}(n) \setminus \mathrm{SO}(n)\) temos \(\varphi(B) = -\unity\). Dessa forma pelo primeiro teorema de isomorfismos, concluímos que \(\varphi\) é um isomorfismo de \(\mathrm{O}(n)/\mathrm{SO}(n)\) e de \(\set{-\unity, \unity}\simeq \mathbb{Z}_2\).
+\end{proof}
+
+\begin{proposition}{O grupo quociente \(\mathrm{U}(n)/\mathrm{SU}(n)\)}{exercício07b}
+    O grupo \(\mathrm{SU}(n)\) é um subgrupo normal de \(\mathrm{U}(n)\) e \(\mathrm{U}(n)/\mathrm{SU})(n)\) é isomorfo a \(\mathrm{U}(1)\).
+\end{proposition}
+\begin{proof}
+    A aplicação
+    \begin{align*}
+        \varphi : \mathrm{U}(n) &\to \mathrm{U}(1)\\
+                              A &\mapsto \det(A)
+    \end{align*}
+    é um homomorfismo com \(\Ker(\varphi) = \mathrm{SU}(n)\). De fato, \(\mathrm{SU}(n)\) é o núcleo de \(\varphi\) por definição, e temos \(\det(AB)=\det(A)\det(B)\) para quaisquer matrizes \(A,B \in \mathrm{Mat}(n,\mathbb{C})\), logo \(1 = \det(\unity) = \abs{\det{U}}^2\) para todo \(U \in \mathrm{U}(n)\). Notemos ainda que \(\varphi\) é sobrejetora, visto que para todo \(z \in \mathrm{U}(1)\), temos \(\varphi\left(z^{\frac1n}\unity\right) = z\), com \(z^{\frac1n}\unity \in \mathrm{U}(n)\). Dessa forma pelo primeiro teorema de isomorfismos, concluímos que \(\varphi\) é um isomorfismo de \(\mathrm{U}(n)/\mathrm{SU}(n)\) e de \(\mathrm{U}(1)\).
 \end{proof}
