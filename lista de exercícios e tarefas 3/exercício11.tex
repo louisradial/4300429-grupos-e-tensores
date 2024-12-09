@@ -3,6 +3,17 @@
     Sejam \(G, H\) grupos. Uma ação à esquerda de \(G\) sobre \(H\) por automorfismos é uma ação à esquerda \(\alpha : G \times H \to H\) tal que para todo \(g \in G\) a aplicação \(\alpha_{g} : H \to H\) é um homomorfismo.
 \end{definition}
 
+\begin{lemma}{Ação por automorfismos preserva o elemento neutro}{ação_automorfismos_elemento_neutro}
+    Sejam \(G, H\) grupos, cujos elementos neutros são \(e_G\) e \(e_H\), e \(\alpha : G \times H \to H\) uma ação à esquerda de \(G\) sobre \(H\) por automorfismos. Então \(\alpha_{g}(e_H) = e_H\) para todo \(g \in G\).
+\end{lemma}
+\begin{proof}
+    Seja \(\tilde{h} \in H\) e \(g \in G\), então
+    \begin{equation*}
+        \alpha_g(e_H)\tilde{h} = \alpha_{g}(e_H) \alpha_{g g^{-1}}(\tilde{h}) = \alpha_{g}\left(e_H\alpha_{g^{-1}}(\tilde{h})\right) = \alpha_{g} \circ \alpha_{g^{-1}}(\tilde{h}) = \tilde{h},
+    \end{equation*}
+    logo \(\alpha_{g}(e_H) = e_H\).
+\end{proof}
+
 \begin{proposition}{Produto semidireto de grupos}{exercício11}
     Sejam \(G\) e \(H\) dois grupos, cujos elementos neutros são \(e_G \in G\) e \(e_H \in H\), e seja \(\alpha : G \times H \to H\) uma ação à esquerda de \(G\) sobre \(H\) por automorfismos. Consideramos o produto em \(G \times H\) definido por
     \begin{align*}
@@ -32,9 +43,9 @@
     \begin{equation*}
         (g,h)\cdot (e_G, e_H) = (g e_G, h \alpha_{g}(e_H)) = (g, h e_H) = (g,h),
     \end{equation*}
-    portanto \(G \rtimes_{\alpha} H\) é um monoide e \((e_G, e_H)\) é seu elemento neutro. Mostremos que o elemento inverso de \((g, h) \in G \times H\) é \(\left(g^{-1}, \alpha_{g^{-1}(h^{-1})}\right) \in G \times H\), pois temos
+    portanto \(G \rtimes_{\alpha} H\) é um monoide e \((e_G, e_H)\) é seu elemento neutro. Mostremos que o elemento inverso de \((g, h) \in G \times H\) é \(\left(g^{-1}, \alpha_{g^{-1}}(h^{-1})\right) \in G \times H\), pois temos
     \begin{equation*}
-        \left(g^{-1}, \alpha_{g^{-1}(h^{-1})}\right)\cdot(g, h) = \left(g^{-1}g, \alpha_{g^{-1}}(h^{-1}) \alpha_{g^{-1}}(h)\right) = \left(e_G, \alpha_{g^{-1}}(h^{-1} h)\right) = \left(e_G, \alpha_{g^{-1}}(e_H)\right) = (e_G, e_H)
+        \left(g^{-1}, \alpha_{g^{-1}}(h^{-1})\right)\cdot(g, h) = \left(g^{-1}g, \alpha_{g^{-1}}(h^{-1}) \alpha_{g^{-1}}(h)\right) = \left(e_G, \alpha_{g^{-1}}(h^{-1} h)\right) = \left(e_G, \alpha_{g^{-1}}(e_H)\right) = (e_G, e_H)
     \end{equation*}
     e
     \begin{equation*}
