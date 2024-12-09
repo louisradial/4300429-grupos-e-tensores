@@ -1,0 +1,37 @@
+\section{Subgrupos normais e ações de grupos}
+\begin{proposition}{Segundo teorema de isomorfismos}{exercício8}
+    Sejam \(G\) um grupo, \(S\) um subgrupo de \(G\) e \(N\) um subgrupo normal de \(G\). Então
+    \begin{enumerate}[label=(\alph*)]
+        \item \(SN = \setc{sn}{s \in S, n \in N}\) é um subgrupo de \(G\);
+        \item \(S \cap N\) é um subgrupo normal de \(S\); e
+        \item \((SN)/N\) e \(S/(S \cap N)\) são isomorfos.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Como \(e \in S\) e \(e \in N\), segue que \(e \in SN\) e \(e \in S \cap N\). Seja \(a,b \in SN\), então existem \(s_a, s_b \in S\) e \(n_a, n_b \in N\) tais que \(a = s_a n_a\) e \(b = s_b n_b\), logo
+    \begin{equation*}
+        ab = s_a n_a s_b n_b = s_a s_b s_b^{-1} n_a s_b n_b = (s_a s_b) (s_b^{-1} n_a s_b) n_b,
+    \end{equation*}
+    portanto \(ab \in SN\) já que \(s_b^{-1} n_a s_b \in N\), isto é, \(SN\) é um subgrupo de \(G\). Sejam \(s_1, s_2 \in S\cap N\), então \(s_1 s_2 \in S\) e \(s_1 s_2 \in N\) já que ambos são subgrupos, logo \(s_1 s_2 \in S \cap N\) e concluímos que \(S\cap N\) é subgrupo de \(G\). Seja \(n \in S \cap N\) e \(s \in S\), então como \(n \in N\), segue que \(s^{-1}ns \in N\) e temos \(s^{-1} n s \in S\) por ser o produto de elementos de \(S\), isto é, concluímos que \(S \cap N \normal S\).
+
+    Como \(SN\) é um subgrupo de \(G\) que contém \(N\) e \(N \normal G\), está claro que \(N \normal SN\), portanto os quocientes \((SN)/N\) e \(S/(S \cap N)\) estão bem definidos. Denotemos estes quocientes por
+    \begin{equation*}
+        (SN)/N = \setc{[g]_N}{g \in SN}\quad\text{e}\quad S/(S \cap N) = \setc{[s]_{S\cap N}}{s \in S}
+    \end{equation*}
+    e consideremos a aplicação
+    \begin{align*}
+        \varphi : SN &\to S/(S \cap N)\\
+                  sn &\mapsto [s]_{S \cap N}.
+    \end{align*}
+    Seja \(g \in SN\), então existem \(s, \tilde{s} \in S\) e \(n, \tilde{n} \in N\) tais que \(sn = g = \tilde{s} \tilde{n}\), portanto \(S \ni s^{-1}\tilde{s} = n\tilde{n}^{-1} \in N\), assim temos \(\tilde{s} \in [s]_{S \cap N}\), logo \(\varphi\) está bem definida. É claro que \(\varphi\) é sobrejetora, pois basta considerar o subconjunto da imagem de \(\varphi\) dado por
+    \begin{equation*}
+        \varphi(S) = \setc{\varphi(s)}{s \in S} = \setc{[s]_{S \cap N}}{s \in S} = S / (S \cap N).
+    \end{equation*}
+    Sejam \(g, h \in SN\), então existem \(s_g, s_h \in S\) e \(n_g, n_h \in N\) tais que \(g = s_g n_g\) e \(h = s_h n_h\), portanto
+    \begin{equation*}
+        \varphi(gh) = \varphi(s_g n_g s_h n_h) = \varphi\left(s_g s_h (s_h^{-1}n_g s_h)n_h\right) = \varphi(s_g s_h) = [s_gs_h]_{S\cap N} = [s_g]_{S \cap N} [s_h]_{S\cap N},
+    \end{equation*}
+    isto é, \(\varphi\) é um homomorfismo.
+
+    É evidente que \(N \subset \Ker(\varphi)\), pois se \(g \in N\) temos \(\varphi(g) = \varphi(e) = [e]_{S\cap N},\) isto é, \(g \in \Ker(\varphi)\). Seja \(h \in \Ker(\varphi) \subset SN\), então existem \(s_h \in S\) e \(n_h \in N\) tais que \(h = s_h n_h\), logo \(\varphi(s_h) = [e]_{S \cap N}\). Assim, sabemos que \(s_h \in [e]_{S \cap N}\), isto é, \(s_h \in S \cap N\), e então podemos concluir que \(h = s_h n_h \in N\). Como \(\Ker(\varphi) = N\), temos pelo primeiro teorema de isomorfismos que \((SN)/N\) e \(S/(S\cap N)\) são isomorfos.
+\end{proof}
