@@ -1,0 +1,73 @@
+\begin{proposition}{Inclusões canônicas em um produto semidireto}{exercício13}
+    Sejam \(G, H\) grupos e seja \(G \rtimes_{\alpha} H\) o seu produto semidireto intermediado pela ação à esquerda por automorfismos \(\alpha : G \times H \to H\). Sejam as inclusões canônicas
+    \begin{align*}
+        \iota_G : G &\to G \rtimes_{\alpha} H &
+        \iota_H : H &\to G \rtimes_{\alpha} H\\
+                  g &\mapsto (g, e_H)&
+                  h &\mapsto (e_G, h)
+    \end{align*}
+    e escrevamos \(\tilde{G} = \iota_G(G)\) e \(\tilde{H} = \iota_H(H)\). Valem as afirmações
+    \begin{enumerate}[label=(\alph*)]
+        \item \(\tilde{G}\) é um subgrupo de \(G \rtimes_{\alpha} H\) e é isomorfo a \(G\);
+        \item \(\tilde{H}\) é um subgrupo normal de \(G \rtimes_{\alpha} H\) e é isomorfo a \(H\); e
+        \item o grupo quociente \((G\rtimes_{\alpha}H)/\tilde{H}\) é isomorfo a \(G\).
+    \end{enumerate}
+    O subgrupo \(\tilde{G}\) é um subgrupo normal de \(G \rtimes_{\alpha} H\) se e somente se o produto é direto, isto é, se \(\alpha_{g} = \id{H}\) para todo \(g \in G\). Se \(\tilde{G} \normal (G \rtimes_{\alpha} H)\), então o grupo quociente \((G \rtimes_{\alpha} H)/\tilde{G}\) é isomorfo a \(H\).
+\end{proposition}
+\begin{proof}
+    Tomemos \(g_1, g_2 \in G\) e \(h_1, h_2 \in H\), então
+    \begin{align*}
+        \iota_G(g_1)\iota_G(g_2) &= (g_1, e_H) \cdot (g_2, e_H)&
+        \iota_H(h_1)\iota_H(h_2) &= (e_G, h_1)\cdot(e_G, h_2)\\
+                                 &= (g_1g_2, e_H \alpha_{g_1}(e_H))&
+                                 &= (e_G, h_1 \alpha_{e_G}(h_2))\\
+                                 &= (g_1g_2, e_H)&
+                                 &= (e_G, h_1 h_2)\\
+                                 &= \iota_G(g_1g_2)&
+                                 &= \iota_H(h_1h_2),
+    \end{align*}
+    isto é, as inclusões \(\iota_G\) e \(\iota_H\) são homomorfismos de \(G\) e de \(H\) no produto semidireto \(G \rtimes_{\alpha} H\). Assim, \(\tilde{G} = \Ran(\iota_G)\) e \(\tilde{H} = \Ran(\iota_H)\) são subgrupos de \(G \rtimes_{\alpha}\). É claro que as inclusões \(\iota_G\) e \(\iota_H\) são injetoras e, restringindo os contradomínios, são sobrejetoras em \(\tilde{G}\) e \(\tilde{H}\), respectivamente. Assim, está claro que
+    \begin{align*}
+        \varphi_G : G &\to \tilde{G}&
+        \varphi_H : H &\to \tilde{H}\\
+                    g &\mapsto \iota_G(g)&
+                    h &\mapsto \iota_H(h)
+    \end{align*}
+    são isomorfismos, isto é, \(\tilde{G}\) é isomorfo a \(G\) e \(\tilde{H}\) é isomorfo a \(H\). Seja \(\tilde{h} \in H\) e seja \((g, h) \in G \rtimes_{\alpha} H\), então
+    \begin{equation*}
+        (g, h)^{-1} \varphi_H(\tilde{h}) (g, h) = \left(g^{-1}, \alpha_{g^{-1}}(h^{-1})\right) (g, \tilde{h}h) = \left(g^{-1}g, \alpha_{g^{-1}}(h^{-1}) \alpha_{g^{-1}}(\tilde{h}h)\right) = \left(e_G,\alpha_{g^{-1}} (h^{-1} \tilde{h} h)\right),
+    \end{equation*}
+    isto é, \(\tilde{H} \normal G \rtimes_{\alpha} H\).
+
+    Consideremos a aplicação
+    \begin{align*}
+        \psi_{G} : G\rtimes_{\alpha}H &\to \tilde{G}\\
+                                (g,h) &\mapsto \varphi_G(g),
+    \end{align*}
+    então \(\psi_G\) é um homomorfismo, já que
+    \begin{equation*}
+        \psi_G(g_1, h_1) \psi_G(g_2, h_2) = \varphi_G(g_1)\varphi_G(g_2) = \varphi_G(g_1 g_2) = \psi_G(g_1g_2)
+    \end{equation*}
+    para todos \((g_1, h_1), (g_2, h_2) \in G \rtimes_{\alpha} H\). É fácil notar que \(\tilde{H} \subset \Ker(\psi_G)\), e em verdade temos \(\tilde{H} = \Ker(\psi_G)\). De fato, se \((\tilde{g}, \tilde{h}) \in \Ker(\psi_G)\), segue que \(\varphi_G(\tilde{g}) = (e_G, e_H)\), logo \(\tilde{g} = e_H\) e temos \((\tilde{g}, \tilde{h}) \in \tilde{H}\). É claro que \(\psi_G\) é sobrejetora, pois temos \(\restrict{\psi_G}{\tilde{G}} = \id{\tilde{G}}\), portanto pelo primeiro teorema de isomorfismos temos \(G \simeq (G\rtimes_{\alpha} H)/\tilde{H}\).
+
+    Seja \(\tilde{g} \in G\) e seja \((g, h) \in G \rtimes_{\alpha} H\), então
+    \begin{equation*}
+        (g, h)^{-1} \varphi_G(\tilde{g}) (g, h) = \left(g^{-1}, \alpha_{g^{-1}}(h^{-1})\right) (\tilde{g}g, \alpha_{\tilde{g}}(h)) = \left(g^{-1}\tilde{g}g, \alpha_{g^{-1}}(h^{-1} \alpha_{\tilde{g}}(h))\right).
+    \end{equation*}
+    Suponhamos que \(\tilde{G} \normal G \rtimes_{\alpha} H\), então \(\alpha_{g^{-1}}(h^{-1} \alpha_{\tilde{g}}(h)) = e_H\) para todos \(g, \tilde{g} \in G\) e \(h \in H\). Em particular, tomando \(g = e_G\), devemos ter para todos \(\tilde{g} \in G\) e \(h \in H\) que \(h^{-1} \alpha_{\tilde{g}}(h) = e_H\), logo \(\alpha_{\tilde{g}} = \id{H}\) para todo \(\tilde{g} \in G\). Suponhamos agora que o produto é direto, então
+    \begin{equation*}
+        (g, h)^{-1} \varphi_G(\tilde{g}) (g, h) = \left(g^{-1}\tilde{g}g, \alpha_{g^{-1}}(h^{-1} \alpha_{\tilde{g}}(h))\right) = \left(g^{-1}\tilde{g}g, h^{-1} h\right) = (g^{-1}\tilde{g}g, e_H) \in \tilde{G},
+    \end{equation*}
+    isto é, \(\tilde{G} \normal G\rtimes_{\alpha} H\).
+
+    Supondo \(\tilde{G} \normal G\rtimes_{\alpha} H\), consideremos a aplicação
+    \begin{align*}
+        \psi_{H} : G\rtimes_{\alpha}H &\to \tilde{H}\\
+                                (g,h) &\mapsto \varphi_H(h),
+    \end{align*}
+    então \(\psi_H\) é um homomorfismo, já que
+    \begin{equation*}
+        \psi_H(g_1, h_1) \psi_H(g_2, h_2) = \varphi_H(h_1)\varphi_H(h_2) = \varphi_H(h_1 h_2) = \psi_H(h_1h_2)
+    \end{equation*}
+    para todos \((g_1, h_1), (g_2, h_2) \in G \rtimes_{\alpha} H\). Pelo mesmo argumento de antes, \(\Ker(\psi_H) = \tilde{G}\), portanto concluímos que \(H \simeq (G \rtimes_{\alpha} H)/\tilde{G}\).
+\end{proof}
