@@ -151,7 +151,7 @@
     \end{equation*}
     portanto tanto \((-a) \otimes b\) quanto \(a \otimes (-b)\) são elementos inversos de \(a \otimes b\), donde segue que devemos identificar \(a \otimes (-b) = (-a)\otimes b\) uma vez que só pode haver um único elemento inverso de um elemento do grupo. Essa identificação pode ser vista de outra forma, considerando que
     \begin{equation*}
-        \delta_{(-a, b)} - \delta_{(a, -b)} = \left[\delta_{(-a, b)} + \delta_{(a,b)} - \delta_{(0,b)}\right] - \left[\delta_{(a,b)} + \delta_{(a, -b)} - \delta_{(a,0)}\right] - \delta_{(0,b)} - \delta_{(a, 0)} \in \mathfrak{R}(R),
+        \delta_{(-a, b)} - \delta_{(a, -b)} = \left[\delta_{(-a, b)} + \delta_{(a,b)} - \delta_{(0,b)}\right] - \left[\delta_{(a,b)} + \delta_{(a, -b)} - \delta_{(a,0)}\right] + \delta_{(0,b)} - \delta_{(a, 0)} \in \mathfrak{R}(R),
     \end{equation*}
     isto é, \(\delta_{(-a, b)} \in [\delta_{(a, -b)}]\), portanto \((-a)\otimes b = a\otimes(-b)\).
 
@@ -268,4 +268,104 @@
         \alpha \cdot T = \sum_{i = 1}^N (\alpha v_i) \otimes_{\mathbb{K}} w_i = \sum_{i = 1}^N v_i \otimes_{\mathbb{K}} (\alpha w_i).
     \end{equation*}
     Assim, mostramos que \(V \otimes_{\mathbb{K}} W\) é um espaço linear com as propriedades desejadas.
+\end{proof}
+
+\begin{lemma}{Base de um produto tensorial de espaços lineares de dimensão finita}{base_produto_tensorial}
+    Sejam \(V, W\) espaços lineares de dimensão finita sobre o corpo \(\mathbb{K}\). Se \(\mathscr{B}_V = \set{\vetor{e}_1, \dots, \vetor{e}_{\dim V}} \subset V\) é uma base de \(V\) e \(\mathscr{B}_W = \set{\vetor{f}_1, \dots, \vetor{f}_{\dim W}} \subset W\) é uma base de \(W\), então
+    \begin{equation*}
+        \mathscr{B}_{V \otimes_{\mathbb{K}} W} = \setc*{\vetor{e}_i \otimes_{\mathbb{K}} \vetor{f}_j}{i \in \set{1, \dots, \dim V}, j \in \set{1, \dots, \dim W}}
+    \end{equation*}
+    é uma base para \(V \otimes_{\mathbb{K}} W\), isto é, todo tensor \(T \in V \otimes_{\mathbb{K}} W\) pode ser escrito como
+    \begin{equation*}
+        T = \sum_{i = 1}^{\dim V} \sum_{j = 1}^{\dim W} T^{ij} \vetor{e}_i\otimes_{\mathbb{K}}\vetor{f}_j
+    \end{equation*}
+    univocamente, onde \(T^{ij} \in \mathbb{K}\) para \(i \in \set{1, \dots, \dim V}\) e \(j \in \set{1, \dots, \dim W}\).
+\end{lemma}
+\begin{remark}
+    Para não carregar a notação, denotaremos este espaço vetorial apenas por \(V \otimes W\) caso não seja necessário distinguir entre \(V \otimes W\) e \(V \otimes_{\mathbb{K}} W\).
+\end{remark}
+\begin{proof}
+    Seja \(T \in V \otimes W\), então existe uma combinação linear de \(N\) elementos da forma \(v \otimes w\) que resulta em \(T\), e escrevemos
+    \begin{equation*}
+        T = \sum_{k = 1}^N v_{(k)} \otimes w_{(k)},
+    \end{equation*}
+    onde \(v_{(k)} \in V\) e \(w_{(k)} \in W\) para \(k \in \set{1, \dots, N}\). Como \(\mathscr{B}_V\) e \(\mathscr{B}_W\) são bases para \(V\) e \(W\), respectivamente, para cada \(k \in \set{1, \dots, N}\) existem \(v_{(k)}^i, w_{(k)}^j \in \mathbb{K}\) com \(i \in \set{1, \dots, \dim V}\) e \(j \in \set{1, \dots, \dim W}\) tais que podemos univocamente escrever \(v_{(k)} = \sum_{i = 1}^{\dim V} v_{(k)}^i \vetor{e}_i\) e \(w_{(k)} = \sum_{j = 1}^{\dim W} w_{(k)}^j \vetor{f}_j.\)
+    Com isso, temos
+    \begin{align*}
+        v_{(k)}\otimes w_{(k)} &= \left(\sum_{i = 1}^{\dim V} v_{(k)}^i\vetor{e}_i\right) \otimes \left(\sum_{i = 1}^{\dim W} w_{(k)}^j \vetor{f}_j\right)\\
+                               &= \sum_{i = 1}^{\dim V} v_{(k)}^i \left[\vetor{e}_i \otimes \left(\sum_{j = 1}^{\dim W} w_{(k)}^j \vetor{f}_j\right)\right]\\
+                               &= \sum_{i = 1}^{\dim V} \sum_{j = 1}^{\dim W} v_{(k)}^i w_{(k)}^j (\vetor{e}_i \otimes \vetor{f}_j)
+    \end{align*}
+    e concluímos que
+    \begin{equation*}
+        T = \sum_{k = 1}^N \sum_{i = 1}^{\dim V} \sum_{j = 1}^{\dim W} v_{(k)}^{i} w_{(k)}^{j} \vetor{e}_i \otimes \vetor{f}_j = \sum_{i = 1}^{\dim V} \sum_{j = 1}^{\dim W} T^{ij} \vetor{e}_i \otimes \vetor{f}_j \in \lspan_{\mathbb{K}}\left(\mathscr{B}_{V \otimes_{\mathbb{K}} W}\right),
+    \end{equation*}
+    onde definimos as \emph{componentes}
+    \begin{equation*}
+        T^{ij} = \sum_{k = 1}^N v_{(k)}^i w_{(k)}^j \in \mathbb{K}.
+    \end{equation*}
+    Assim, mostramos que \(\mathscr{B}_{V \otimes_{\mathbb{K}}W}\) é um conjunto gerador para \(V \otimes W\).\footnote{Não sei provar que é linearmente independente sem entrar na propriedade universal, e nas \href{http://denebola.if.usp.br/~jbarata/Notas_de_aula/arquivos/nc-cap02.pdf}{Notas de aula, página 218} é mostrado somente que é um conjunto gerador, sem deixar claro que é linearmente independente. Este exercício já está longo demais, acredito que foge do escopo.}
+\end{proof}
+\begin{remark}
+    Doravante utilizaremos a convenção de Einstein e escreveremos apenas
+    \begin{equation*}
+        T = T\indices{^{ij}} \vetor{e}_i \otimes \vetor{f}_j
+    \end{equation*}
+    subentendendo que há somas nos índices repetidos.
+\end{remark}
+
+\begin{proposition}{Isomorfismo de \(V \otimes W\) no dual de formas bilineares em \(V \oplus W\)}{exercício04b}
+    Sejam \(V, W\) espaços lineares de dimensão finita sobre o corpo \(\mathbb{K}\) e seja \(\mathscr{M}(V \oplus W)\) o espaço linear de formas bilineares definidas em \(V \oplus W\). Então o seu espaço dual, \(\mathscr{M}(V \oplus W)'\), é isomórfico a \(V \otimes W\).
+\end{proposition}
+\begin{proof}
+    Sejam \(\mathscr{B}_V, \mathscr{B}_W\) bases de \(V, W\) como no \cref{lem:base_produto_tensorial} e consideramos a aplicação
+    \begin{align*}
+        \Psi : V \otimes W &\to \mathscr{M}(V \oplus W)'\\
+                         T &\mapsto \Psi(T)
+    \end{align*}
+    tal que\footnote{Podemos definir sem utilizar bases, mas a notação fica mais limpa ao utilizá-las.}
+    \begin{equation*}
+        \inner*{\Psi(T)}{\omega} = T^{ij}\omega(\vetor{e}_{i} \oplus \vetor{f}_{j})
+    \end{equation*}
+    para \(\omega \in \mathscr{M}(V \oplus W)\), onde \(T = T^{ij}\vetor{e}_i\otimes \vetor{f}_j\). Sejam \(T, S\in V \otimes W\) e \(\alpha \in \mathbb{K}\), então
+    \begin{align*}
+        \inner{\Psi(T + \alpha S)}{\omega} &= \inner*{\Psi\left((T^{ij} + \alpha S^{ij})\vetor{e}_i\otimes \vetor{f}_j\right)}{\omega}\\
+                                           &= (T^{ij} + \alpha S^{ij})\omega(\vetor{e}_i \oplus \vetor{f}_j)\\
+                                           &= T^{ij} \omega(\vetor{e}_i\oplus \vetor{f}_j) + \alpha S^{ij} \omega(\vetor{e}_i \oplus \vetor{f}_j)\\
+                                           &= \inner{\Psi(T)}{\omega} + \alpha \inner{\Psi(S)}{\omega}\\
+                                           &= \inner{\Psi(T) + \alpha \Psi(S)}{\omega}
+    \end{align*}
+    para todo \(\omega \in \mathscr{M}(V\oplus W)\), portanto \(\Psi\) é linear. Seja \(T \in \Ker(\Psi)\) e consideremos as formas bilineares
+    \begin{align*}
+        \vetor{m}^{\tilde{i}\tilde{j}} : V \oplus W &\to \mathbb{K}\\
+        v^iw^j \vetor{e}_i \oplus \vetor{f}_j &\mapsto v^{\tilde{i}} w^{\tilde{j}}
+    \end{align*}
+    com \(\tilde{i} \in I = \set{1, \dots, \dim V}, \tilde{j} \in J = \set{1, \dots, \dim W}\), então
+    \begin{equation*}
+        \inner{\Psi(T)}{\vetor{m}^{\tilde{i}\tilde{j}}} = T^{ij} \vetor{m}^{\tilde{i}\tilde{j}}(\vetor{e}_i\oplus \vetor{f}_j) = T^{ij} \delta\indices{^{\tilde{i}}_{i}}\delta\indices{^{\tilde{j}}_{j}} = T^{\tilde{i}\tilde{j}},
+    \end{equation*}
+    portanto concluímos que
+    \begin{align*}
+        T \in \Ker(\Psi) &\iff \forall \omega \in \mathscr{M}(V \oplus W): \inner{\Psi(T)}{\omega} = 0\\
+                         &\implies \forall i \in I, j \in J : \inner{\Psi(T)}{\vetor{m}^{ij}} = 0\\
+                         &\iff \forall i \in I, j \in J: T^{ij} = 0\\
+                         &\iff T = 0 \otimes 0,
+    \end{align*}
+    isto é, \(\Ker(\Psi) = \set{0\otimes 0}\), portanto \(\Psi\) é injetora. Como \(\set{\vetor{m}^{ij}}{i \in I, j \in J}\) é uma base para \(\mathscr{M}(V \oplus W)\), temos
+    \begin{equation*}
+        \omega = \omega(\vetor{e}_i\oplus \vetor{f}_j) \vetor{m}^{ij}
+    \end{equation*}
+    para todo \(\omega \in \mathscr{M}(V \oplus W)\). Seja \(\Omega \in \mathscr{M}(V \oplus W)'\), então
+    \begin{equation*}
+        \inner{\Omega}{\omega} = \omega(\vetor{e}_i \oplus \vetor{f}_i) \inner{\Omega}{\vetor{m}^{ij}}
+    \end{equation*}
+    vale para todo \(\omega\in \mathscr{M}(V \oplus W)\), portanto definindo
+    \begin{equation*}
+        T = \inner{\Omega}{\vetor{m}^{ij}} \vetor{e}_i \otimes \vetor{f}_j,
+    \end{equation*}
+    temos
+    \begin{equation*}
+        \forall \omega \in \mathscr{M}(V\oplus W) : \inner{\Psi(T)}{\omega} = \inner{\Omega}{\omega},
+    \end{equation*}
+    donde segue que \(\Omega = \Psi(T)\), logo \(\Psi\) é sobrejetora. Assim, mostramos que \(\Psi\) é um isomorfismo linear de \(V \otimes W\) em \(\mathscr{M}(V \oplus W)'\), concluindo a demonstração.
 \end{proof}
