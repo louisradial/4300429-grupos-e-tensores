@@ -11,6 +11,43 @@
     \end{align*}
     que é bem definido.
 \end{definition}
+
+\begin{proposition}{Núcleo e imagem de um homomorfismo são grupos}{núcleo_e_imagem}
+    Sejam \(G\) e \(H\) dois grupos e \(\varphi : G \to H\) um homomorfismo. Então
+    \begin{equation*}
+        \Ker(\varphi) = \setc{g \in G}{\varphi(g) = e_H}
+    \end{equation*}
+    é um subgrupo normal de \(G\) e
+    \begin{equation*}
+        \Ran(\varphi) = \setc{h \in H}{\exists g \in G : h = \varphi(g)}
+    \end{equation*}
+    é um subgrupo de \(H\).
+\end{proposition}
+\begin{proof}
+    Como \(\varphi\) é um homomorfismo, sabemos que \(\varphi(e_G) = e_H\), portanto \(e_G \in \Ker(\varphi)\) e \(e_H \in \Ran(\varphi).\) Sejam \(g_1, g_2 \in \Ker(\varphi)\), então
+    \begin{equation*}
+        \varphi(g_1g_2) = \varphi(g_1)\varphi(g_2) = e_H e_H = e_H,
+    \end{equation*}
+    logo \(g_1g_2 \in \Ker(\varphi)\). Se \(g \in \Ker(\varphi)\), então
+    \begin{equation*}
+        \varphi(g^{-1}) = e_G \varphi(g^{-1}) = \varphi(g) \varphi(g^{-1}) = \varphi(g g^{-1}) = \varphi(e_G) = e_H,
+    \end{equation*}
+    isto é, \(g^{-1} \in \Ker(\varphi)\). Ainda, se \(\tilde{g} \in G\), temos
+    \begin{equation*}
+        \varphi(\tilde{g}^{-1} g \tilde{g}) = \varphi(\tilde{g}^{-1}) \varphi(g) \varphi(\tilde{g}) = \varphi(\tilde{g}^{-1}) e_H \varphi(\tilde{g}) = \varphi(\tilde{g})^{-1} \varphi(\tilde{g}) = e_H,
+    \end{equation*}
+    portanto \(\tilde{g}^{-1} g \tilde{g} \in \Ker(\varphi)\), e concluímos que \(\Ker(\varphi)\) é um subgrupo normal de \(G\).
+
+    Sejam \(h_1, h_2 \in \Ran(\varphi)\), então existem \(g_1, g_2 \in G\) tais que \(h_1 = \varphi(g_1)\) e \(h_2 = \varphi(g_2)\), portanto
+    \begin{equation*}
+        h_1 h_2 = \varphi(g_1)\varphi(g_2) = \varphi(g_1g_2) \in \Ran(\varphi).
+    \end{equation*}
+    Se \(h \in \Ran(\varphi)\), existe \(g \in G\) tal que \(h = \varphi(g)\), e, portanto
+    \begin{equation*}
+        h^{-1} = \varphi(g)^{-1} = \varphi(g^{-1}) \in \Ran(\varphi).
+    \end{equation*}
+    Desse modo, mostramos que \(\Ran(\varphi)\) é subgrupo de \(H\).
+\end{proof}
 \begin{proposition}{Primeiro teorema de isomorfismos}{exercício04}
     Sejam \(G\) e \(H\) dois grupos e \(\varphi : G \to H\) um homomorfismo. Os grupos \(G/\Ker(\varphi)\) e \(\Ran(\varphi)\) são isomorfos.
 \end{proposition}
@@ -20,17 +57,17 @@
         \Psi : G/\Ker(\varphi) &\to \Ran(\varphi)\\
                            [g] &\mapsto \varphi(g),
     \end{align*}
-    que é bem definida pois se \(g' \in [g]\), então existe \(h \in \Ker(\varphi)\) tal que \(g' = gh\), e temos
+    que é bem definida pois se \(\tilde{g} \in [g]\), então existe \(n \in \Ker(\varphi)\) tal que \(g^{-1}\tilde{g} = n\), e temos
     \begin{equation*}
-        \varphi(g') = \varphi(gh) = \varphi(g)\varphi(h) = \varphi(g)e_H = \varphi(g).
+        \varphi(\tilde{g}) = \varphi(gn) = \varphi(g)\varphi(n) = \varphi(g)e_H = \varphi(g),
     \end{equation*}
-    Sejam \([g_1], [g_2] \in G/\Ker(\varphi)\) tais que \(\Psi([g_1]) = \Psi([g_2])\), então \(\varphi(g_1) = \varphi(g_2)\). Assim, ao multiplicar ambos os lados por \(\varphi(g_2)^{-1} = \varphi(g_2^{-1})\), obtemos \(\varphi(g_2^{-1}g_1) = e_H\). Portanto, existe \(h \in \Ker(\varphi)\) tal que \(g_2^{-1}g_1 = h,\) isto é, \(g_1 \sim g_2\) e concluímos que \([g_1] = [g_2]\), logo \(\Psi\) é injetora. Que \(\Psi\) é sobrejetora é claro pois
+    isto é, a aplicação independe da escolha de representante da classe de equivalência. Se \([g_1], [g_2] \in G/\Ker(\varphi)\) são tais que \(\Psi([g_1]) = \Psi([g_2])\), então \(\varphi(g_1) = \varphi(g_2)\). Assim, ao multiplicar ambos os lados por \(\varphi(g_2)^{-1} = \varphi(g_2^{-1})\), obtemos \(\varphi(g_2^{-1}g_1) = e_H\). Portanto, existe \(n \in \Ker(\varphi)\) tal que \(g_2^{-1}g_1 = n,\) isto é, \(g_1 \in [g_2]\) e concluímos que \([g_1] = [g_2]\), logo \(\Psi\) é injetora. Que \(\Psi\) é sobrejetora é claro pois
     \begin{equation*}
-        \gamma \in \Ran(\varphi) \iff \exists g \in G : \varphi(g) = \gamma \iff \exists g \in G : \Psi([g]) = \gamma,
+        h \in \Ran(\varphi) \iff \exists g \in G : \varphi(g) = h \iff \exists g \in G : \Psi([g]) = h,
     \end{equation*}
     portanto \(\Psi\) é bijetora. Temos ainda
     \begin{equation*}
-        \Psi([g][h]) = \Psi([gh]) = \varphi(gh) = \varphi(g)\varphi(h) = \Psi([g])\Psi([h]),
+        \Psi([g_1][g_2]) = \Psi([g_1g_2]) = \varphi(g_1g_2) = \varphi(g_1)\varphi(g_2) = \Psi([g_1])\Psi([g_2]),
     \end{equation*}
-    para todos \(g, h \in G\), portanto \(\Psi\) é um isomorfismo.
+    para todos \(g_1, g_2 \in G\), portanto \(\Psi\) é um isomorfismo.
 \end{proof}
