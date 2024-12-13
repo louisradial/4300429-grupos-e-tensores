@@ -1,0 +1,271 @@
+\section{Produto tensorial de espaços lineares}
+\begin{lemma}{Grupo abeliano é naturalmente um módulo sobre \(\mathbb{Z}\)}{módulo_inteiros}
+    Seja \(G\) um grupo abeliano cujo produto denotaremos por \(+\). Definindo o produto por escalares por
+    \begin{align*}
+        \cdot : \mathbb{Z} \times G &\to G\\
+                               (n,g)&\mapsto \sum_{i = 1}^n g,
+    \end{align*}
+    com \(0\cdot g = e\), então \(G\) é um módulo sobre \(\mathbb{Z}\).
+\end{lemma}
+\begin{proof}
+    Da definição temos \(1\cdot g = g\) para todo \(g \in G\). Sejam \(n, m \in \mathbb{Z}\) e \(g, h \in G\), então
+    \begin{equation*}
+        n\cdot(m \cdot g) = \sum_{i = 1}^n (m \cdot g) = \sum_{i = 1}^n \sum_{j = 1}^m g = \sum_{k = 1}^{nm} g = (nm)\cdot g,
+    \end{equation*}
+    \begin{equation*}
+        n\cdot(g + h) = \sum_{i = 1}^n (g + h) = \sum_{i = 1}^n g + \sum_{i = 1}^{n} h = n\cdot g + n \cdot h,
+    \end{equation*}
+    e
+    \begin{equation*}
+        (n + m)\cdot g = \sum_{i = 1}^{n + m} g = \sum_{i = 1}^n g + \sum_{i = n+1}^{n + m} g = n \cdot g + \sum_{i = 1}^m g = n\cdot g + m \cdot g.
+    \end{equation*}
+    Como \(G\) já é um grupo abeliano, verificamos que é um módulo sobre \(\mathbb{Z}\).
+\end{proof}
+\begin{remark}
+    É claro que todo módulo sobre \(\mathbb{Z}\) é um grupo abeliano em relação a sua soma, portanto podemos sempre intercambiar grupos abelianos e módulos sobre \(\mathbb{Z}\) conforme conveniente.
+\end{remark}
+
+\begin{definition}{Suporte de uma aplicação}{suporte}
+    Seja \(f : X \to G\) uma aplicação de um conjunto não vazio \(X\) em um grupo \(G\) cujo elemento neutro é \(e \in G\). O \emph{suporte de \(f\)} é o conjunto \(\supp(f) = \setc{x \in X}{f(x) \neq e}\). Uma aplicação é dita ser de \emph{suporte finito} se seu suporte for um conjunto finito.
+\end{definition}
+
+\begin{proposition}{Grupo abeliano livremente gerado por um conjunto}{grupo_livremente_gerado}
+    Seja \(X\) um conjunto não vazio e seja \(\mathfrak{F}(X) = \setc{f \in \mathbb{P}(X \times \mathbb{Z})}{f\text{ é de suporte finito}}.\) Com a soma definida tal que \((f+g)(x) = f(x) + g(x)\), e o produto por escalares definido de tal sorte que \((n\cdot f)(x) = n f(x)\), então \(\left(\mathfrak{F}(X), +, \cdot\right)\) é um módulo livre\footnote{Um módulo é livre se possui uma base de Hamel, um conjunto gerador linearmente independente. Como \(\mathbb{Z}\) não é um anel de divisão, módulos sobre \(\mathbb{Z}\) não têm garantia da existência de uma base, como é o caso em, por exemplo, espaços lineares.} sobre \(\mathbb{Z}\).
+\end{proposition}
+\begin{proof}
+    Sejam \(f, g \in \mathfrak{F}(X)\), então é claro que \(f+g= g+ f\) é uma aplicação de \(X\) em \(\mathbb{Z}\), mas devemos mostrar que \(\supp(f+g)\) é um conjunto finito. Seja \(x \notin \supp(f) \cup \supp(g)\), então \(f(x) = 0\) e \(g(x) = 0\), portanto \(f(x) + g(x) = 0\), isto é, \(x \notin \supp(f + g)\). Isso nos mostra que \(\supp(f+g) \subset \supp(f) \cup \supp(g)\), portanto \(f+g\) é de suporte finito, já que a união de conjuntos finitos é um conjunto finito. A associatividade desta soma é evidente pela associatividade da soma nos inteiros, já que
+    \begin{equation*}
+        (f_1 + (f_2 + f_3))(x) = f_1(x) + (f_2 + f_3)(x) = f_1(x) + f_2(x) + f_3(x) = (f_1 + f_2)(x) + f_3(x) = ((f_1 + f_2) + f_3)(x)
+    \end{equation*}
+    para todos \(f_1, f_2, f_3 \in \mathfrak{F}(X)\) e \(x \in X\). Como o suporte da função identicamente nula é o conjunto vazio, \(0 \in \mathfrak{F}(X)\) e então é claramente o elemento neutro desta soma. Assim, o elemento inverso de \(f \in \mathfrak{F}(X)\) é \(-f \in \mathfrak{F}(X)\), mostrando assim que \(\mathfrak{F}(X)\) é um grupo abeliano aditivo. Pelo \cref{lem:módulo_inteiros}, sabemos que \(\mathfrak{F}(X)\) é um módulo sobre \(\mathbb{Z}\).
+
+    % É claro que se \(f \in \mathfrak{F}(X)\), então \(n\cdot f\) tem suporte finito para todo \(n \in \mathbb{Z}\), já que se \(n \neq 0\) o suporte é inalterado e se \(n = 0\) temos \(n\cdot f = 0 \in \mathfrak{F}(X)\). Com a definição dada, é evidente que a identidade multiplicativa em \(\mathbb{Z}\) é a identidade do produto por escalares. Sejam \(n, m \in \mathbb{Z}\), \(f, g \in \mathfrak{F}(X)\), então
+    % \begin{equation*}
+    %     \left(n\cdot(f+ g)\right)(x) = n (f+g)(x) = nf(x) + ng(x) = (n\cdot f)(x) + (n\cdot g)(x),
+    % \end{equation*}
+    % \begin{equation*}
+    %     \left((n + m)\cdot f\right)(x) = (n + m) f(x) = nf(x) + mf(x) = (n\cdot f)(x) + (m \cdot f)(x),
+    % \end{equation*}
+    % e
+    % \begin{equation*}
+    %     \left(n\cdot (m \cdot f)\right)(x) = n (m \cdot f)(x) = nm f(x) = (nm \cdot f)(x),
+    % \end{equation*}
+    % portanto \((\mathfrak{F}(X), +, \cdot)\) é um módulo sobre \(\mathbb{Z}\).
+
+    Consideremos para um \(x \in X\) a sua função característica,
+    \begin{align*}
+        \delta_x : X &\to \set{0,1} \subset \mathbb{Z}\\
+                   y &\mapsto \begin{cases}
+                         1,&\text{se }y = x\\
+                         0,&\text{se }y \neq x,
+                     \end{cases}
+    \end{align*}
+    cujo suporte é \(\set{x}\), portanto \(\delta_x \in \mathfrak{F}(X)\). Mostraremos que \(\mathfrak{F}(X)\) é um módulo livre por admitir como base o conjunto \(B = \setc{\delta_x}{x \in X}\). Seja \(Y \subset X\) um conjunto finito e suponhamos que exista uma aplicação \(a : Y \to \mathbb{Z}\) tal que
+    \begin{equation*}
+        \sum_{y \in Y} a(y) \delta_y = 0.
+    \end{equation*}
+    Seja \(A : X \to \mathbb{Z}\) a função definida por aquela combinação linear, então é claro que para \(x \notin Y\), temos \(A(x) = 0\) e para \(x \in Y\) temos \(A(x) = a(x)\). Desse modo, \(a\) deve ser identicamente nula, isto é, a única combinação linear de elementos de \(B\) que resulta no elemento neutro é a trivial, portanto \(B\) é linearmente independente. Seja \(f \in \mathfrak{F}(X)\), então \(\supp(f)\) é um conjunto finito. Assim, temos
+    \begin{equation*}
+        f = \sum_{y \in \supp(f)} f(y) \delta_y
+    \end{equation*}
+    pois para \(x \notin \supp(f)\) ambas as expressões se anulam e para \(x \in \supp(f)\) ambas as expressões resultam em \(f(x)\). Acabamos de mostrar que \(B\) é um conjunto gerador para \(\mathfrak{F}(X)\), logo \(B\) é uma base para o módulo, concluindo a demonstração.
+\end{proof}
+
+\begin{definition}{Grupo abeliano livremente gerado por um conjunto módulo relações}{grupo_livremente_gerado_relações}
+    Seja \(X\) um conjunto não vazio e \(\Lambda\) um conjunto arbitrário de índices. Seja \(\family{X_{\lambda}}{\lambda \in \Lambda}\) uma família de conjuntos finitos de \(X\), \(\family{a_{\lambda}}{\lambda \in \Lambda}\) uma família de funções \(a_{\lambda} : X_{\lambda} \to \mathbb{Z}\) e \(R = \family{r_{\lambda}}{\lambda \in \Lambda}\) uma família de elementos de \(\mathfrak{F}(X)\) dados por
+    \begin{equation*}
+        r_{\lambda} = \sum_{x \in X_{\lambda}} a_{\lambda}(x) \delta_{x},
+    \end{equation*}
+    chamados de \emph{relações}. O \emph{submódulo de \(\mathfrak{F}(X)\) gerado pelas relações de \(R\)} é o submódulo \(\mathfrak{R}(R) = \lspan_{\mathbb{Z}}\left(R\right)\) e dizemos que \(\mathfrak{F}(X)/\mathfrak{R}(R)\) é o \emph{grupo livremente gerado por \(X\) módulo as relações de \(R\)}.
+\end{definition}
+\begin{remark}
+    Como \(\mathfrak{R}(R)\) é um submódulo, é claro que o quociente \(\mathfrak{F}(R)/\mathfrak{R}(R)\) está definido.
+\end{remark}
+
+\begin{lemma}{Conjunto gerador de \(\mathfrak{F}(X)/\mathfrak{R}(R)\)}{conjunto_gerador}
+    Seja \(\mathfrak{F}(X)/\mathfrak{R}(R)\) o grupo livremente  gerado por \(X\) módulo as relações de \(R\). Então
+    \begin{equation*}
+        S = \setc*{[\delta_{x}]_{\mathfrak{R}(R)}}{x \in X}
+    \end{equation*}
+    é um conjunto gerador de \(\mathfrak{F}(X)/\mathfrak{R}(R)\), interpretando-o como um módulo sobre \(\mathbb{Z}\).
+\end{lemma}
+\begin{proof}
+    Como \(S \subset \mathfrak{F}(X)/\mathfrak{R}(R)\), é claro que \(\lspan_{\mathbb{Z}}S \subset \mathfrak{F}(X)/\mathfrak{R}(R)\). Seja \([f]_{\mathfrak{R}(R)} \in \mathfrak{F}(X)/\mathfrak{R}(R),\) então como \(f\) tem suporte finito e é dado univocamente por
+    \begin{equation*}
+        f = \sum_{y \in \supp(f)}{f(y) \delta_y},
+    \end{equation*}
+    segue que
+    \begin{equation*}
+        [f]_{\mathfrak{R}(R)} = \left[\sum_{y \in \supp(f)}{f(y) \delta_y}\right]_{\mathfrak{R}(R)} = \sum_{y \in \supp(f)}{f(y)\left[\delta_{y}\right]_{\mathfrak{R}(R)}} \in \lspan_{\mathbb{Z}}S,
+    \end{equation*}
+    portanto \(\lspan_{\mathbb{Z}}S = \mathfrak{F}(X)/\mathfrak{R}(R)\).
+\end{proof}
+
+\begin{proposition}{Produto tensorial de dois grupos abelianos}{produto_tensorial_grupos}
+    Sejam \(A, B\) grupos abelianos, cujos produtos serão denotados por \(+\) e seus elementos neutros por \(0\). O \emph{produto tensorial \(A \otimes B\) de grupos abelianos \(A\) e \(B\)} é definido pelo grupo abeliano \(\mathfrak{F}(A \times B)/\mathfrak{R}(R)\) livremente gerado por \(A \times B\) módulo as relações de \(R = R_A \cup R_B\), onde
+    \begin{equation*}
+        R_A = \setc*{\delta_{(a + \tilde{a}, b)} - \delta_{(a,b)} - \delta_{(\tilde{a},b)}}{a, \tilde{a} \in A, b \in B}
+    \end{equation*}
+    e
+    \begin{equation*}
+        R_B = \setc*{\delta_{(a,b + \tilde{b})} - \delta_{(a,b)} - \delta_{(a,\tilde{b})}}{a \in A, b, \tilde{b} \in B}.
+    \end{equation*}
+    Denotemos o elemento \([\delta_{(a,b)}]_{\mathfrak{R}(R)} \in A \otimes B\) por \(a \otimes b\), com \(a\in A\) e \(b \in B\). Assim, \(A \otimes B\) é um grupo abeliano que satisfaz
+    \begin{equation*}
+        a \otimes b + \tilde{a} \otimes b = (a + \tilde{a}) \otimes b\quad\text{e}\quad
+        a \otimes b + a \otimes \tilde{b} = a \otimes (b + \tilde{b}),
+    \end{equation*}
+    seu elemento neutro é \(0 \otimes 0 = a \otimes 0 = 0 \otimes b\), o elemento inverso de \(a \otimes b\) é \((-a) \otimes b = a \otimes (-b)\), para todos \(a,\tilde{a} \in A\) e \(b,\tilde{b} \in B\). Se \(T \in A \otimes B\), então existe \(N \in \mathbb{N}\) tal que \(T\) é a combinação linear por inteiros de \(N\) elementos da forma \(a_i \otimes b_i\), com \(a_i \in A\), \(b_i \in B\), \(i \in \set{1, 2,\dots, N}\),
+    \begin{equation*}
+        T = \sum_{i = 1}^N a_i \otimes b_i
+    \end{equation*}
+    e seu elemento inverso é
+    \begin{equation*}
+        -T = \sum_{i = 1}^N (-a_i) \otimes b_i = \sum_{i = 1}^N a_i \otimes (-b_i).
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    Como \(A\otimes B\) é o quociente do grupo abeliano \(\mathfrak{F}(A \times B)\) pelo subgrupo normal \(\mathfrak{R}(R)\), então \(A \otimes B\) é abeliano. Sejam \(a, \tilde{a} \in A\) e \(b, \tilde{b} \in B\), então por construção temos
+    \begin{equation*}
+        \delta_{(a + \tilde{a}, b)} - \delta_{(a,b)} - \delta_{(\tilde{a}, b)} \in \mathfrak{R}(R) \iff \delta_{(a + \tilde{a}, b)} \in [\delta_{(a,b)} + \delta_{(\tilde{a},b)}]_{\mathfrak{R}(R)} \iff (a + \tilde{a})\otimes b = a\otimes b + \tilde{a} \otimes b
+    \end{equation*}
+    e
+    \begin{equation*}
+        \delta_{(a, b + \tilde{b})} - \delta_{(a,b)} - \delta_{(a, \tilde{b})} \in \mathfrak{R}(R) \iff \delta_{(a, b + \tilde{b})} \in [\delta_{(a,b)} + \delta_{(a, \tilde{b})}]_{\mathfrak{R}(R)} \iff a\otimes (b+\tilde{b}) = a\otimes b + a \otimes \tilde{b}.
+    \end{equation*}
+    Notemos que para todo \(a \in A\) temos
+    \begin{equation*}
+        \delta_{(a, 0)} = \delta_{(a, 0)} + \delta_{(a, b)} - \delta_{(a, b + 0)} = -\left(\delta_{(a,b + 0)} - \delta_{(a,0)} - \delta_{(a,b)}\right) \in \mathfrak{R}(R)
+    \end{equation*}
+    qualquer que seja \(b \in B\), isto é, \(\delta_{(a,0)}\) pertence ao elemento neutro deste grupo quociente. De forma análoga, temos que \(\delta_{(0,b)} \in \mathfrak{R}(R)\), portanto temos \(0 \otimes b = a \otimes 0\) e em particular, \(0 \otimes 0 = 0 \otimes b = a \otimes 0\). Notemos que
+    \begin{equation*}
+        a \otimes b + 0 \otimes 0 = a \otimes b + 0 \otimes b = a \otimes b.
+    \end{equation*}
+    Seja \(a \otimes b \in A \otimes B\), então
+    \begin{equation*}
+        a \otimes b + (-a) \otimes b = (a - a) \otimes b = 0 \otimes b = 0\otimes 0
+    \end{equation*}
+    e
+    \begin{equation*}
+        a \otimes b + a \otimes (-b) = a \otimes (b - b) = a \otimes 0 = 0 \otimes 0,
+    \end{equation*}
+    portanto tanto \((-a) \otimes b\) quanto \(a \otimes (-b)\) são elementos inversos de \(a \otimes b\), donde segue que devemos identificar \(a \otimes (-b) = (-a)\otimes b\) uma vez que só pode haver um único elemento inverso de um elemento do grupo. Essa identificação pode ser vista de outra forma, considerando que
+    \begin{equation*}
+        \delta_{(-a, b)} - \delta_{(a, -b)} = \left[\delta_{(-a, b)} + \delta_{(a,b)} - \delta_{(0,b)}\right] - \left[\delta_{(a,b)} + \delta_{(a, -b)} - \delta_{(a,0)}\right] - \delta_{(0,b)} - \delta_{(a, 0)} \in \mathfrak{R}(R),
+    \end{equation*}
+    isto é, \(\delta_{(-a, b)} \in [\delta_{(a, -b)}]\), portanto \((-a)\otimes b = a\otimes(-b)\).
+
+    Seja \(T \in A \otimes B\), então pelo \cref{lem:conjunto_gerador}, sabemos que existe \(N \in \mathbb{N}\) elementos \((a_i, b_i) \in A\times B\) e inteiros \(t_i \in \mathbb{Z}\) com
+    \begin{equation*}
+        T = \sum_{i = 1}^N t_i (a_i \otimes b_i),
+    \end{equation*}
+    onde a multiplicação por inteiros é definida como no \cref{lem:módulo_inteiros}. Notemos que para todos \(a \in A\), \(b \in B\) e \(n \in \mathbb{Z}\), temos
+    \begin{equation*}
+        n (a \otimes b) = \sum_{i = 1}^n\left(a \otimes b\right) = \left(\sum_{i = 1}^n a\right) \otimes b = (n a)\otimes b
+    \end{equation*}
+    e \(n (a \otimes b) = a \otimes (n b)\) analogamente. Assim, temos
+    \begin{equation*}
+        T = \sum_{i = 1}^N (t_i a_i) \otimes b_i = \sum_{i = 1}^N a_i \otimes (t_i b_i)
+    \end{equation*}
+    então podemos sem perdas de generalidade absorver os números inteiros \(t_i\) nos elementos de \(A \times B\), isto é, podemos escrever
+    \begin{equation*}
+        T = \sum_{i = 1}^N a_i \otimes b_i,
+    \end{equation*}
+    mudando se necessário os elementos \(a_i, b_i\) escolhidos previamente. Verificamos que \(0 \otimes 0\) é de fato o elemento neutro, pois temos
+    \begin{equation*}
+        T + 0 \otimes 0 = 0 \otimes 0 + \sum_{i = 1}^N a_i \otimes b_i = (0 \otimes 0 + a_1\otimes b_1) + \sum_{i=2}^N a_i \otimes b_i = \sum_{i = 1}^N a_i \otimes b_i = T.
+    \end{equation*}
+    Notemos que
+    \begin{equation*}
+        T + \sum_{i = 1}^N (-a_i)\otimes b_i = \sum_{i = 1}^N \left[a_i \otimes b_i + (-a_i)\otimes b_i\right] = \sum_{i = 1}^N (a_i - a_i) \otimes b_i = \sum_{i = 1}^N 0 \otimes b_i = N (0 \times 0) = 0\times 0
+    \end{equation*}
+    e, analogamente,
+    \begin{equation*}
+        T + \sum_{i = 1}^N a_i\otimes (-b_i) = \sum_{i = 1}^N \left[a_i \otimes b_i + a_i\otimes (-b_i)\right] = \sum_{i = 1}^N a_i \otimes 0 = 0,
+    \end{equation*}
+    portanto concluímos que
+    \begin{equation*}
+        -T  = \sum_{i = 1}^N (-a_i)\otimes b_i = \sum_{i = 1}^N a_i \otimes (-b_i),
+    \end{equation*}
+    pela unicidade do elemento inverso.
+\end{proof}
+
+\begin{proposition}{Produto tensorial de dois espaços lineares}{produto_tensorial_lineares}
+    Sejam \(V, W\) espaços lineares sobre o corpo \(\mathbb{K}\), cujos vetores nulos são denotados por \(0\). O \emph{produto tensorial \(V \otimes_{\mathbb{K}} W\) de espaços lineares \(V\) e \(W\) sobre \(\mathbb{K}\)} é o espaço linear definido pelo grupo abeliano \(\mathfrak{F}(V \otimes W)/\mathfrak{R}(R)\) livremente gerado por \(V \otimes W\) módulo as relações de \(R\), onde
+    \begin{equation*}
+        R = \setc*{\delta_{(\alpha v)\otimes w} - \delta_{v \otimes (\alpha w)}}{\alpha \in \mathbb{K}, v \in V, w \in W},
+    \end{equation*}
+    com o produto por escalares definido por
+    \begin{align*}
+        \cdot : \mathbb{K} \times V \otimes_{\mathbb{K}} W &\to V \otimes_{\mathbb{K}} W\\
+        \left(\alpha,\sum_{i = 1}^Nv_i \otimes_{\mathbb{K}}w_i\right) &\mapsto \sum_{i = 1}^N (\alpha v_i) \otimes_{\mathbb{K}} w_i,
+    \end{align*}
+    em que denotamos \(v \otimes_{\mathbb{K}}w = [ \delta_{v \otimes w}]_{\mathfrak{R}(R)}\). Se \(T \in V \otimes_{\mathbb{K}} W\), então existe \(N \in \mathbb{N}\) tal que \(T\) é a combinação linear por inteiros de \(N\) elementos da forma \(v_i \otimes_\mathbb{K} w_i\), com \(v_i \in V\), \(w_i \in W\), \(i \in \set{1, 2,\dots, N}\),
+    \begin{equation*}
+        T = \sum_{i = 1}^N v_i \otimes_{\mathbb{K}} w_i
+    \end{equation*}
+    seu elemento inverso é
+    \begin{equation*}
+        -T = \sum_{i = 1}^N (-v_i) \otimes_{\mathbb{K}} w_i = \sum_{i = 1}^N v_i \otimes_{\mathbb{K}} (-w_i),
+    \end{equation*}
+    e se \(\alpha \in \mathbb{K}\), então
+    \begin{equation*}
+        \alpha \cdot T = \sum_{i = 1}^N (\alpha v_i) \otimes_{\mathbb{K}} w_i = \sum_{i = 1}^N v_i \otimes_{\mathbb{K}} (\alpha w_i).
+    \end{equation*}
+    O elemento nulo é \(0 \otimes_{\mathbb{K}} 0 = v \otimes_{\mathbb{K}} 0 = 0 \otimes_{\mathbb{K}} w\), e vale
+    \begin{equation*}
+        v \otimes_{\mathbb{K}} w + \tilde{v} \otimes_{\mathbb{K}} w = (v + \tilde{v}) \otimes_{\mathbb{K}} w\quad\text\quad
+        v \otimes_{\mathbb{K}} w + v \otimes_{\mathbb{K}} \tilde{w} = v \otimes_{\mathbb{K}} (w + \tilde{w})
+    \end{equation*}
+    para todos \(v, \tilde{v} \in V\) e \(w, \tilde{w} \in W\).
+\end{proposition}
+\begin{proof}
+    Como um quociente de um grupo abeliano, segue que \(V \otimes_{\mathbb{K}} W\) é um grupo abeliano aditivo, como na \cref{prop:grupo_quociente}. Sejam \(v \in V\) e \(w\in W\), então por construção temos
+    \begin{equation*}
+        \alpha \cdot (v \otimes_{\mathbb{K}} w) = (\alpha \cdot v) \otimes_{\mathbb{K}} w = [\delta_{(\alpha v)\otimes w}]_{\mathfrak{R}(R)} = [\delta_{v \otimes (\alpha w)}]_{\mathfrak{R}(R)} = v \otimes_{\mathbb{K}} (\alpha w)
+    \end{equation*}
+    para todo \(\alpha \in \mathbb{K}\), já que \(\delta_{(\alpha v) \otimes w} - \delta_{v \otimes (\alpha w)} \in \mathfrak{R}(R)\). Notemos que ainda valem as relações aditivas do produto tensorial, pois
+    \begin{equation*}
+        v \otimes_\mathbb{K} w + \tilde{v} \otimes_\mathbb{K} w = [\delta_{v \otimes w}]_{\mathfrak{R}(R)}+ [\delta_{\tilde{v} \otimes w}]_{\mathfrak{R}(R)}= [\delta_{v \otimes w} +  \delta_{\tilde{v} \otimes w}]_{\mathfrak{R}(R)} = [\delta_{(v + \tilde{v})\otimes w}]_{\mathfrak{R}(R)} = (v + \tilde{v})\otimes_{\mathbb{K}}w
+    \end{equation*}
+    e analogamente \(v \otimes_{\mathbb{K}} w + v \otimes_{\mathbb{K}} \tilde{w} = v \otimes_{\mathbb{K}} (w + \tilde{w})\), para todos \(v,\tilde{v} \in V\) e \(w, \tilde{w} \in W\). Como antes, temos
+    \begin{equation*}
+        0 \otimes_{\mathbb{K}} w = [\delta_{0 \otimes w}]_{\mathfrak{R}(R)} = [\delta_{0 \otimes 0}]_{\mathfrak{R}(R)} = 0 \otimes_{\mathbb{K}} 0 = [\delta_{v \otimes 0}]_{\mathfrak{R}(R)} = v \otimes_{\mathbb{K}} 0
+    \end{equation*}
+    para todos \(v \in V\) e \(w \in W\).
+
+    Sejam \(T, S \in V \otimes_{\mathbb{K}}W\). Pelo \cref{lem:conjunto_gerador}, sabemos que se \(T \in V \otimes_{\mathbb{K}} W\), então existem \(N \in \mathbb{N}\) elementos \(v_i \in V\) e \(w_i \in W\) tais que
+    \begin{equation*}
+        T = \sum_{i = 1}^N v_i \otimes_{\mathbb{K}} w_i,
+    \end{equation*}
+    onde já suprimimos a discussão sobre coeficientes inteiros da combinação linear e os absorvemos na escolha dos elementos de \(V\) e de \(W\). Verifiquemos que \(0 \otimes_\mathbb{K} 0\) é o elemento neutro, pois
+    \begin{equation*}
+        0 \otimes_{\mathbb{K}} 0 + T = (0 \otimes_{\mathbb{K}} 0 + v_1 \otimes_{\mathbb{K}} w_1) + \sum_{i = 2}^N v_i \otimes_{\mathbb{K}} w_i = \sum_{i = 1}^N v_i \otimes_{\mathbb{K}} w_i = T,
+    \end{equation*}
+    e assim,
+    \begin{equation*}
+        T + \sum_{i =1}^N (-v_i) \otimes_{\mathbb{K}} w_i = \sum_{i = 1}^N (v_i - v_i) \otimes_{\mathbb{K}} w_i = \sum_{i=1}^N 0 \otimes_{\mathbb{K}} w_i = 0\otimes_\mathbb{K} 0,
+    \end{equation*}
+    portanto \(-T = \sum_{i = 1}^N (-v_i)\otimes_{\mathbb{K}} w_i\).
+    Notemos que se \(1 \in \mathbb{K}\) é a identidade multiplicativa, então
+    \begin{equation*}
+        1 \cdot T = \sum_{i = 1}^N (1 v_i)\otimes_{\mathbb{K}} w_i = \sum_{i = 1}^N v_i \otimes _{\mathbb{K}} w_i = T,
+    \end{equation*}
+    portanto \(1\) é a identidade do produto por escalares.
+    % Do mesmo jeito, existem \(M \in \mathbb{N}\) elementos \(a_j \in V\) e \(b_j \in W\) tais que
+    % \begin{equation*}
+    %     S = \sum_{j = 1}^M a_j \otimes_{\mathbb{K}} b_j.
+    % \end{equation*}
+    Sejam \(\alpha, \beta \in \mathbb{K}\), então  pela definição do produto por escalares ser finitamente aditivo temos \(\alpha \cdot (T + S) = \alpha T + \alpha S\)
+    \begin{equation*}
+        \alpha \cdot \left( \beta \cdot T\right) = \alpha \cdot \left( \sum_{i = 1}^N (\beta v_i)\otimes_{\mathbb{K}} w_i \right) = \sum_{i = 1}^N (\alpha \beta v_i) \otimes_{\mathbb{K}} w_i = (\alpha \beta) \cdot T,
+    \end{equation*}
+    \begin{equation*}
+        (\alpha + \beta) \cdot T = \sum_{i = 1}^N ((\alpha + \beta) v_i) \otimes_{\mathbb{K}} w_i = \sum_{i = 1}^N \left((\alpha v_i) \otimes_{\mathbb{K}} w_i + (\beta v_i) \otimes_{\mathbb{K}} w_i\right)
+    \end{equation*}
+    e
+    \begin{equation*}
+        \alpha \cdot T = \sum_{i = 1}^N (\alpha v_i) \otimes_{\mathbb{K}} w_i = \sum_{i = 1}^N v_i \otimes_{\mathbb{K}} (\alpha w_i).
+    \end{equation*}
+    Assim, mostramos que \(V \otimes_{\mathbb{K}} W\) é um espaço linear com as propriedades desejadas.
+\end{proof}
