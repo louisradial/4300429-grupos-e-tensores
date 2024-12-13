@@ -1,0 +1,117 @@
+\section{Quocientes de grupos}
+\begin{proposition}{Relação de equivalência para subgrupos normais}{normal_equivalência}
+    Seja \(G\) um grupo e \(N \normal G\) um subgrupo normal. Então
+    \begin{equation*}
+        x \sim_N y \iff x^{-1}y \in N
+    \end{equation*}
+    define uma relação de equivalência em \(G\).
+\end{proposition}
+\begin{proof}
+    Como \(N\) é um subgrupo, então \(e \in N\), logo a relação é reflexiva pois \(x^{-1}x = e \in N\), isto é, \(x \sim_N x\). Temos
+    \begin{equation*}
+        x \sim_N y \iff x^{-1} y \in N \iff (x^{-1}y)^{-1} \in N \iff y^{-1}x \in N \iff y \sim_N x,
+    \end{equation*}
+    portanto a relação é simétrica. Supondo que \(x \sim_N y\) e \(y \sim_N z\) temos
+    \begin{equation*}
+        x^{-1}y \in N \land y^{-1}z \in N \implies x^{-1}y y^{-1} z \in N \implies x^{-1} z \in N,
+    \end{equation*}
+    portanto \(x \sim_N z\), isto é, a relação é transitiva.
+\end{proof}
+
+\begin{lemma}{Classe de equivalência em relação a um subgrupo normal}{classe_de_equivalência}
+    Seja \(G\) um grupo e \(N\normal G\) um subgrupo normal. Para um dado \(g \in G\) denotemos
+    \begin{equation*}
+        gN = \setc{h \in G}{\exists n \in N : h = gn}\quad\text{e}\quad
+        Ng = \setc{h \in G}{\exists n \in N : h = ng},
+    \end{equation*}
+    então \(gN = [g]_N = Ng\).
+\end{lemma}
+\begin{proof}
+    Temos
+    \begin{equation*}
+        h \in gN \iff \exists n \in N : g^{-1}h = n \in N \iff h \sim_N g \iff h \in [g]_N
+    \end{equation*}
+    e
+    \begin{equation*}
+        h \in Ng \iff \exists n \in N : h = n g \iff \exists n \in N : g^{-1} h = g^{-1} n g \iff g^{-1} h \in N \iff h \in [g]_N
+    \end{equation*}
+    portanto \(gN = [g]_N = Ng\).
+\end{proof}
+
+\begin{proposition}{Grupo quociente}{grupo_quociente}
+    Seja \(G\) um grupo e \(N \normal G\) um subgrupo normal. Com o produto definido por
+    \begin{align*}
+        \cdot : (G/N) \times (G/N) &\to G/N\\
+                     ([g]_N,[h]_N) &\mapsto [gh]_N,
+    \end{align*}
+    o quociente \(G / N = \setc{[g]_N}{g \in G}\) é um grupo. Ainda, se \(G\) é abeliano, então \(G/N\) também o é.
+\end{proposition}
+\begin{proof}
+    Sejam \(g, h \in G\), \(\tilde{g} \in [g]_N\) e \(\tilde{h} \in [h]_N\), então pelo \cref{lem:classe_de_equivalência} temos \(\tilde{g} \in gN\) e \(\tilde{h} \in Nh\), isto é, existem \(n_g,n_h \in N\) tais que \(\tilde{g} = gn_g\) e \(\tilde{h} = n_hh\). Com isso temos
+    \begin{equation*}
+        (gh)^{-1} \tilde{g}\tilde{h} = h^{-1} g^{-1} \tilde{g} \tilde{h} = h^{-1} n_g n_h h \in N,
+    \end{equation*}
+    isto é, \(\tilde{g}\tilde{h} \in [gh]_N\). Mostramos assim que o produto é bem definido, por independer da escolha de representante das classes de equivalência.
+
+    Sejam \(g_1,g_2,g_3 \in G\), então
+    \begin{equation*}
+        [g_1]_N \cdot \left([g_2]_N \cdot [g_3]_N\right) = [g_1]_N \cdot [g_2 g_3]_N = [g_1(g_2 g_3)]_N = [g_1 g_2 g_3]_N
+    \end{equation*}
+    e
+    \begin{equation*}
+        \left([g_1]_N \cdot [g_2]_N\right) \cdot [g_3]_N = [g_1 g_2]_N \cdot [g_3]_N = [(g_1 g_2)g_3]= [g_1 g_2 g_3]_N
+    \end{equation*}
+    portanto o produto em \(G/N\) é associativo. Notemos que \([e]_N = N\) é o elemento neutro deste grupo pois
+    \begin{equation*}
+        [g]_N [e]_N = [ge]_N = [g]_N = [eg]_N = [e]_N [g]_N
+    \end{equation*}
+    para todo \(g \in G\). Assim, se \(g \in G\), então o elemento inverso de \([g]_N\) é \([g^{-1}]_N\) já que
+    \begin{equation*}
+        [g]_N [g^{-1}]_N = [gg^{-1}]_N = [e]_N = [g^{-1}g]_N = [g^{-1}]_N [g]_N,
+    \end{equation*}
+    portanto \(G/N\) é um grupo. Se \(G\) é abeliano, temos
+    \begin{equation*}
+        [g]_N [h]_N = [gh]_N = [hg]_N = [h]_N [g]_N
+    \end{equation*}
+    para todos \(g, h \in G\), isto é, \(G/N\) é abeliano.
+\end{proof}
+
+\begin{proposition}{Todo subgrupo de um grupo abeliano é normal}{subgrupo_abeliano}
+    Seja \(G\) um grupo abeliano e \(N\) um subgrupo. Então \(N \normal G\).
+\end{proposition}
+\begin{proof}
+    Seja \(n \in N\), então \(g^{-1}ng = ng^{-1}g = n \in N\) para todo \(g \in G\), isto é, \(N \normal G\).
+\end{proof}
+
+\begin{proposition}{Quociente de módulos}{espaço_quociente}
+    Seja \(M\) um módulo sobre um anel \(K\) e seja \(N\) um submódulo de \(N\). Com a adição e o produto por escalares definidos por
+    \begin{align*}
+        + : M/N \times M/N &\to M/N&
+        \cdot : K \times M/N &\to M/N\\
+        ([v]_N,[u]_N) &\mapsto [v + u]_N&
+        (\alpha,[v]_N)&\mapsto [\alpha v]_N
+    \end{align*}
+    o quociente \(M/N\) é um módulo sobre \(K\).
+\end{proposition}
+\begin{proof}
+     Sabemos que \((M/N, +)\) é um grupo abeliano aditivo pela \cref{prop:grupo_quociente}. Seja \(v \in M\), então
+    \begin{equation*}
+        \tilde{v} \in [v]_N \iff \tilde{v} - v \in N \iff \forall \alpha \in K: \alpha\tilde{v} - \alpha v \in N \iff \alpha \tilde{v} \in [\alpha v]_N,
+    \end{equation*}
+    portanto o produto por escalares está bem definido. Sejam \(\alpha, \beta \in K\) e \(v \in M\), então
+    \begin{equation*}
+        \alpha \cdot \left(\beta \cdot [v]_N\right) = \alpha \cdot [\beta v]_N = [\alpha (\beta v)]_N = [\alpha \beta v]_N = [(\alpha \beta) v]_N = (\alpha \beta)\cdot [v]_N,
+    \end{equation*}
+    portanto o produto por escalares é compatível com a multiplicação no corpo. Se \(1 \in K\) é a identidade multiplicativa de \(K\), então \([v]_N = [1v]_N = 1 \cdot [v]_N\), portanto é também a identidade do produto por escalares. Sejam \(u,v \in M\) e \(\alpha, \beta \in K\), então
+    \begin{equation*}
+        \alpha \cdot \left([u]_N + [v]_N\right) = \alpha \cdot [u + v]_N = [\alpha (u + v)]_N = [\alpha u + \alpha v]_N = [\alpha u]_N + [\alpha v]_N = \alpha\cdot [u]_N + \alpha \cdot [v]_N
+    \end{equation*}
+    e
+    \begin{equation*}
+        (\alpha + \beta)\cdot [v]_N = [(\alpha + \beta)v]_N = [\alpha v + \beta v]_N = [\alpha v]_N + [\beta v]_N = \alpha\cdot[v]_N + \beta\cdot[v]_N,
+    \end{equation*}
+    isto é, o produto por escalares é distributivo em relação à soma no corpo e à soma em \(M/N\). Concluímos portanto que \((M/N, +, \cdot)\) é um módulo sobre \(K\).
+\end{proof}
+\begin{remark}
+    Como todo corpo é um anel, e como um módulo sobre um corpo é um espaço linear, concluímos que o quociente de um espaço linear sobre um corpo \(\mathbb{K}\) por um subespaço linear é um espaço linear sobre \(\mathbb{K}\).
+\end{remark}
