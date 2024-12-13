@@ -1,4 +1,15 @@
 \section{Quocientes de grupos}
+\begin{definition}{Subgrupo normal}{subgrupo_normal}
+    Seja \(G\) um grupo. Um subgrupo \(N\) de \(G\) é \emph{normal}, denotado por \(N \normal G\), se for invariante por conjugações, isto é, se \(n \in N\) então \(g^{-1} n g \in N\) para todo \(g \in G\).
+\end{definition}
+
+\begin{proposition}{Todo subgrupo de um grupo abeliano é normal}{subgrupo_abeliano}
+    Seja \(G\) um grupo abeliano e \(N\) um subgrupo. Então \(N \normal G\).
+\end{proposition}
+\begin{proof}
+    Seja \(n \in N\), então \(g^{-1}ng = ng^{-1}g = n \in N\) para todo \(g \in G\), isto é, \(N \normal G\).
+\end{proof}
+
 \begin{proposition}{Relação de equivalência para subgrupos normais}{normal_equivalência}
     Seja \(G\) um grupo e \(N \normal G\) um subgrupo normal. Então
     \begin{equation*}
@@ -76,15 +87,8 @@
     para todos \(g, h \in G\), isto é, \(G/N\) é abeliano.
 \end{proof}
 
-\begin{proposition}{Todo subgrupo de um grupo abeliano é normal}{subgrupo_abeliano}
-    Seja \(G\) um grupo abeliano e \(N\) um subgrupo. Então \(N \normal G\).
-\end{proposition}
-\begin{proof}
-    Seja \(n \in N\), então \(g^{-1}ng = ng^{-1}g = n \in N\) para todo \(g \in G\), isto é, \(N \normal G\).
-\end{proof}
-
 \begin{proposition}{Quociente de módulos}{espaço_quociente}
-    Seja \(M\) um módulo sobre um anel \(K\) e seja \(N\) um submódulo de \(N\). Com a adição e o produto por escalares definidos por
+    Seja \(M\) um módulo sobre um anel \(K\) e seja \(N\) um submódulo de \(M\). Com a adição e o produto por escalares definidos por
     \begin{align*}
         + : M/N \times M/N &\to M/N&
         \cdot : K \times M/N &\to M/N\\
