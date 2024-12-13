@@ -1,0 +1,97 @@
+\section{Teoremas de isomorfismos de grupos}
+\begin{proposition}{Núcleo e imagem de um homomorfismo são grupos}{núcleo_e_imagem}
+    Sejam \(G\) e \(H\) dois grupos e \(\varphi : G \to H\) um homomorfismo. Então
+    \begin{equation*}
+        \Ker(\varphi) = \setc{g \in G}{\varphi(g) = e_H}
+    \end{equation*}
+    é um subgrupo normal de \(G\) e
+    \begin{equation*}
+        \Ran(\varphi) = \setc{h \in H}{\exists g \in G : h = \varphi(g)}
+    \end{equation*}
+    é um subgrupo de \(H\).
+\end{proposition}
+\begin{proof}
+    Como \(\varphi\) é um homomorfismo, sabemos que \(\varphi(e_G) = e_H\), portanto \(e_G \in \Ker(\varphi)\) e \(e_H \in \Ran(\varphi).\) Sejam \(g_1, g_2 \in \Ker(\varphi)\), então
+    \begin{equation*}
+        \varphi(g_1g_2) = \varphi(g_1)\varphi(g_2) = e_H e_H = e_H,
+    \end{equation*}
+    logo \(g_1g_2 \in \Ker(\varphi)\). Se \(g \in \Ker(\varphi)\), então
+    \begin{equation*}
+        \varphi(g^{-1}) = e_G \varphi(g^{-1}) = \varphi(g) \varphi(g^{-1}) = \varphi(g g^{-1}) = \varphi(e_G) = e_H,
+    \end{equation*}
+    isto é, \(g^{-1} \in \Ker(\varphi)\). Ainda, se \(\tilde{g} \in G\), temos
+    \begin{equation*}
+        \varphi(\tilde{g}^{-1} g \tilde{g}) = \varphi(\tilde{g}^{-1}) \varphi(g) \varphi(\tilde{g}) = \varphi(\tilde{g}^{-1}) e_H \varphi(\tilde{g}) = \varphi(\tilde{g})^{-1} \varphi(\tilde{g}) = e_H,
+    \end{equation*}
+    portanto \(\tilde{g}^{-1} g \tilde{g} \in \Ker(\varphi)\), e concluímos que \(\Ker(\varphi)\) é um subgrupo normal de \(G\).
+
+    Sejam \(h_1, h_2 \in \Ran(\varphi)\), então existem \(g_1, g_2 \in G\) tais que \(h_1 = \varphi(g_1)\) e \(h_2 = \varphi(g_2)\), portanto
+    \begin{equation*}
+        h_1 h_2 = \varphi(g_1)\varphi(g_2) = \varphi(g_1g_2) \in \Ran(\varphi).
+    \end{equation*}
+    Se \(h \in \Ran(\varphi)\), existe \(g \in G\) tal que \(h = \varphi(g)\), e, portanto
+    \begin{equation*}
+        h^{-1} = \varphi(g)^{-1} = \varphi(g^{-1}) \in \Ran(\varphi).
+    \end{equation*}
+    Desse modo, mostramos que \(\Ran(\varphi)\) é subgrupo de \(H\).
+\end{proof}
+\begin{proposition}{Primeiro teorema de isomorfismos}{exercício04}
+    Sejam \(G\) e \(H\) dois grupos e \(\varphi : G \to H\) um homomorfismo. Os grupos \(G/\Ker(\varphi)\) e \(\Ran(\varphi)\) são isomorfos.
+\end{proposition}
+\begin{proof}
+    Consideremos a aplicação
+    \begin{align*}
+        \Psi : G/\Ker(\varphi) &\to \Ran(\varphi)\\
+                           [g] &\mapsto \varphi(g),
+    \end{align*}
+    que é bem definida pois se \(\tilde{g} \in [g]\), então existe \(n \in \Ker(\varphi)\) tal que \(g^{-1}\tilde{g} = n\), e temos
+    \begin{equation*}
+        \varphi(\tilde{g}) = \varphi(gn) = \varphi(g)\varphi(n) = \varphi(g)e_H = \varphi(g),
+    \end{equation*}
+    isto é, a aplicação independe da escolha de representante da classe de equivalência. Se \([g_1], [g_2] \in G/\Ker(\varphi)\) são tais que \(\Psi([g_1]) = \Psi([g_2])\), então \(\varphi(g_1) = \varphi(g_2)\). Assim, ao multiplicar ambos os lados por \(\varphi(g_2)^{-1} = \varphi(g_2^{-1})\), obtemos \(\varphi(g_2^{-1}g_1) = e_H\). Portanto, existe \(n \in \Ker(\varphi)\) tal que \(g_2^{-1}g_1 = n,\) isto é, \(g_1 \in [g_2]\) e concluímos que \([g_1] = [g_2]\), logo \(\Psi\) é injetora. Que \(\Psi\) é sobrejetora é claro pois
+    \begin{equation*}
+        h \in \Ran(\varphi) \iff \exists g \in G : \varphi(g) = h \iff \exists g \in G : \Psi([g]) = h,
+    \end{equation*}
+    portanto \(\Psi\) é bijetora. Temos ainda
+    \begin{equation*}
+        \Psi([g_1][g_2]) = \Psi([g_1g_2]) = \varphi(g_1g_2) = \varphi(g_1)\varphi(g_2) = \Psi([g_1])\Psi([g_2]),
+    \end{equation*}
+    para todos \(g_1, g_2 \in G\), portanto \(\Psi\) é um isomorfismo.
+\end{proof}
+
+\begin{proposition}{Segundo teorema de isomorfismos}{exercício8}
+    Sejam \(G\) um grupo, \(S\) um subgrupo de \(G\) e \(N\) um subgrupo normal de \(G\). Então
+    \begin{enumerate}[label=(\alph*)]
+        \item \(SN = \setc{sn}{s \in S, n \in N}\) é um subgrupo de \(G\);
+        \item \(S \cap N\) é um subgrupo normal de \(S\); e
+        \item \((SN)/N\) e \(S/(S \cap N)\) são isomorfos.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Como \(e \in S\) e \(e \in N\), segue que \(e \in SN\) e \(e \in S \cap N\). Seja \(a,b \in SN\), então existem \(s_a, s_b \in S\) e \(n_a, n_b \in N\) tais que \(a = s_a n_a\) e \(b = s_b n_b\), logo
+    \begin{equation*}
+        ab = s_a n_a s_b n_b = s_a s_b s_b^{-1} n_a s_b n_b = (s_a s_b) (s_b^{-1} n_a s_b) n_b,
+    \end{equation*}
+    portanto \(ab \in SN\) já que \(s_b^{-1} n_a s_b \in N\), isto é, \(SN\) é um subgrupo de \(G\). Sejam \(s_1, s_2 \in S\cap N\), então \(s_1 s_2 \in S\) e \(s_1 s_2 \in N\) já que ambos são subgrupos, logo \(s_1 s_2 \in S \cap N\) e concluímos que \(S\cap N\) é subgrupo de \(G\). Seja \(n \in S \cap N\) e \(s \in S\), então como \(n \in N\), segue que \(s^{-1}ns \in N\) e temos \(s^{-1} n s \in S\) por ser o produto de elementos de \(S\), isto é, concluímos que \(S \cap N \normal S\).
+
+    Como \(SN\) é um subgrupo de \(G\) que contém \(N\) e \(N \normal G\), está claro que \(N \normal SN\), portanto os quocientes \((SN)/N\) e \(S/(S \cap N)\) estão bem definidos. Denotemos estes quocientes por
+    \begin{equation*}
+        (SN)/N = \setc{[g]_N}{g \in SN}\quad\text{e}\quad S/(S \cap N) = \setc{[s]_{S\cap N}}{s \in S}
+    \end{equation*}
+    e consideremos a aplicação
+    \begin{align*}
+        \varphi : SN &\to S/(S \cap N)\\
+                  sn &\mapsto [s]_{S \cap N}.
+    \end{align*}
+    Seja \(g \in SN\), então existem \(s, \tilde{s} \in S\) e \(n, \tilde{n} \in N\) tais que \(sn = g = \tilde{s} \tilde{n}\), portanto \(S \ni s^{-1}\tilde{s} = n\tilde{n}^{-1} \in N\), assim temos \(\tilde{s} \in [s]_{S \cap N}\), logo \(\varphi\) está bem definida. É claro que \(\varphi\) é sobrejetora, pois basta considerar o subconjunto da imagem de \(\varphi\) dado por
+    \begin{equation*}
+        \varphi(S) = \setc{\varphi(s)}{s \in S} = \setc{[s]_{S \cap N}}{s \in S} = S / (S \cap N).
+    \end{equation*}
+    Sejam \(g, h \in SN\), então existem \(s_g, s_h \in S\) e \(n_g, n_h \in N\) tais que \(g = s_g n_g\) e \(h = s_h n_h\), portanto
+    \begin{equation*}
+        \varphi(gh) = \varphi(s_g n_g s_h n_h) = \varphi\left(s_g s_h (s_h^{-1}n_g s_h)n_h\right) = \varphi(s_g s_h) = [s_gs_h]_{S\cap N} = [s_g]_{S \cap N} [s_h]_{S\cap N},
+    \end{equation*}
+    isto é, \(\varphi\) é um homomorfismo.
+
+    É evidente que \(N \subset \Ker(\varphi)\), pois se \(g \in N\) temos \(\varphi(g) = \varphi(e) = [e]_{S\cap N},\) isto é, \(g \in \Ker(\varphi)\). Seja \(h \in \Ker(\varphi) \subset SN\), então existem \(s_h \in S\) e \(n_h \in N\) tais que \(h = s_h n_h\), logo \(\varphi(s_h) = [e]_{S \cap N}\). Assim, sabemos que \(s_h \in [e]_{S \cap N}\), isto é, \(s_h \in S \cap N\), e então podemos concluir que \(h = s_h n_h \in N\). Como \(\Ker(\varphi) = N\), temos pelo primeiro teorema de isomorfismos que \((SN)/N\) e \(S/(S\cap N)\) são isomorfos.
+\end{proof}

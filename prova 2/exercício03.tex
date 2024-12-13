@@ -1,0 +1,209 @@
+\section[Representações unitárias e irredutíveis de SU(2) em espaços lineares de dimensão finita]{Representações irredutíveis de \(\mathrm{SU}(2)\) em espaços lineares de dimensão finita}
+Nesta seção, \(V\) é um espaço linear sobre \(\mathbb{C}\) de dimensão finita e \(\Pi : \mathrm{SU}(2) \to \mathrm{GL}(V)\) é uma representação irredutível unitária de \(\mathrm{SU}(2)\) em \(V\), com \(\mathrm{GL}(V)\) o grupo de operadores lineares inversíveis agindo em \(V\). Escrevendo \(j_a = \frac12 \sigma_a\), onde \(\sigma_a\) é a \(a\)-ésima matriz de Pauli, sabemos que\footnote{Como não trabalharemos com espaços duais nesta seção, utilizaremos apenas índices inferiores na notação de Einstein.} \([j_a, j_b] = i \epsilon_{abc} j_c\), fato mostrado anteriormente no curso, assim como sabemos que \(j_a\) é auto-adjunta. Sabemos também que \(U(\theta, \vetor{\eta}) = \exp(i \theta \vetor{\eta}\cdot \vetor{j})\) é sobrejetor em \(\mathrm{SU}(2)\), com \(\vetor{\eta} \in S^2 = \setc{\vetor{x} \in \mathbb{R}^3}{\norm{\vetor{x}} = 1}\) e \(\theta \in [-2\pi, 2\pi)\). Assumimos, então, que a representação \(\Pi\) é da forma
+\begin{equation*}
+    \Pi(U(\theta, \vetor{\eta})) = \exp(i\theta \vetor{\eta}\cdot\vetor{J}),
+\end{equation*}
+com \(\exp(i \theta J_a) = \Pi(U(\theta, \vetor{e}_a))\) e \([J_a, J_b] = i \epsilon_{abc} J_c\). Os operadores \(J_a\) serão chamados de geradores da representação.
+
+\begin{lemma}{Adjunto da exponencial de matriz}{adjunto}
+    Seja \(M \in \mathrm{Mat}(n, \mathbb{C})\), então \(\exp(M)^* = \exp(M^*)\).
+\end{lemma}
+\begin{proof}
+    Da continuidade da operação de adjunção e de sua antilinearidade, temos
+    \begin{equation*}
+        \exp(M)^* = \left(\lim_{N\to \infty}\sum_{k = 1}^N \frac{M^k}{k!}\right)^* = \lim_{N\to \infty} \sum_{k = 1}^N \frac{1}{k!} (M^*)^k = \sum_{k = 1}^\infty \frac{(M^*)^k}{k!} = \exp(M^*),
+    \end{equation*}
+    como desejado.
+\end{proof}
+
+\begin{proposition}{Geradores da representação unitária são autoadjuntos}{autoadjuntos}
+    Os operadores \(J_a\), \(a \in \set{1,2,3}\), são autoadjuntos.
+\end{proposition}
+\begin{proof}
+    Se \(\exp(i \theta J_a)\) é unitário, então pelo \cref{lem:adjunto}, temos
+    \begin{equation*}
+        \exp(-i\theta J_a^*) = \exp(i\theta J_a)^* = \exp(-i\theta J_a),
+    \end{equation*}
+    donde segue que \(J_a^* = J_a\).
+\end{proof}
+
+\begin{lemma}{Propriedade do comutador}{comutador}
+    Sejam \(A, B\) operadores agindo em \(V\), então \(\commutator{A^2}{B} = A\commutator{A}{B} + \commutator{A}{B}A\).
+\end{lemma}
+\begin{proof}
+    Para dois operadores \(A\) e \(B\) temos
+    \begin{equation*}
+        \commutator{A^2}{B} = A^2 B - ABA + ABA - BA^2 = A(AB - BA) + (AB - BA)A = A\commutator{A}{B} + \commutator{A}{B}A,
+    \end{equation*}
+    como desejado.
+\end{proof}
+
+\begin{proposition}{Operador de Casimir}{casimir}
+    O operador \(J^2 = J_a J_b \delta_{ab}\) é um operador de Casimir, isto é, \(\commutator{J^2}{J_a} = 0\).
+\end{proposition}
+\begin{proof}
+    Pelo \cref{lem:comutador}, segue que
+    \begin{equation*}
+        \commutator{J^2}{J_a} = \commutator*{\sum_{b = 1}^3 J_b^2}{J_a} = \sum_{b = 1}^3\commutator{J_b^2}{J_a} = \sum_{b = 1}^3 \left(J_b\commutator{J_b}{J_a} + \commutator{J_b}{J_a}J_b\right) = i \epsilon_{bac} \anticommutator{J_b}{J_c} = 0,
+    \end{equation*}
+    portanto \(J^2\) é um operador de Casimir.
+\end{proof}
+\begin{remark}
+    Pelo lema de Schur\footnote{Ver \href{https://github.com/louisradial/4300429-grupos-e-tensores/releases/tag/lista4}{Lista 4, exercício 1}}, sabemos que se \(\Pi\) é irredutível, então \(J^2\) deve ser um múltiplo da identidade, já que vale
+    \begin{equation*}
+        J^2 \exp(i \theta \vetor{\eta}\cdot \vetor{J}) = \exp(i\theta\vetor{\eta}\cdot\vetor{J})J^2
+    \end{equation*}
+    como consequência da \cref{prop:casimir}. Assim, caracterizamos a representação irredutível de \(\mathrm{SU}(2)\) pelos autovalores de \(J^2\).
+\end{remark}
+
+\subsection[Autovalores de J₃ e de J²]{Autovalores de \(J_3\) e de \(J^2\)}
+Como \(V\) é unitariamente isomorfo a algum \(\mathbb{C}^n\), podemos utilizar o seu produto escalar usual de \(\mathbb{C}^n\).
+
+\begin{proposition}{Forma geral dos autovalores de \(J^2\)}{espectroj2}
+    Seja \(\psi \in V\) um autovetor de \(J^2\), então existe \(j \geq 0\) tal que \(J^2 \psi = j(j+1) \psi\).
+\end{proposition}
+\begin{proof}
+    Como \(J_a\) é autoadjunto, segue que \(J^2\) também o é, portanto seu espectro é real. Seja \(\psi \in V\) um autovetor de \(J^2\) associado ao autovalor \(\lambda \in \mathbb{R}\), então
+    \begin{equation*}
+        \lambda = \inner{\psi}{J^2\psi} = \delta_{ab}\inner{\psi}{J_a J_b \psi}  = \sum_{a = 1}^3\inner{\psi}{J_a^* J_a\psi} = \sum_{a = 1}^3 \inner{J_a \psi}{J_a \psi} = \sum_{a = 1}^3{\norm{J_a \psi}}^2> 0.
+    \end{equation*}
+    Consideremos agora a equação \(2j(j+1) = \lambda\) com \(\lambda \geq 0\), cuja solução é
+    \begin{equation*}
+        2 j = -1 \pm \sqrt{1 + 4 \lambda^2}.
+    \end{equation*}
+    Como o resultado daquela raiz é sempre maior ou igual a \(1\), segue que sempre há solução para \(j \geq 0\), isto é, podemos escrever \(\lambda = j(j+1)\).
+\end{proof}
+
+Uma consequência da \cref{prop:casimir} é que em particular \(\commutator{J^2}{J_3} = 0\), portanto podemos escolher uma base ortogonal de autovetores simultâneos de \(J_3\) e de \(J^2\). Pela \cref{prop:espectroj2}, escrevemos os elementos desta base como \(\psi_j^m\), que satisfazem
+\begin{equation*}
+    J_3 \psi_{j}^{m} = m J_3 \psi_{j}^m\quad\text{e}\quad J^2 \psi_{j}^{m} = j(j+1) \psi_{j}^m,
+\end{equation*}
+com a relação de ortogonalidade \(\inner{\psi_{j}^{m}}{\psi_{j}^{\tilde{m}}} = \delta_{m\tilde{m}}\).
+
+\begin{lemma}{Operadores de abaixamento e levantamento}{escada}
+    Definindo os operadores \(J_\pm = J_1 \pm i J_2\), temos
+    \begin{equation*}
+        \commutator{J_\pm}{J_\mp} = \pm 2J_3\quad
+        \anticommutator{J_\pm}{J_\mp} = 2J^2 - 2J_3^2,\quad
+        \commutator{J_3}{J_\pm} = \pm J_\pm,\quad\text{e}\quad
+        \commutator{J^2}{J_\pm} = 0.
+    \end{equation*}
+    Ainda, vale \(J_\pm^* = J_\mp\) e \(J_\pm J_\mp = J^2 - J_3^2 \pm J_3\).
+\end{lemma}
+\begin{proof}
+    Como \(J_1\) e \(J_2\) são autoadjuntos, temos
+    \begin{equation*}
+        J_\pm^* = (J_1 \pm i J_2)^* = J_1^* \mp i J_2^* = J_1 \mp i J_2 = J_{\mp},
+    \end{equation*}
+    pela antilinearidade da adjunção. Notemos que
+    \begin{equation*}
+        J_\pm J_\mp = (J_1 \pm i J_2)(J_1 \mp i J_2) = J_1^2 \mp i J_1 J_2 \pm i J_2 J_1 + J_2^2 = J^2 - J_3^2 \mp i \commutator{J_1}{J_2} = J^2 - J_3^2 \pm J_3,
+    \end{equation*}
+    portanto segue que \(\commutator{J_\pm}{J_\mp} = \pm2 J_3\) e \(\anticommutator{J_\pm}{J_\mp} = 2J_2^2 - 2J_3^2\). Temos também
+    \begin{equation*}
+        \commutator{J_3}{J_\pm} = \commutator{J_3}{J_1} \pm i \commutator{J_3}{J_2} = i J_2 \pm J_1 = \pm J_\pm
+    \end{equation*}
+    e \(\commutator{J^2}{J_\pm}\) segue da bilinearidade do comutador e de \(\commutator{J^2}{J_a}\). Somando as relações de comutação e de anticomutação, temos \(2J_\pm J_\mp = [J_\pm, J_\mp] + \anticommutator{J_\pm}{J_\mp}\), logo \(J_\pm J_\mp = J^2 - J_3^2 \pm J_3\).
+\end{proof}
+
+\begin{proposition}{Espectro de \(J_3\) e de \(J^2\)}{espectro}
+    Se \(\psi_{j}^m\) é autovetor simultâneo de \(J_3\) e de \(J^2\), com
+    \begin{equation*}
+        J_3 \psi_{j}^{m} = m J_3 \psi_{j}^m\quad\text{e}\quad J^2 \psi_{j}^{m} = j(j+1) \psi_{j}^m,
+    \end{equation*}
+    então \(j \in \frac12 \mathbb{N}_0 = \setc{\frac12 p}{p \in \mathbb{N}_0}\) e \(m \in \setc{q\in \frac12 \mathbb{Z}}{-j \leq q \leq j}\).
+\end{proposition}
+\begin{proof}
+    Como \(J_{\pm}^* = J_\mp\), temos
+    \begin{align*}
+        \norm{J_\pm \psi^m_j}^2 &= \inner{J_\pm\psi_j^m}{J_\pm \psi_{j}^m}\\
+                                &= \inner{\psi_j^m}{J_\mp J_\pm \psi_j^m}\\
+                                &= \inner{\psi_j^m}{(J^2 - J_3^2 \mp J_3)\psi_j^m}\\
+                                &= \inner{\psi_j^m}{\left[j(j+1) - m^2 \mp m\right]\psi_j^m}\\
+                                &= j(j+1) - m(m \pm 1),
+    \end{align*}
+    isto é, vemos que
+    \begin{equation*}
+        j(j + 1) - m(m \pm 1) \geq 0 \implies (j \mp m)(j \pm m + 1) \geq 0
+    \end{equation*}
+    para todos \(j,m\). Para o sinal superior temos que \(j - m \geq 0\) e \(j + m + 1 \geq 0\) ou que \(j - m \leq 0\) e \(j + m + 1 - \leq 0\). Descartamos esta segunda opção já que a soma das duas inequações implica \(2j + 1 \leq 0\), que não é possível, então nos resta a primeira opção, que nos diz que \(m \leq j\) e que \(m \geq -(j+1)\). A inequação do sinal inferior nos informa que \(j + m \geq 0\) e \(j - m + 1 \geq 0\) ou que \(j + m \leq 0\) e \(j - m + 1 \leq 0\), e analogamente concluímos que \(m \geq -j\) e que \(m \leq j+1\). Reunindo estes resultados, concluímos que \(-j \leq m \leq j\).
+
+    A equação
+    \begin{equation*}
+        \norm{J_{\pm}\psi_{j}^m}^2 = j(j+1) - m(m \pm 1)
+    \end{equation*}
+    nos garante que se \(m = \pm j\) é autovalor de \(J_3\), então
+    \begin{equation*}
+        J_\pm \psi_j^{\pm j} = 0.
+    \end{equation*}
+    Pela mesma equação, sabemos também que se \(J_\pm\psi_{j}^{m} = 0\) então \(m = \pm j\). Isto é, se provarmos que \(\pm j\) é autovalor de \(J_3\), então saberemos que \(\psi_{j}^{\pm j}\) são os únicos autovetores que satisfazem \(J_\pm \psi_j^m = 0\). Consideremos \(m \neq \pm j\) por ora, então as relações de comutação \(\commutator{J^2}{J_\pm} = 0\) e \(\commutator{J_3}{J_\pm} = \pm  J_\pm\) nos mostram
+    \begin{equation*}
+    J^2 J_\pm\psi_{j}^{m} = J_\pm J^2\psi_j^m =  j(j+1) J_\pm \psi_{j}^{m}
+    \end{equation*}
+    e que
+    \begin{equation*}
+        J_3 J_\pm \psi_{j}^m = J_\pm J_3 \psi_j^m + \commutator{J_3}{J_\pm}\psi_j^m = (m \pm 1) J_\pm\psi_j^m,
+    \end{equation*}
+    portanto \(J_\pm \psi_j^m\) é autovetor de \(J^2\) e de \(J_3\) associado aos autovalores \(j(j+1)\) e \(m\pm 1\). Seja \(p \geq 0\) o maior número inteiro tal que \(m + p \leq j\), então \(m + p + 1 > j\) e  devemos ter
+    \begin{equation*}
+        (J_+)^{p+1} \psi_{j}^{m} = J_+ (J_+)^p\psi_{j}^{m} \propto J_+ \psi_{j}^{m+p} = 0,
+    \end{equation*}
+    caso contrário o último resultado seria um autovetor associado ao autovalor \(m + p + 1 > l\), o que não é possível, já que o espectro de \(J_3\) está contido em \([-j,j]\). Notamos que como \(\psi_{j}^{m}\) não é um vetor nulo e estamos assumindo \(m \neq \pm j\), temos \(p > 0\), caso em que podemos concluir que \((J_+)^p\psi_{j}^{m}\) é autovetor de \(J_3\) com autovalor \(j\). Analogamente concluímos que existe um autovetor de \(J_3\) com autovalor \(-j\).
+
+    Apliquemos o operador \(J_-\) no autovetor \(\psi_{j}^j\) sucessivamente \(p \in \mathbb{N}\) vezes, obtendo autovetor de \(J_3\) com autovalor \(j - p\). Vemos que podemos fazer isso apenas \(p = 2j\) vezes, caso contrário existiria um autovetor de \(J_3\) com autovalor \(-(j+1) < -j\). Dessa forma, vemos que \(2j \in \mathbb{N}\), isto é, \(j\) ou é inteiro positivo ou é semi-inteiro positivo.
+\end{proof}
+
+\subsection{Elementos de matrizes dos geradores da representação}
+Fixamos a representação irredutível caracterizada pelo autovalor \(j(j+1)\) de \(J^2\).
+\begin{lemma}{Elemento de matriz dos operadores de abaixamento}{matriz_escada}
+    Para os operadores de abaixamento e levantamento, temos
+    \begin{equation*}
+        J_\pm \psi_j^m = \sqrt{j(j+1) - m(m\pm 1)} \psi_j^{m\pm 1}
+    \end{equation*}
+    para todo \(m\in \sigma(J_3)\) com \(-j \leq m \leq j\).
+\end{lemma}
+\begin{proof}
+    Como determinamos a norma de \(J_\pm\psi_{j}^{m}\) na \cref{prop:espectro}, podemos definir
+    \begin{equation*}
+        J_\pm\psi_{j}^{m} = \sqrt{j(j+1) - m(m\pm1)} \psi_{j}^{m\pm1},
+    \end{equation*}
+    a menos de uma fase. Notamos que o lado direito está bem definido, já que o coeficiente se anula para \(m = \pm j\).
+\end{proof}
+
+\begin{proposition}{Elemento de matriz dos geradores da representação}{matriz}
+    Os elementos de matrizes dos operadores \(J_1, J_2, J_3\) são
+    \begin{equation*}
+        \inner{\psi_j^{\tilde{m}}}{J_1\psi_j^m} = \frac12\left(\sqrt{j(j+1) - m(m+1)} \delta_{\tilde{m},m+1} + \sqrt{j(j+1) - m(m-1)}\delta_{\tilde{m}, m-1}\right),
+    \end{equation*}
+    \begin{equation*}
+        \inner{\psi_j^{\tilde{m}}}{J_1\psi_j^m} = \frac1{2i}\left(\sqrt{j(j+1) - m(m+1)} \delta_{\tilde{m},m+1} - \sqrt{j(j+1) - m(m-1)}\delta_{\tilde{m}, m-1}\right),
+    \end{equation*}
+    e
+    \begin{equation*}
+        \inner{\psi_{j}^{\tilde{m}}}{J_3 \psi_{j}^m} = m \delta_{m \tilde{m}}
+    \end{equation*}
+    para todos \(-j \leq m, \tilde{m} \leq j\) no espectro de \(J_3\).
+\end{proposition}
+\begin{proof}
+    Por construção, sabemos que \(J_3 \psi_j^m = m \psi_j^m\), portanto \(\inner{\psi_j^{\tilde{m}}}{J_3 \psi_j^m} = m \delta_{m \tilde{m}}\). Notemos que
+    \begin{equation*}
+        J_1 = \frac12\left(J_+ + J_-\right)\quad\text{e}\quad J_2 = \frac1{2i}\left(J_+ - J_-\right),
+    \end{equation*}
+    portanto pelo \cref{lem:matriz_escada} temos
+    \begin{equation*}
+        J_1\psi_j^m = \frac12\left(\sqrt{j(j+1) - m(m+1)}\psi_j^{m+1} + \sqrt{j(j+1) - m(m-1)}\psi_j^{m-1}\right)
+    \end{equation*}
+    e
+    \begin{equation*}
+        J_2\psi_j^m = \frac1{2i}\left(\sqrt{j(j+1) - m(m+1)}\psi_j^{m+1} - \sqrt{j(j+1) - m(m-1)}\psi_j^{m-1}\right).
+    \end{equation*}
+    Assim, os elementos de matriz de \(J_1\) e de \(J_2\) são
+    \begin{equation*}
+        \inner{\psi_j^{\tilde{m}}}{J_1\psi_j^m} = \frac12\left(\sqrt{j(j+1) - m(m+1)} \delta_{\tilde{m},m+1} + \sqrt{j(j+1) - m(m-1)}\delta_{\tilde{m}, m-1}\right)
+    \end{equation*}
+    e
+    \begin{equation*}
+        \inner{\psi_j^{\tilde{m}}}{J_1\psi_j^m} = \frac1{2i}\left(\sqrt{j(j+1) - m(m+1)} \delta_{\tilde{m},m+1} - \sqrt{j(j+1) - m(m-1)}\delta_{\tilde{m}, m-1}\right),
+    \end{equation*}
+    pela relação de ortogonalidade.
+\end{proof}
