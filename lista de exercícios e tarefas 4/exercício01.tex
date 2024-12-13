@@ -1,0 +1,129 @@
+\section{Lema de Schur}
+\begin{definition}{Automorfismos de um grupo}{automorfismos}
+    Seja \(G\) um grupo. Um \emph{automorfismo} em \(G\) é um isomorfismo de \(G\) em \(G\), isto é, um homomorfismo bijetivo. O conjunto de automorfismos em \(G\) é denotado por \(\Aut(G)\).
+\end{definition}
+\begin{proposition}{Grupo de automorfismos}{automorfismos}
+    Seja \(G\) um grupo. O conjunto de automorfismos em \(G\) é um grupo em relação à composição.
+\end{proposition}
+\begin{proof}
+    Como \(\Aut(G)\) é a interseção do grupo de permutações \(\mathrm{Perm}(G)\) em \(G\) e do conjunto de homomorfismos de \(G\) em \(G\), basta verificar que \(\Aut(G)\) é um subgrupo de \(\mathrm{Perm}(G)\). Notamos que a identidade \(\id{G} \in \mathrm{Perm}(G)\) é um homomorfismo pois para todo \(g, h \in G\) temos
+    \begin{equation*}
+        \id{G}(g) \id{G}(h) = gh = \id{G}(gh),
+    \end{equation*}
+    portanto \(\id{G} \in \Aut(G)\). Sejam \(\varphi, \psi \in \Aut(G)\), então \(\varphi \circ \psi \in \Aut(G)\) pois
+    \begin{equation*}
+        (\varphi \circ \psi)(gh) = \varphi\left(\psi(g)\psi(h)\right) = \left(\varphi\circ\psi(g)\right)\left(\varphi\circ\psi(h)\right)
+    \end{equation*}
+    para todos \(g,h \in G\). Como \(\psi \in \Aut(G)\) é um isomorfismo, então \(\psi^{-1} : G \to G\) existe e é um isomorfismo, isto é, \(\psi^{-1} \in \Aut(G)\). Concluímos assim que \(\Aut(G)\) é um subgrupo de \(\mathrm{Perm}(G)\).
+\end{proof}
+\begin{proposition}{Grupo de automorfismos lineares}{automorfismos_lineares}
+    Seja \(V\) um espaço linear sobre um corpo \(\mathbb{K}\). O conjunto de automorfismos lineares,
+    \begin{equation*}
+        \mathrm{GL}(V) = \setc{T \in \Aut(V)}{T(\alpha v) = \alpha T(v), \forall \alpha \in \mathbb{K}, v \in V},
+    \end{equation*}
+    é um subgrupo de \(\Aut(V)\).
+\end{proposition}
+\begin{proof}
+    A identidade claramente é um automorfismo linear, já que \(\id{V}(\alpha v) = \alpha v = \alpha \id{V}(v)\) para todos \(\alpha \in \mathbb{K}\) e \(v \in V\). Seja \(T \in \mathrm{GL}(V)\), então \(T^{-1} \in \Aut(V)\) e
+    \begin{equation*}
+        T^{-1}(\alpha v) = T^{-1}\left(\alpha T \circ T^{-1}(v)\right) = T^{-1} \circ T \left(\alpha T^{-1}(v)\right) = \alpha T^{-1}(v),
+    \end{equation*}
+    para todos \(\alpha \in \mathbb{K}\) e \(v \in V\), isto é, \(T^{-1} \in \mathrm{GL}(V)\). Sejam \(T, S \in \mathrm{GL}(V)\), então \(T \circ S \in \Aut(V)\) e
+    \begin{equation*}
+        T \circ S(\alpha v) = T\left(\alpha S(v)\right) = \alpha T \circ S(v),
+    \end{equation*}
+    logo \(T \circ S \in \mathrm{GL}(V)\). Assim, \(\mathrm{GL}(V)\) é um subgrupo de \(\Aut(V)\).
+\end{proof}
+
+\begin{definition}{Representação de um grupo em um espaço linear}{representação}
+    Sejam \(G\) um grupo com elemento neutro \(e \in G\) e \(V\) um espaço linear sobre um corpo \(\mathbb{K}\). Uma \emph{representação \(\pi\) de \(G\) em \(V\)} é uma aplicação \(\pi : G \to \mathrm{GL}(V)\) tal que
+    \begin{enumerate}[label=(\alph*)]
+        \item \(\pi(e) = \unity\), isto é, \(\pi(e)v = v\) para todo \(v \in V\);
+        \item \(\pi\) é um homomorfismo de \(G\) em \(\mathrm{GL}(V)\), isto é, \(\pi(g)\pi(h) = \pi(gh)\) para todos \(g, h \in G\).
+    \end{enumerate}
+    Um subespaço linear \(W \subset V\) é dito ser \emph{invariante por \(\pi\)} se \(\pi(g)W \subset W\) para todo \(g \in G\). A representação \(\pi\) é dita ser \emph{irredutível} se os únicos subespaços invariantes por \(\pi\) forem os subespaços triviais, \(V\) e \(\set{0}\).
+\end{definition}
+
+\begin{definition}{Operadores de entrelaçamento de representações}{intertwiners}
+    Sejam \(\pi_1 : G \to \mathrm{GL}(V_1)\) e \(\pi_2 : G \to \mathrm{GL}(V_2)\) representações de um grupo \(G\) em espaços lineares \(V_1\) e \(V_2\) sobre o mesmo corpo \(\mathbb{K}\).
+    \begin{equation*}
+        \begin{tikzcd}[column sep = normal, row sep = large]
+            V_1 \arrow{r}{A} \arrow{d}{\pi_1(g)} & V_2 \arrow{d}{\pi_2(g)}\\
+            V_1 \arrow{r}{A} & V_2
+        \end{tikzcd}
+    \end{equation*}
+    Um \emph{intertwiner de \(\Pi_1\) e \(\Pi_2\)} é uma aplicação linear \(A : V_1 \to V_2\) tal que o diagrama comuta para todo \(g \in G\), isto é, \(A\pi_1(g) = \pi_2(g)A\) para todo \(g \in G\).
+\end{definition}
+\begin{proposition}{Espaço linear de intertwiners}{homgvw}
+    Sejam \(\pi_1 : G \to \mathrm{GL}(V_1)\) e \(\pi_2 : G \to \mathrm{GL}(V_2)\) representações de um grupo \(G\) em espaços lineares \(V_1\) e \(V_2\) sobre o mesmo corpo \(\mathbb{K}\). Denotemos por \(\Hom(V_1, V_2)\) o espaço linear de aplicações lineares de \(V_1\) em \(V_2\) e \(\Hom_G(V_1, V_2)\) o conjunto de intertwiners de \(\pi_1\) e de \(\pi_2\). Então, \(\Hom_G(V_1, V_2)\) é um subespaço linear de \(\Hom(V_1, V_2)\).
+\end{proposition}
+\begin{proof}
+    É claro que a aplicação linear nula é um intertwiner, já que a equivariância \(0 \pi_1(g) = \pi_2(g) 0\) é satisfeita trivialmente. Como \(\Hom_G(V_1, V_2)\) é não vazio, tomemos \(A, B \in \Hom_G(V_1, V_2)\) e \(\alpha, \beta \in \mathbb{K}\), então
+    \begin{equation*}
+        (\alpha A + \beta B)\pi_1(g) = \alpha A \pi_1(g) + \beta B \pi_1(g) = \alpha \pi_2(g)A + \beta \pi_2(g) B = \pi_2(g) (\alpha A + \beta B),
+    \end{equation*}
+    isto é, \(\alpha A + \beta B \in \Hom_G(V_1, V_2)\).
+\end{proof}
+
+\begin{lemma}{Lema de Schur}{schur}
+    Sejam \(\Pi_1 : G \to \mathrm{GL}(V_1)\) e \(\Pi_2 : G \to \mathrm{GL}(V_2)\) representações irredutíveis de um grupo \(G\) em espaços lineares não-triviais \(V_1, V_2\). Se \(A : V_1 \to V_2\) é um intertwiner de \(\Pi_1\) e de \(\Pi_2\), então ou \(A\) é bijetor ou \(A = 0\).
+\end{lemma}
+\begin{proof}
+    Consideremos o núcleo do operador de entrelaçamento \(A : V_1 \to V_2\).
+    \begin{equation*}
+        \begin{tikzcd}[column sep = normal, row sep = large]
+            \Ker(A) \arrow{r}{A} \arrow{d}{\Pi_1(g)} & \set{0_{V_2}} \arrow{d}{\Pi_2(g)}\\
+            \Pi_1(g)\Ker(A) \arrow{r}{A} & \set{0_{V_2}}
+        \end{tikzcd}
+    \end{equation*}
+    Seja \(g \in G\), então a imagem de \(\Ker(A)\) por \(\Pi_1(g)\) está contida em \(\Ker(A)\) já que para todo \(v \in \Ker(A)\) temos \(A \Pi_1(g)v = \Pi_2(g) Av = 0_{V_2}\). Assim, mostramos que \(\Ker(A)\) é um subespaço invariante de \(\Pi_1\).
+
+    Consideremos agora a imagem deste intertwiner.
+    \begin{equation*}
+        \begin{tikzcd}[column sep = normal, row sep = large]
+            V_1 \arrow{r}{A} \arrow{d}{\Pi_1(g)} & \Ran(A) \arrow{d}{\Pi_2(g)}\\
+            V_1 \arrow{r}{A} & \Pi_2(g)\Ran(A)
+        \end{tikzcd}
+    \end{equation*}
+    Seja \(g \in G\), então a imagem \(\Ran(A)\) por \(\Pi_2(g)\) está contida em \(\Ran(A)\) já que para todo \(w \in \Ran(A)\) existe \(v \in V_1\) tal que \(w = Av\), portanto
+    \begin{equation*}
+        \Pi_2(g) w = \Pi_2(g) Av = A \Pi_1(g) v \in \Ran(A).
+    \end{equation*}
+    Inferimos com isso que \(\Ran(A)\) é subespaço invariante de \(\Pi_2\).
+
+    Como \(\Pi_1\) e \(\Pi_2\) são representações irredutíveis, estes subespaços são triviais, isto é, temos .
+    \begin{equation*}
+        \Ker(A) \in \set*{\set{0_{V_1}}, V_1}\quad\text{e}\quad\Ran(A)\in\set*{\set{0_{V_2}}, V_2}.
+    \end{equation*}
+    Como \(V_1\) é não trivial, se \(\Ker(A) = \set{0_{V_1}}\), então \(A\) é injetor e não podemos ter \(\Ran(A) = \set{0_{V_2}}\), portanto \(A\) deve ser sobrejetor e, portanto, bijetor. Como \(V_2\) é não trivial, se \(\Ker(A) = V_1\), então \(A\) não pode ser sobrejetor, pois sua imagem é igual a \(\set{0_{V_2}}\), logo concluímos que \(A\) é o operador nulo.
+\end{proof}
+
+\begin{proposition}{Unicidade de intertwiners em dimensão finita}{exercício01iia}
+    Sejam \(V_1\) e \(V_2\) espaços lineares não triviais sobre \(\mathbb{C}\) de dimensão finita, e sejam \(\Pi_1 : G \to \mathrm{GL}(V_1)\) e \(\Pi_2 : G \to \mathrm{GL}(V_2)\) representações irredutíveis de um grupo \(G\) em \(V_1\) e \(V_2\). Se \(\Hom_G(V_1, V_2)\) é não trivial, então é unidimensional.
+\end{proposition}
+\begin{proof}
+    Se \(\Hom_G(V_1, V_2)\) é não trivial, então existem \(A, B \in \Hom_G(V_1, V_2)\) não nulos, portanto pelo \nameref{lem:schur} segue que \(A\) e \(B\) são bijetores. Queremos mostrar que \(B \in \lspan_{\mathbb{C}}\set{A}\), pois assim concluímos que \(\set{A}\) é uma base para \(\Hom_G(V_1, V_2)\).
+
+    Consideremos o operador \(A^{-1} B \in \mathrm{GL}(V_1)\), que é inversível por ser a composição de bijeções. Como este operador é injetor, então \(\Ker(A^{-1} B) = \set{0_{V_1}}\), isto é, não admite zero como autovalor. Assim, como sempre há soluções para o problema de autovalores de um operador em um espaço linear complexo de dimensão finita, se \(\lambda \in \mathbb{C}\) é tal que \(\det(\lambda \unity - A^{-1} B) = 0\), então \(\lambda \neq 0\). Isto é, o operador \(\lambda\unity - A^{-1} B\) não é inversível. Desta forma, a aplicação linear \(\lambda A - B = A(\lambda \unity - A^{-1} B)\) não é inversível. Como \(\Hom_{G}(V_1, V_2)\) é um espaço linear, segue que \(\lambda A - B \in \Hom_{G}(V_1, V_2)\), portanto concluímos que \(\lambda A - B = 0\), por não ser bijetivo. Isto é, \(B = \lambda A \in \lspan_{\mathbb{C}}\set{A}\).
+\end{proof}
+
+\begin{definition}{Representação irredutível para operadores}{representação_operadores}
+    Seja \(G\) um grupo e \(V\) um espaço linear sobre um corpo \(\mathbb{K}\). Uma representação \(\pi : G \to \mathrm{GL}(V)\) é \emph{irredutível para operadores} se o conjunto de operadores que comutam com \(\pi(g)\) for igual a \(\lspan_{\mathbb{K}}\set{\unity}\) para todo \(g \in G\).
+\end{definition}
+\begin{remark}
+    É claro que \(\lspan_{\mathbb{K}}\set{\unity}\) é sempre contido no conjunto de operadores que comutam com \(\pi(g)\) para todo \(G\), já que \(\lambda \unity \pi(g) = \lambda \pi(g) = \pi(g) (\lambda \unity)\) para todo \(\lambda \in \mathbb{K}\).
+\end{remark}
+
+\begin{proposition}{Representação irredutível para operadores em dimensão finita}{exercício01iib}
+    Seja \(G\) um grupo e \(V\) um espaço linear sobre \(\mathbb{C}\) de dimensão finita. Uma representação \(\pi : G \to \mathrm{GL}(V)\) irredutível é irredutível para operadores.
+\end{proposition}
+\begin{proof}
+    Suponhamos que \(\pi\) é irredutível. É claro que \(\unity \pi(g) = \pi(g) \unity\) para todo \(g \in G\). Seja \(A: V \to V\) um operador linear tal que \(A \pi(g) = \pi(g) A\), então \(A, \unity \in \Hom_G(V,V)\), logo \(A \in \lspan_{\mathbb{C}}\set{\unity}\), pela \cref{prop:exercício01iia}.
+\end{proof}
+
+\begin{proposition}{Representações irredutíveis de dimensão finita de um grupo abeliano}{exercício01iic}
+    Seja \(G\) um grupo abeliano e \(V\) um espaço linear sobre \(\mathbb{C}\) de dimensão finita. Se há uma representação irredutível de \(G\) em \(V\), então \(V\) é unidimensional.
+\end{proposition}
+\begin{proof}
+    Suponhamos que há uma representação irredutível de \(G\) em \(V\), seja \(\pi : G \to \mathrm{GL}(V)\) uma tal representação. Seja \(h \in G\), então \(\pi(g)\pi(h) = \pi(gh) = \pi(hg) = \pi(h)\pi(g)\) para todo \(g \in G\), logo existe \(\lambda_h \in \mathbb{C}\) tal que \(\pi(h) = \lambda_h \unity\) pelas \cref{prop:exercício01iia,prop:exercício01iib}. Como a identidade mantém qualquer subespaço invariante e a representação é irredutível, o espaço linear só pode admitir os subespaços triviais \(\set{0}, \set{V}\), portanto é unidimensional.
+\end{proof}
