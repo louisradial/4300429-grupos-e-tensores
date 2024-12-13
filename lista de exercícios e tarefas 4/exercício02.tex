@@ -1,0 +1,43 @@
+\begin{example}{Representação irredutível de \(\mathrm{SO}(2)\) em \(\mathbb{C}\)}{exercício02}
+    Todas as representações irredutíveis, unitárias, contínuas, complexas e de dimensão finita do grupo \(\mathrm{SO}(2)\) são dadas por
+    \begin{equation*}
+        \Pi_p(R_\varphi) = \exp(i p \varphi),
+    \end{equation*}
+    onde \(R_\varphi = \left(\begin{smallmatrix}
+            \cos\varphi &&- \sin \varphi\\
+            \sin\varphi && \cos\varphi
+    \end{smallmatrix}\right)\), com \(\varphi \in (-\pi, \pi]\) e \(p \in \mathbb{Z}\).
+\end{example}
+\begin{proof}
+    É sabido que a aplicação contínua
+    \begin{align*}
+        R : (-\pi, \pi] &\to \mathrm{SO}(2)\\
+                \varphi &\mapsto \begin{pmatrix}
+            \cos\varphi &&- \sin \varphi\\
+            \sin\varphi && \cos\varphi
+    \end{pmatrix}
+    \end{align*}
+    é sobrejetora, com \(R(0) = \unity\) e com \(R(\varphi)R(\theta) = R(\varphi + \theta)\) para todos \(\varphi,\theta \in (-\pi, \pi]\), isto é, \(\mathrm{SO}(2)\) é abeliano. Como queremos as representações irredutíveis, complexas, e de dimensão finita de \(\mathrm{SO}(2)\), sabemos pela \cref{prop:exercício01iic} que devemos procurar por representações em algum espaço linear \(V\) unidimensional sobre \(\mathbb{C}\). Assim, podemos sem perda de generalidade considerar apenas as representações de \(\mathrm{SO}(2)\) em \(\mathbb{C}\), pois há um isomorfismo linear de \(V\) em \(\mathbb{C}\).
+
+    Seja \(\Pi : \mathrm{SO}(2) \to \mathrm{GL}(\mathbb{C})\) uma representação irredutível, unitária, contínua, de \(\mathrm{SO}(2)\) em \(\mathbb{C}\). Da unitariedade segue que \(\Pi(r)^*\Pi(r) = 1,\) isto é, \(\Pi(r) \in \setc{z \in \mathbb{C}}{\abs{z} = 1}\) para todo \(r \in \mathrm{SO}(2)\). Assim, compondo \(\Pi\) com \(R\), para todo \(\varphi \in (-\pi, \pi]\) deve valer \(\Pi \circ R(\varphi) = \exp(i f(\varphi))\) para alguma função real \(f : (-\pi,\pi] \to \mathbb{R}\).
+
+    Como \(\Pi \circ R(0) = \Pi(\unity) = 1\), devemos ter \(f(0) = 2\pi n\) para algum \(n \in \mathbb{Z}\), e como \(\Pi\) é um homomorfismo de \(\mathrm{SO}(2)\) em \(\mathrm{GL}(\mathbb{C})\), temos de \(\Pi(r)\Pi(r') = \Pi(rr')\) que \(f(\varphi + \theta) = f(\varphi) + f(\theta)\). Tomando \(\varphi = \theta = 0\), temos \(f(0) = 2f(0) + 4\pi n\), ou seja \(f(0) = -2\pi n\), portanto \(f(0) = 0\). Dessa aditividade e desta última conclusão, concluímos que \(f\) é ímpar pois
+    \begin{equation*}
+        f(\theta) + f(-\theta) = f(\theta - \theta) = f(0) = 0.
+    \end{equation*}
+    Verifiquemos por indução que vale \(f(m \theta) = m f(\theta)\) para todo \(m \in \mathbb{N}\). Para \(m = 1\), isto é claro, então assumindo válido para algum \(m \in \mathbb{N}\), temos
+    \begin{equation*}
+        f((m+1) \theta) = f(m\theta + \theta) = f(m\theta) + f(\theta) = (m+1)f(\theta),
+    \end{equation*}
+    e então concluímos válido para todo \(m \in \mathbb{N}\). Como \(f\) é ímpar, vale então para todo \(m \in \mathbb{Z}\). Assim, podemos estender isso aos racionais, pois para \(k \in \mathbb{Z}\) e \(\ell \in \mathbb{N}\), temos
+    \begin{equation*}
+        \ell f\left(\frac{k}{\ell}\theta\right) = k\ell f\left(\frac{1}{\ell}\theta\right) = k f(\theta),
+    \end{equation*}
+    isto é, \(f(q\theta) = q f(\theta)\) para todo \(q \in \mathbb{Q}\). Como queremos que \(\Pi\) seja contínua, então da continuidade da exponencial e da carta de coordenadas para \(\mathrm{SO}(2)\), segue que \(f\) deve ser contínua. Assim, como \(\mathbb{Q}\) é denso em \(\mathbb{R}\), \(f\) satisfaz \(f(x \theta) = x f(\theta)\) para todo \(x \in \mathbb{R}\). Em outras palavras, \(f\) deve ser \(\mathbb{R}\)-linear, portanto \(f(\theta) = p \theta\), para algum \(p \in \mathbb{R}\).
+
+    Mostremos que \(p\) é um número inteiro. Notemos que
+    \begin{equation*}
+        \Pi_p(R(\pi)) \Pi_p(R(\pi)) = \Pi_p(R(\pi + \pi)) = \Pi_p(R(0)) = 1,
+    \end{equation*}
+    portanto \(\Pi_p(R(\pi)) = \pm 1\). Assim, como \(\Pi_p (R(\varphi)) = \exp(i\pi p)\), devemos ter \(\sin(\pi p) = 0\), isto é, \(\pi p\) é um múltiplo inteiro de \(\pi\), logo \(p \in \mathbb{Z}\).
+\end{proof}
